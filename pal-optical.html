@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAL Optical Tool Kit — James</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --radius: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color .2s;
+    }
+
+    .back-btn:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 8rem 6% 4rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-emoji {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-img {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .hero-img video {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (max-width: 860px) {
+      .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .hero-img {
+        justify-content: flex-start;
+      }
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(124, 58, 237, 0.2);
+      color: #a78bfa;
+      border: 1px solid rgba(124, 58, 237, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      color: rgba(226, 232, 240, 0.7);
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 6%;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--accent2);
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: border-color .2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--accent);
+    }
+
+    .feature-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-card p {
+      font-size: 0.83rem;
+      margin: 0;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">james<span>.</span></a>
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-emoji">👓</span>
+        <div class="tag-row">
+          <span class="tag">Firebase</span>
+          <span class="tag">PWA</span>
+          <span class="tag">HTML/JS</span>
+          <span class="tag">Optical Suite</span>
+        </div>
+        <h1>PAL Optical Tool Kit</h1>
+        <p class="hero-sub">POMA: Comprehensive HTML/JS optical suite for retail/lab management (P.O.S.T. write-ups,
+          insurance, camera measurements, lens catalog, Firebase sync). PWA-ready, offline-capable.</p>
+      </div>
+      <div class="hero-img">
+        <video src="po.mp4" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <div class="section">
+      <p class="section-title">Overview</p>
+      <p>The PAL Optical Tool Kit was born out of a real-world need to reduce friction in the eyewear order workflow.
+        The optical industry still relies heavily on paper forms, manual calculations, and disconnected processes. This
+        toolkit brings those workflows into a modern, browser-based environment — accessible from any device, with data
+        persisted in real time via Firebase.</p>
+      <p>The suite is designed to be modular: each tool handles a specific part of the process, and they all share a
+        consistent UI and data layer so information flows naturally between them.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Key Features</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h4>Full Write-Up Program</h4>
+          <p>Complete prescription write-up tool with all standard optical fields, validation, and Firebase sync for
+            instant saving and retrieval.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔢</div>
+          <h4>PAL Calculators</h4>
+          <p>Automated calculations for seg heights, fitting cross placement, and progressive lens measurements to
+            eliminate manual math errors.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">☁️</div>
+          <h4>Firebase Backend</h4>
+          <p>Real-time Firestore database stores all orders and write-ups, with authentication so each user sees only
+            their own data.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h4>Order History</h4>
+          <p>Searchable log of past orders with the ability to pull up, duplicate, or edit any previous write-up in
+            seconds.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>Mobile-First Design</h4>
+          <p>Fully responsive layout designed to work on tablets and phones used at the dispensing table or lab bench.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🖨️</div>
+          <h4>Print-Ready Output</h4>
+          <p>One-click print view formats the write-up into a clean, lab-ready document that matches industry standards.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Tech Stack</p>
+      <div class="tech-list">
+        <span class="tech-pill">HTML / CSS / JavaScript</span>
+        <span class="tech-pill">Firebase Firestore</span>
+        <span class="tech-pill">Firebase Authentication</span>
+        <span class="tech-pill">Firebase Hosting</span>
+        <span class="tech-pill">Responsive Design</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">The Problem It Solves</p>
+      <p>Traditional optical write-up processes involve handwritten forms, manual seg height calculations, and physical
+        order logs that are easy to lose and hard to search. Errors in these calculations can result in incorrectly made
+        lenses — a costly and time-consuming mistake for both the lab and the patient.</p>
+      <p>The PAL Optical Tool Kit eliminates these pain points by digitizing the entire workflow, providing instant
+        validation, and keeping a permanent, searchable cloud record of every order.</p>
+    </div>
+
+  </main>
+
+  <footer>Designed & built by James · 2025</footer>
+
+  <div style="background:#1a0a0a; border-top:1px solid #3b1a1a; padding:1.2rem 6%; text-align:center;">
+    <p style="color:#f87171; font-size:0.8rem; margin:0;">⚠️ <strong>Disclaimer:</strong> This system is not currently
+      in use and in its present state is not HIPAA compliant. Upgrading to Google Firestore under a Business Associate
+      Agreement (BAA) would readily address this.</p>
+  </div>
+
+</body>
+
+</html>

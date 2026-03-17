@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ancient Bible Reader — James</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #7c3aed;
+      --accent2: #f59e0b;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --radius: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color .2s;
+    }
+
+    .back-btn:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 8rem 6% 4rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #2d1b00, #5c3d00, #8b5e00);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(245, 158, 11, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-emoji {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-img {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .hero-img img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (max-width: 860px) {
+      .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .hero-img {
+        justify-content: flex-start;
+      }
+
+      .hero-img img {
+        max-width: 100%;
+      }
+    }
+
+    .tag-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      color: rgba(226, 232, 240, 0.7);
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 6%;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--accent2);
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .parallel-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+
+    .parallel-col {
+      background: var(--surface);
+      padding: 1.5rem;
+    }
+
+    .parallel-col h4 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 1rem;
+    }
+
+    .parallel-col .verse {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .parallel-col .verse.ancient {
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .verse-num {
+      color: var(--accent2);
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-right: 0.3rem;
+      vertical-align: super;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: border-color .2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--accent2);
+    }
+
+    .feature-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-card p {
+      font-size: 0.83rem;
+      margin: 0;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .parallel-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">james<span>.</span></a>
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <span class="hero-emoji">📜</span>
+        <div class="tag-row">
+          <span class="tag">Ancient Hebrew</span>
+          <span class="tag">Ancient Greek</span>
+          <span class="tag">KJV</span>
+          <span class="tag">Parallel Reader</span>
+        </div>
+        <h1>Ancient Bible Reader</h1>
+        <p class="hero-sub">A parallel scripture reader displaying Ancient Hebrew or Ancient Greek side-by-side with the
+          KJV — built for deep textual and linguistic study.</p>
+      </div>
+      <div class="hero-img">
+        <video src="abr.mp4" autoplay loop muted playsinline style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.6);"></video>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <div class="section">
+      <p class="section-title">Overview</p>
+      <p>Most Bible readers present a single translation. This app was built for students, scholars, and curious readers
+        who want to engage with scripture in its original languages — without needing to leave the app to
+        cross-reference a separate interlinear or lexicon.</p>
+      <p>The reader presents two columns in sync: the original ancient text on one side, and the KJV on the other.
+        Scroll one column and the other follows. Tap a word in the ancient text to see its transliteration, Strong's
+        number, and a brief definition.</p>
+
+      <div class="parallel-demo">
+        <div class="parallel-col">
+          <h4>Ancient Hebrew — Genesis 1:1</h4>
+          <p class="verse ancient">בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ</p>
+        </div>
+        <div class="parallel-col">
+          <h4>KJV — Genesis 1:1</h4>
+          <p class="verse"><span class="verse-num">1</span>In the beginning God created the heaven and the earth.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Key Features</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔀</div>
+          <h4>Parallel Layout</h4>
+          <p>Synchronized two-column view keeps ancient text and KJV aligned verse-by-verse as you scroll.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔤</div>
+          <h4>Hebrew & Greek Modes</h4>
+          <p>Switch between Ancient Hebrew (OT) and Ancient Greek (NT) modes. The app automatically loads the correct
+            source text for the selected testament.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h4>Word Lookup</h4>
+          <p>Tap any word in the ancient text to see its transliteration, Strong's concordance number, and a
+            plain-English definition.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h4>Cross-Reference Search</h4>
+          <p>Search by Strong's number to find every occurrence of a specific Hebrew or Greek word across the entire
+            Bible.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h4>RTL Support</h4>
+          <p>Full right-to-left text rendering for Hebrew, with proper font rendering for both ancient scripts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔖</div>
+          <h4>Bookmarks</h4>
+          <p>Bookmark passages in either language mode and return to them instantly from a dedicated bookmarks panel.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Tech Stack</p>
+      <div class="tech-list">
+        <span class="tech-pill">JavaScript</span>
+        <span class="tech-pill">HTML / CSS</span>
+        <span class="tech-pill">Open Scripture APIs</span>
+        <span class="tech-pill">Strong's Concordance Data</span>
+        <span class="tech-pill">RTL Text Rendering</span>
+        <span class="tech-pill">Unicode Hebrew & Greek Fonts</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Why This Exists</p>
+      <p>Interlinear Bibles exist in print, but digital versions are often clunky, expensive, or locked behind
+        subscriptions. This reader is a free, clean, and fast alternative that puts the original languages front and
+        center without overwhelming the reader with academic apparatus.</p>
+      <p>The goal is to make the ancient texts approachable — not just for scholars, but for anyone curious about what
+        the original words actually said.</p>
+    </div>
+
+  </main>
+
+  <footer>Designed & built by James · 2025</footer>
+
+</body>
+
+</html>

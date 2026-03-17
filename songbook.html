@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Songbook — James</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f; --surface: #13131a; --border: #1e1e2e;
+      --accent: #7c3aed; --accent2: #a855f7; --text: #e2e8f0; --muted: #64748b; --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 6%; background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+    .back-btn:hover { color: var(--text); }
+
+    .hero {
+      min-height: 55vh; display: flex; align-items: flex-end;
+      padding: 8rem 6% 4rem; position: relative; overflow: hidden;
+      background: linear-gradient(135deg,#1a0533,#3b0764,#6b21a8);
+    }
+    .hero-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(168,85,247,0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-emoji { font-size: 5rem; margin-bottom: 1.5rem; display: block; }
+    .hero-content { position: relative; max-width: 800px; }
+    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .tag { font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.7rem; border-radius: 999px; background: rgba(168,85,247,0.15); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.3); }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 1rem; }
+    .hero-sub { color: rgba(226,232,240,0.7); font-size: 1.1rem; max-width: 600px; }
+
+    main { max-width: 860px; margin: 0 auto; padding: 5rem 6%; }
+    .section { margin-bottom: 4rem; }
+    .section-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--accent2); letter-spacing: -0.5px; }
+    p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .flow-steps { display: flex; flex-direction: column; gap: 0; }
+    .flow-step { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+    .flow-step:last-child { border-bottom: none; }
+    .step-num { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: #d8b4fe; flex-shrink: 0; margin-top: 0.1rem; }
+    .step-content h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .step-content p { font-size: 0.85rem; margin: 0; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+    .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; transition: border-color .2s; }
+    .feature-card:hover { border-color: var(--accent2); }
+    .feature-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .feature-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .feature-card p { font-size: 0.83rem; margin: 0; }
+
+    .tech-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .tech-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.82rem; color: var(--text); }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">james<span>.</span></a>
+    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="hero-emoji">🎵</span>
+      <div class="tag-row">
+        <span class="tag">OCR</span>
+        <span class="tag">Ultimate Guitar</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Lyrics</span>
+      </div>
+      <h1>Songbook</h1>
+      <p class="hero-sub">A personal songbook app with two powerful ways to add songs — import directly from Ultimate Guitar, or scan and transcribe handwritten or printed lyrics with OCR.</p>
+    </div>
+  </div>
+
+  <main>
+
+    <div class="section">
+      <p class="section-title">Overview</p>
+      <p>Songbook solves a problem every musician knows: your songs are scattered everywhere — some on Ultimate Guitar, some in a notebook, some on loose paper. This app brings them all into one place with two smart import methods.</p>
+      <p>The Ultimate Guitar importer pulls chord charts and lyrics directly from a URL. The OCR scanner lets you point your camera at any written or printed lyrics sheet and transcribes it automatically. Both end up in the same clean, searchable songbook.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">How It Works</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h4>Import from Ultimate Guitar</h4>
+            <p>Paste a Ultimate Guitar URL and the app fetches the chord chart and lyrics, strips the formatting, and saves it to your songbook in a clean, readable layout.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h4>Scan with OCR</h4>
+            <p>Use your device camera to photograph any handwritten or printed lyrics sheet. The OCR engine processes the image and transcribes the text, which you can review and edit before saving.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h4>Organize & Search</h4>
+            <p>All songs land in your personal songbook. Tag them by genre, key, or artist and search by any field to find what you need instantly.</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h4>Perform Mode</h4>
+            <p>Open any song in full-screen perform mode with large text, auto-scroll, and screen-always-on so you can read while playing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Key Features</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎸</div>
+          <h4>Ultimate Guitar Import</h4>
+          <p>Paste any Ultimate Guitar link and get a clean chord chart saved to your library instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📷</div>
+          <h4>OCR Scan Tool</h4>
+          <p>Photograph handwritten or printed lyrics and let the OCR engine transcribe them automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎤</div>
+          <h4>Perform Mode</h4>
+          <p>Full-screen reading view with large text, auto-scroll, and screen lock for live performance use.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔑</div>
+          <h4>Key Transposer</h4>
+          <p>Transpose any chord chart up or down by semitone with a single tap — no manual editing needed.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🗂️</div>
+          <h4>Setlist Builder</h4>
+          <p>Group songs into setlists for gigs or practice sessions and step through them in order during performance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✏️</div>
+          <h4>Edit & Annotate</h4>
+          <p>Edit any imported or scanned song and add personal annotations, capo notes, or performance reminders.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Tech Stack</p>
+      <div class="tech-list">
+        <span class="tech-pill">JavaScript</span>
+        <span class="tech-pill">Tesseract.js (OCR)</span>
+        <span class="tech-pill">HTML / CSS</span>
+        <span class="tech-pill">Ultimate Guitar Scraper</span>
+        <span class="tech-pill">LocalStorage / IndexedDB</span>
+        <span class="tech-pill">Canvas API</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>Designed & built by James · 2025</footer>
+
+</body>
+</html>
