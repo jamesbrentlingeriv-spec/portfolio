@@ -27,7 +27,7 @@
     .back-btn:hover { color: var(--text); }
 
     .hero {
-      min-height: 55vh; display: flex; align-items: flex-end;
+      min-height: 70vh; display: flex; align-items: flex-end;
       padding: 8rem 6% 4rem; position: relative; overflow: hidden;
       background: linear-gradient(135deg,#1a0533,#3b0764,#6b21a8);
     }
@@ -37,7 +37,14 @@
       pointer-events: none;
     }
     .hero-emoji { font-size: 5rem; margin-bottom: 1.5rem; display: block; }
-    .hero-content { position: relative; max-width: 800px; }
+    .hero-content { position: relative; display: flex; align-items: flex-end; gap: 4rem; width: 100%; }
+    .hero-text { flex: 1; min-width: 280px; }
+    .hero-img { flex: 1; display: flex; align-items: flex-end; justify-content: flex-end; min-width: 0; }
+    .hero-img video { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+    @media (max-width: 860px) {
+      .hero-content { flex-direction: column; gap: 2rem; }
+      .hero-img { justify-content: flex-start; }
+    }
     .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
     .tag { font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.7rem; border-radius: 999px; background: rgba(168,85,247,0.15); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.3); }
     h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 1rem; }
@@ -79,15 +86,20 @@
   <div class="hero">
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <span class="hero-emoji">🎵</span>
-      <div class="tag-row">
-        <span class="tag">OCR</span>
-        <span class="tag">Ultimate Guitar</span>
-        <span class="tag">JavaScript</span>
-        <span class="tag">Lyrics</span>
+      <div class="hero-text">
+        <span class="hero-emoji">🎵</span>
+        <div class="tag-row">
+          <span class="tag">OCR</span>
+          <span class="tag">Ultimate Guitar</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Lyrics</span>
+        </div>
+        <h1>Songbook</h1>
+        <p class="hero-sub">A personal songbook app with two powerful ways to add songs — import directly from Ultimate Guitar, or scan and transcribe handwritten or printed lyrics with OCR.</p>
       </div>
-      <h1>Songbook</h1>
-      <p class="hero-sub">A personal songbook app with two powerful ways to add songs — import directly from Ultimate Guitar, or scan and transcribe handwritten or printed lyrics with OCR.</p>
+      <div class="hero-img">
+        <video src="sb.mp4" autoplay loop muted playsinline></video>
+      </div>
     </div>
   </div>
 
