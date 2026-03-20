@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,81 +8,314 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg: #0a0a0f; --surface: #13131a; --border: #1e1e2e;
-      --accent: #7c3aed; --accent2: #10b981; --text: #e2e8f0; --muted: #64748b; --radius: 12px;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #1e1e2e;
+      --accent: #7c3aed;
+      --accent2: #10b981;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --radius: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
     nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 6%; background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 6%;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
-    .logo span { color: var(--accent); }
-    .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
-    .back-btn:hover { color: var(--text); }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color .2s;
+    }
+
+    .back-btn:hover {
+      color: var(--text);
+    }
 
     .hero {
-      min-height: 70vh; display: flex; align-items: flex-end;
-      padding: 8rem 6% 4rem; position: relative; overflow: hidden;
-      background: linear-gradient(135deg,#064e3b,#065f46,#047857);
+      min-height: 70vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 8rem 6% 4rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #064e3b, #065f46, #047857);
     }
+
     .hero-glow {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 40% 60%, rgba(16,185,129,0.2) 0%, transparent 60%);
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 60%, rgba(16, 185, 129, 0.2) 0%, transparent 60%);
       pointer-events: none;
     }
-    .hero-emoji { font-size: 5rem; margin-bottom: 1.5rem; display: block; }
-    .hero-content { position: relative; display: flex; align-items: flex-end; gap: 4rem; width: 100%; }
-    .hero-text { flex: 1; min-width: 280px; }
-    .hero-img { flex: 1; display: flex; align-items: flex-end; justify-content: flex-end; min-width: 0; }
-    .hero-img video { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 80px rgba(0,0,0,0.6); }
+
+    .hero-emoji {
+      font-size: 5rem;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero-content {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 4rem;
+      width: 100%;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-img {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .hero-img video {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+
     @media (max-width: 860px) {
-      .hero-content { flex-direction: column; gap: 2rem; }
-      .hero-img { justify-content: flex-start; }
+      .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .hero-img {
+        justify-content: flex-start;
+      }
     }
-    .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .tag { font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.7rem; border-radius: 999px; background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
-    h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 1rem; }
-    .hero-sub { color: rgba(226,232,240,0.7); font-size: 1.1rem; max-width: 600px; }
 
-    main { max-width: 860px; margin: 0 auto; padding: 5rem 6%; }
-    .section { margin-bottom: 4rem; }
-    .section-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--accent2); letter-spacing: -0.5px; }
-    p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
-    p:last-child { margin-bottom: 0; }
+    .tag-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
 
-    .sites-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      color: rgba(226, 232, 240, 0.7);
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 6%;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--accent2);
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .sites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
     .site-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; transition: border-color .2s, transform .2s;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
     }
-    .site-card:hover { border-color: var(--accent2); transform: translateY(-4px); }
+
+    .site-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-4px);
+    }
+
     .site-thumb {
-      height: 130px; display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; position: relative;
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      position: relative;
     }
-    .site-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, var(--surface)); }
-    .site-info { padding: 1.2rem; }
-    .site-info h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
-    .site-info p { font-size: 0.82rem; margin: 0 0 0.8rem; }
-    .site-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-    .site-tag { font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 999px; background: rgba(16,185,129,0.1); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.2); }
 
-    .approach-list { display: flex; flex-direction: column; gap: 1rem; }
-    .approach-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.2rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
-    .approach-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .approach-item h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .approach-item p { font-size: 0.83rem; margin: 0; }
+    .site-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--surface));
+    }
 
-    .tech-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .tech-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.82rem; color: var(--text); }
-    .divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    .site-info {
+      padding: 1.2rem;
+    }
+
+    .site-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .site-info p {
+      font-size: 0.82rem;
+      margin: 0 0 0.8rem;
+    }
+
+    .site-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .site-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .approach-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .approach-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .approach-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .approach-item h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .approach-item p {
+      font-size: 0.83rem;
+      margin: 0;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 3rem 0;
+    }
+
     .demo-btn {
       display: inline-block;
       padding: 0.75rem 2rem;
@@ -91,16 +325,26 @@
       color: #fff;
       text-decoration: none;
       background: #000;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
       margin-top: 1.5rem;
       transition: background .2s;
     }
-    .demo-btn:hover { background: #111; }
 
-    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+    .demo-btn:hover {
+      background: #111;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -120,8 +364,10 @@
           <span class="tag">Client Work</span>
         </div>
         <h1>Client Websites</h1>
-        <p class="hero-sub">A collection of custom websites built for various clients — each one tailored to their brand, audience, and specific goals.</p>
-        <a href="https://jamesbrentlingeriv-spec.github.io/PALSITE/index.html" target="_blank" class="demo-btn">Pal Optical Site →</a>
+        <p class="hero-sub">A collection of custom websites built for various clients — each one tailored to their
+          brand, audience, and specific goals.</p>
+        <a href="https://jamesbrentlingeriv-spec.github.io/PALSITE/index.html" target="_blank" class="demo-btn">Pal
+          Optical Site →</a>
       </div>
       <div class="hero-img">
         <video src="palss.mp4" autoplay loop muted playsinline></video>
@@ -133,8 +379,11 @@
 
     <div class="section">
       <p class="section-title">Overview</p>
-      <p>Every client has a different story to tell and a different audience to reach. These websites were built from scratch — no page builders, no templates — with a focus on performance, clarity, and a design that actually reflects the client's identity.</p>
-      <p>Each project started with a conversation about goals, then moved through wireframing, design, and development. The result in every case is a fast, mobile-first site the client can be proud of.</p>
+      <p>Every client has a different story to tell and a different audience to reach. These websites were built from
+        scratch — no page builders, no templates — with a focus on performance, clarity, and a design that actually
+        reflects the client's identity.</p>
+      <p>Each project started with a conversation about goals, then moved through wireframing, design, and development.
+        The result in every case is a fast, mobile-first site the client can be proud of.</p>
     </div>
 
     <hr class="divider" />
@@ -147,8 +396,10 @@
           <div class="site-thumb" style="background: linear-gradient(135deg,#1e3a5f,#1e40af);">🏢</div>
           <div class="site-info">
             <h4>Local Business Site</h4>
-            <p>Clean, professional site for a local service business with contact form, service pages, and Google Maps integration.</p>
-            <div class="site-tags"><span class="site-tag">HTML/CSS</span><span class="site-tag">JS</span><span class="site-tag">Forms</span></div>
+            <p>Clean, professional site for a local service business with contact form, service pages, and Google Maps
+              integration.</p>
+            <div class="site-tags"><span class="site-tag">HTML/CSS</span><span class="site-tag">JS</span><span
+                class="site-tag">Forms</span></div>
           </div>
         </div>
 
@@ -156,8 +407,10 @@
           <div class="site-thumb" style="background: linear-gradient(135deg,#3b1f00,#7c3a00);">🍽️</div>
           <div class="site-info">
             <h4>Restaurant Website</h4>
-            <p>Menu showcase, reservation links, and photo gallery for a local restaurant. Optimized for mobile since most visitors browse on their phones.</p>
-            <div class="site-tags"><span class="site-tag">Responsive</span><span class="site-tag">Gallery</span><span class="site-tag">SEO</span></div>
+            <p>Menu showcase, reservation links, and photo gallery for a local restaurant. Optimized for mobile since
+              most visitors browse on their phones.</p>
+            <div class="site-tags"><span class="site-tag">Responsive</span><span class="site-tag">Gallery</span><span
+                class="site-tag">SEO</span></div>
           </div>
         </div>
 
@@ -165,8 +418,10 @@
           <div class="site-thumb" style="background: linear-gradient(135deg,#1a0533,#4a1d96);">🎨</div>
           <div class="site-info">
             <h4>Creative Portfolio</h4>
-            <p>Portfolio site for a freelance artist featuring a filterable gallery, about page, and commission inquiry form.</p>
-            <div class="site-tags"><span class="site-tag">Portfolio</span><span class="site-tag">Gallery</span><span class="site-tag">Animations</span></div>
+            <p>Portfolio site for a freelance artist featuring a filterable gallery, about page, and commission inquiry
+              form.</p>
+            <div class="site-tags"><span class="site-tag">Portfolio</span><span class="site-tag">Gallery</span><span
+                class="site-tag">Animations</span></div>
           </div>
         </div>
 
@@ -174,8 +429,10 @@
           <div class="site-thumb" style="background: linear-gradient(135deg,#064e3b,#065f46);">⛪</div>
           <div class="site-info">
             <h4>Church / Ministry Site</h4>
-            <p>Welcoming site for a local church with service times, sermon archive, events calendar, and giving page.</p>
-            <div class="site-tags"><span class="site-tag">CMS</span><span class="site-tag">Events</span><span class="site-tag">Media</span></div>
+            <p>Welcoming site for a local church with service times, sermon archive, events calendar, and giving page.
+            </p>
+            <div class="site-tags"><span class="site-tag">CMS</span><span class="site-tag">Events</span><span
+                class="site-tag">Media</span></div>
           </div>
         </div>
 
@@ -183,8 +440,10 @@
           <div class="site-thumb" style="background: linear-gradient(135deg,#1e1b4b,#312e81);">🛍️</div>
           <div class="site-info">
             <h4>Small E-Commerce</h4>
-            <p>Product showcase and checkout flow for a small retail client, integrated with a payment processor and order notification system.</p>
-            <div class="site-tags"><span class="site-tag">E-Commerce</span><span class="site-tag">Payments</span><span class="site-tag">JS</span></div>
+            <p>Product showcase and checkout flow for a small retail client, integrated with a payment processor and
+              order notification system.</p>
+            <div class="site-tags"><span class="site-tag">E-Commerce</span><span class="site-tag">Payments</span><span
+                class="site-tag">JS</span></div>
           </div>
         </div>
 
@@ -192,8 +451,10 @@
           <div class="site-thumb" style="background: linear-gradient(135deg,#1c1917,#44403c);">📰</div>
           <div class="site-info">
             <h4>Blog / Content Site</h4>
-            <p>Content-focused site with a clean reading experience, category filtering, and an RSS feed for regular publishing.</p>
-            <div class="site-tags"><span class="site-tag">Blog</span><span class="site-tag">RSS</span><span class="site-tag">SEO</span></div>
+            <p>Content-focused site with a clean reading experience, category filtering, and an RSS feed for regular
+              publishing.</p>
+            <div class="site-tags"><span class="site-tag">Blog</span><span class="site-tag">RSS</span><span
+                class="site-tag">SEO</span></div>
           </div>
         </div>
 
@@ -209,28 +470,32 @@
           <div class="approach-icon">🎯</div>
           <div>
             <h4>Goals First</h4>
-            <p>Every project starts with understanding what the client actually needs the site to do — not just what it should look like.</p>
+            <p>Every project starts with understanding what the client actually needs the site to do — not just what it
+              should look like.</p>
           </div>
         </div>
         <div class="approach-item">
           <div class="approach-icon">📱</div>
           <div>
             <h4>Mobile-First</h4>
-            <p>All sites are designed and built mobile-first, then scaled up — because that's where most visitors actually are.</p>
+            <p>All sites are designed and built mobile-first, then scaled up — because that's where most visitors
+              actually are.</p>
           </div>
         </div>
         <div class="approach-item">
           <div class="approach-icon">⚡</div>
           <div>
             <h4>Performance Matters</h4>
-            <p>No bloated frameworks or unnecessary dependencies. Fast load times, optimized images, and clean code throughout.</p>
+            <p>No bloated frameworks or unnecessary dependencies. Fast load times, optimized images, and clean code
+              throughout.</p>
           </div>
         </div>
         <div class="approach-item">
           <div class="approach-icon">🔍</div>
           <div>
             <h4>SEO Ready</h4>
-            <p>Semantic HTML, proper meta tags, structured data, and fast performance — the foundations of good search visibility.</p>
+            <p>Semantic HTML, proper meta tags, structured data, and fast performance — the foundations of good search
+              visibility.</p>
           </div>
         </div>
       </div>
@@ -256,4 +521,5 @@
   <footer>Designed & built by James · 2025</footer>
 
 </body>
+
 </html>
