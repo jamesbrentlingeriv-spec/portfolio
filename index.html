@@ -154,20 +154,15 @@
         }
 
         .play-btn {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: rgba(124, 58, 237, 0.85);
-            border: 2px solid rgba(255,255,255,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            backdrop-filter: blur(4px);
-            transition: transform .2s, background .2s;
+            font-size: 4rem;
+            color: #fff;
+            line-height: 1;
+            transition: transform .2s;
         }
 
-        .play-overlay:hover .play-btn { transform: scale(1.1); background: rgba(124,58,237,1); }
+        .play-overlay:hover .play-btn {
+            transform: scale(1.15);
+        }
 
         @media (max-width: 900px) {
             .hero-inner {
@@ -558,7 +553,7 @@
             <div class="hero-video">
                 <video id="introVideo" src="james.mp4" playsinline></video>
                 <div class="play-overlay" id="playOverlay">
-                    <div class="play-btn">▶️</div>
+                    <div class="play-btn">&#9654;</div>
                 </div>
             </div>
         </div>
@@ -667,25 +662,29 @@
             <h2 class="section-title">Get In Touch</h2>
             <p class="section-sub">Have a project in mind or just want to say hi? My inbox is always open.</p>
         </div>
-        <div class="contact-card reveal">
-            <p style="color:var(--muted); font-size:0.95rem;">I'm currently open to new opportunities — freelance,
-                full-time, or collaboration. Reach out through any of the channels below.</p>
-            <div class="contact-links">
-                <a href="mailto:james@example.com" class="contact-link">
-                    <span class="contact-link-icon">✉️</span>
-                    <div class="contact-link-info">james@example.com<small>Email — fastest response</small></div>
-                </a>
-                <a href="https://github.com/jamesbrentlingeriv-spec" target="_blank" class="contact-link">
-                    <span class="contact-link-icon">🐙</span>
-                    <div class="contact-link-info">github.com/jamesbrentlingeriv-spec<small>GitHub — see my code</small>
-                    </div>
-                </a>
-                <a href="https://linkedin.com/" target="_blank" class="contact-link">
-                    <span class="contact-link-icon">💼</span>
-                    <div class="contact-link-info">linkedin.com/in/james<small>LinkedIn — professional profile</small>
-                    </div>
-                </a>
+        <div style="display:flex; align-items:flex-start; gap:3rem; flex-wrap:wrap;">
+            <div class="contact-card reveal">
+                <p style="color:var(--muted); font-size:0.95rem;">I'm currently open to new opportunities — freelance,
+                    full-time, or collaboration. Reach out through any of the channels below.</p>
+                <div class="contact-links">
+                    <a href="mailto:james@example.com" class="contact-link">
+                        <span class="contact-link-icon">✉️</span>
+                        <div class="contact-link-info">james@example.com<small>Email — fastest response</small></div>
+                    </a>
+                    <a href="https://github.com/jamesbrentlingeriv-spec" target="_blank" class="contact-link">
+                        <span class="contact-link-icon">🐙</span>
+                        <div class="contact-link-info">github.com/jamesbrentlingeriv-spec<small>GitHub — see my
+                                code</small></div>
+                    </a>
+                    <a href="https://linkedin.com/" target="_blank" class="contact-link">
+                        <span class="contact-link-icon">💼</span>
+                        <div class="contact-link-info">linkedin.com/in/james<small>LinkedIn — professional
+                                profile</small></div>
+                    </a>
+                </div>
             </div>
+            <img src="jcb.gif" alt=""
+                style="max-width:420px; width:100%; border-radius:14px; border:1px solid var(--border); box-shadow:0 20px 40px rgba(0,0,0,0.4); align-self:center; mix-blend-mode:lighten;" />
         </div>
     </section>
 
