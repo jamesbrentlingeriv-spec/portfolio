@@ -115,6 +115,74 @@
 
         .hero-content {
             max-width: 680px;
+            flex-shrink: 0;
+        }
+
+        .hero-inner {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+            position: relative;
+        }
+
+        .hero-video {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .hero-video video {
+            width: 100%;
+            max-width: 560px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 14px;
+        }
+
+        .play-btn {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.85);
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            backdrop-filter: blur(4px);
+            transition: transform .2s, background .2s;
+        }
+
+        .play-overlay:hover .play-btn { transform: scale(1.1); background: rgba(124,58,237,1); }
+
+        @media (max-width: 900px) {
+            .hero-inner {
+                flex-direction: column;
+                padding-top: 6rem;
+                gap: 2rem;
+            }
+
+            .hero-video {
+                justify-content: flex-start;
+            }
+
+            .hero-video video {
+                max-width: 100%;
+            }
         }
 
         .badge {
@@ -475,14 +543,23 @@
     <section id="hero">
         <div class="hero-glow"></div>
         <div class="hero-glow2"></div>
-        <div class="hero-content">
-            <div class="badge">Available for work</div>
-            <h1>Hi, I'm <span class="gradient">James</span><br />I build things for the web.</h1>
-            <p class="hero-desc">Full-stack developer crafting clean, performant, and user-focused digital experiences.
-                Turning ideas into reality, one line at a time.</p>
-            <div class="btn-group">
-                <a href="#projects" class="btn btn-primary">View My Work ↓</a>
-                <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="badge">Available for work</div>
+                <h1>Hi, I'm <span class="gradient">James</span><br />I build things for the web.</h1>
+                <p class="hero-desc">Full-stack developer crafting clean, performant, and user-focused digital
+                    experiences.
+                    Turning ideas into reality, one line at a time.</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary">View My Work ↓</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-video">
+                <video id="introVideo" src="james.mp4" playsinline></video>
+                <div class="play-overlay" id="playOverlay">
+                    <div class="play-btn">▶️</div>
+                </div>
             </div>
         </div>
     </section>
@@ -622,6 +699,14 @@
             { threshold: 0.1 }
         );
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const vid = document.getElementById('introVideo');
+        const overlay = document.getElementById('playOverlay');
+        overlay.addEventListener('click', () => {
+            overlay.style.display = 'none';
+            vid.play();
+        });
+        vid.addEventListener('ended', () => { vid.pause(); vid.currentTime = 0; });
     </script>
 
 </body>
