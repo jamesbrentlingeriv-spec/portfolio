@@ -302,6 +302,32 @@
       margin: 3rem 0;
     }
 
+    .gold-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      text-decoration: none;
+      background: linear-gradient(90deg, #92710a, #f5d060, #c9920a, #f5d060, #92710a);
+      background-size: 300% auto;
+      animation: glitter 3s linear infinite;
+      box-shadow: 0 4px 20px rgba(197, 160, 40, 0.4);
+      margin-top: 1.5rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes glitter {
+      0% {
+        background-position: 0%
+      }
+
+      100% {
+        background-position: 300%
+      }
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -339,9 +365,12 @@
         <h1>Ancient Bible Reader</h1>
         <p class="hero-sub">A parallel scripture reader displaying Ancient Hebrew or Ancient Greek side-by-side with the
           KJV — built for deep textual and linguistic study.</p>
+        <a href="https://jamesbrentlingeriv-spec.github.io/ancientbiblereader/" target="_blank" class="gold-btn">Ancient
+          Bible Reader →</a>
       </div>
       <div class="hero-img">
-        <video src="abr.mp4" autoplay loop muted playsinline style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.6);"></video>
+        <video src="abr.mp4" autoplay loop muted playsinline
+          style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.6);"></video>
       </div>
     </div>
   </div>

@@ -82,6 +82,22 @@
     .tech-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
     .tech-pill { background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.82rem; color: var(--text); }
     .divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    .demo-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      text-decoration: none;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      margin-top: 1.5rem;
+      transition: background .2s;
+    }
+    .demo-btn:hover { background: #111; }
+
     footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
   </style>
 </head>
@@ -105,6 +121,7 @@
         </div>
         <h1>Client Websites</h1>
         <p class="hero-sub">A collection of custom websites built for various clients — each one tailored to their brand, audience, and specific goals.</p>
+        <a href="https://jamesbrentlingeriv-spec.github.io/PALSITE/index.html" target="_blank" class="demo-btn">Pal Optical Site →</a>
       </div>
       <div class="hero-img">
         <video src="palss.mp4" autoplay loop muted playsinline></video>
