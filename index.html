@@ -5,9 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>James — Portfolio</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0a0f" />
+    <link rel="apple-touch-icon" href="logo192.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
     <style>
         *,
         *::before,
@@ -524,7 +529,6 @@
 
 <body>
 
-    <!-- NAV -->
     <nav>
         <div class="logo">james<span>.</span></div>
         <ul>
@@ -534,7 +538,6 @@
         </ul>
     </nav>
 
-    <!-- HERO -->
     <section id="hero">
         <div class="hero-glow"></div>
         <div class="hero-glow2"></div>
@@ -542,9 +545,7 @@
             <div class="hero-content">
                 <div class="badge">Available for work</div>
                 <h1>Hi, I'm <span class="gradient">James</span><br />I build things for the web.</h1>
-                <p class="hero-desc">Full-stack developer crafting clean, performant, and user-focused digital
-                    experiences.
-                    Turning ideas into reality, one line at a time.</p>
+                <p class="hero-desc">Full-stack developer crafting clean, performant, and user-focused digital experiences. Turning ideas into reality, one line at a time.</p>
                 <div class="btn-group">
                     <a href="#projects" class="btn btn-primary">View My Work ↓</a>
                     <a href="#contact" class="btn btn-outline">Get In Touch</a>
@@ -559,80 +560,61 @@
         </div>
     </section>
 
-    <!-- PROJECTS -->
     <section id="projects">
         <div class="reveal">
             <p class="section-label">Portfolio</p>
             <h2 class="section-title">Featured Projects</h2>
-            <p class="section-sub">A selection of things I've built. Each project reflects a problem I found worth
-                solving.</p>
+            <p class="section-sub">A selection of things I've built. Each project reflects a problem I found worth solving.</p>
         </div>
         <div class="projects-grid">
-
             <a class="card reveal" href="pal-optical.html">
                 <div class="card-img" style="background: url('pomyt.jpg') center/cover no-repeat;"></div>
                 <div class="card-body">
-                    <div class="card-tags"><span class="tag">Firebase</span><span class="tag">JavaScript</span><span
-                            class="tag">Web Apps</span></div>
+                    <div class="card-tags"><span class="tag">Firebase</span><span class="tag">JavaScript</span><span class="tag">Web Apps</span></div>
                     <h3>PAL Optical Tool Kit</h3>
-                    <p>A dedicated suite of web apps streamlining the eyewear order process, including a full write-up
-                        program backed by Firebase.</p>
+                    <p>A dedicated suite of web apps streamlining the eyewear order process, including a full write-up program backed by Firebase.</p>
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
-
             <a class="card reveal" href="bible-study.html">
                 <div class="card-img" style="background: url('logo.png') center/cover no-repeat;"></div>
                 <div class="card-body">
-                    <div class="card-tags"><span class="tag">React Native</span><span class="tag">Audio</span><span
-                            class="tag">Notes</span></div>
+                    <div class="card-tags"><span class="tag">React Native</span><span class="tag">Audio</span><span class="tag">Notes</span></div>
                     <h3>Bible Study App</h3>
-                    <p>A mobile study companion with a built-in Bible reader, rich note-taking, and vocal recording tied
-                        to any passage.</p>
+                    <p>A mobile study companion with a built-in Bible reader, rich note-taking, and vocal recording tied to any passage.</p>
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
-
             <a class="card reveal" href="ancient-bible.html">
                 <div class="card-img" style="background: url('abr.png') center/cover no-repeat;"></div>
                 <div class="card-body">
-                    <div class="card-tags"><span class="tag">Hebrew</span><span class="tag">Greek</span><span
-                            class="tag">KJV</span></div>
+                    <div class="card-tags"><span class="tag">Hebrew</span><span class="tag">Greek</span><span class="tag">KJV</span></div>
                     <h3>Ancient Bible Reader</h3>
-                    <p>Side-by-side parallel reader displaying Ancient Hebrew or Ancient Greek alongside the KJV for
-                        deep textual study.</p>
+                    <p>Side-by-side parallel reader displaying Ancient Hebrew or Ancient Greek alongside the KJV for deep textual study.</p>
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
-
             <a class="card reveal" href="songbook.html">
                 <div class="card-img" style="background: url('sb.jpg') center/cover no-repeat;"></div>
                 <div class="card-body">
-                    <div class="card-tags"><span class="tag">OCR</span><span class="tag">Ultimate Guitar</span><span
-                            class="tag">JavaScript</span></div>
+                    <div class="card-tags"><span class="tag">OCR</span><span class="tag">Ultimate Guitar</span><span class="tag">JavaScript</span></div>
                     <h3>Songbook</h3>
-                    <p>A personal songbook with Ultimate Guitar import, plus an OCR scan tool to capture and transcribe
-                        handwritten or printed lyrics.</p>
+                    <p>A personal songbook with Ultimate Guitar import, plus an OCR scan tool to capture and transcribe handwritten or printed lyrics.</p>
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
-
             <a class="card reveal" href="websites.html">
                 <div class="card-img" style="background: url('webs.png') center/cover no-repeat;"></div>
                 <div class="card-body">
-                    <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span
-                            class="tag">Responsive</span></div>
+                    <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Responsive</span></div>
                     <h3>Client Websites</h3>
-                    <p>A collection of custom websites built for various clients — each tailored to their brand,
-                        audience, and goals.</p>
+                    <p>A collection of custom websites built for various clients — each tailored to their brand, audience, and goals.</p>
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
-
         </div>
     </section>
 
-    <!-- SKILLS -->
     <section id="skills">
         <div class="reveal">
             <p class="section-label">Expertise</p>
@@ -655,7 +637,6 @@
         </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
         <div class="reveal">
             <p class="section-label">Let's Talk</p>
@@ -664,8 +645,7 @@
         </div>
         <div style="display:flex; align-items:flex-start; gap:3rem; flex-wrap:wrap;">
             <div class="contact-card reveal">
-                <p style="color:var(--muted); font-size:0.95rem;">I'm currently open to new opportunities — freelance,
-                    full-time, or collaboration. Reach out through any of the channels below.</p>
+                <p style="color:var(--muted); font-size:0.95rem;">I'm currently open to new opportunities — freelance, full-time, or collaboration.</p>
                 <div class="contact-links">
                     <a href="mailto:james@example.com" class="contact-link">
                         <span class="contact-link-icon">✉️</span>
@@ -673,41 +653,45 @@
                     </a>
                     <a href="https://github.com/jamesbrentlingeriv-spec" target="_blank" class="contact-link">
                         <span class="contact-link-icon">🐙</span>
-                        <div class="contact-link-info">github.com/jamesbrentlingeriv-spec<small>GitHub — see my
-                                code</small></div>
-                    </a>
-                    <a href="https://linkedin.com/" target="_blank" class="contact-link">
-                        <span class="contact-link-icon">💼</span>
-                        <div class="contact-link-info">linkedin.com/in/james<small>LinkedIn — professional
-                                profile</small></div>
+                        <div class="contact-link-info">github.com/jamesbrentlingeriv-spec<small>GitHub — see my code</small></div>
                     </a>
                 </div>
             </div>
-            <img src="jcb.gif" alt=""
-                style="max-width:420px; width:100%; border-radius:14px; border:1px solid var(--border); box-shadow:0 20px 40px rgba(0,0,0,0.4); align-self:center; mix-blend-mode:lighten;" />
+            <img src="jcb.gif" alt="" style="max-width:420px; width:100%; border-radius:14px; border:1px solid var(--border); box-shadow:0 20px 40px rgba(0,0,0,0.4); align-self:center; mix-blend-mode:lighten;" />
         </div>
     </section>
 
     <footer>
-        <p>Designed & built by James · 2025</p>
+        <p>Designed & built by James · 2026</p>
     </footer>
 
     <script>
+        // Intersection Observer for scroll animations
         const observer = new IntersectionObserver(
             entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
             { threshold: 0.1 }
         );
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Video Player Logic
         const vid = document.getElementById('introVideo');
         const overlay = document.getElementById('playOverlay');
         overlay.addEventListener('click', () => {
             overlay.style.display = 'none';
             vid.play();
         });
-        vid.addEventListener('ended', () => { vid.pause(); vid.currentTime = 0; });
+        vid.addEventListener('ended', () => { vid.pause(); vid.currentTime = 0; overlay.style.display = 'flex'; });
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(reg => {
+                    console.log('Service Worker registered.');
+                }).catch(err => {
+                    console.log('Service Worker registration failed:', err);
+                });
+            });
+        }
     </script>
-
 </body>
-
 </html>
