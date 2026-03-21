@@ -264,10 +264,34 @@
 </head>
 
 <body>
+  <!-- Badges & Header -->
+  <div
+    style="background: linear-gradient(135deg, #0a0a0f, #13131a); padding: 1.5rem 6%; text-align: center; border-bottom: 1px solid var(--border);">
+    <div
+      style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center; margin-bottom: 1rem; font-size: 0.85rem;">
+      <span
+        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(6, 214, 212, 0.2); border: 1px solid rgba(6, 214, 212, 0.4); color: #06b6d4; padding: 0.3rem 0.8rem; border-radius: 20px;">📱
+        PWA Ready</span>
+      <span
+        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(255, 165, 0, 0.2); border: 1px solid rgba(255, 165, 0, 0.4); color: #ffaa00; padding: 0.3rem 0.8rem; border-radius: 20px;">📦
+        License: Proprietary</span>
+      <span
+        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.4); color: #22c55e; padding: 0.3rem 0.8rem; border-radius: 20px;">🔢
+        Version 5.0</span>
+      <span
+        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444; padding: 0.3rem 0.8rem; border-radius: 20px;">📅
+        Last Updated Feb 2025</span>
+    </div>
+    <img src="pomyt.jpg" alt="Pal Optical Logo"
+      style="width: 120px; height: auto; margin-bottom: 0.5rem; border-radius: 8px;">
+    <p style="color: var(--muted); font-size: 1rem; margin: 0;">A powerful, offline-capable suite of optical retail and
+      lab management tools built with HTML, CSS, and JavaScript</p>
+  </div>
+
 
   <nav>
-    <a href="index.html" class="logo">james<span>.</span></a>
-    <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    <span class="logo">james<span>.</span></span>
+    <span class="back-btn" style="cursor: default; opacity: 0.6;">PAL Optical Suite</span>
   </nav>
 
   <div class="hero">
@@ -293,8 +317,49 @@
 
   <main>
 
-    <div class="section">
-      <p class="section-title">Overview</p>
+    <div id="overview" class="section">
+      <p class="section-title">🌟 Overview</p>
+
+      <table
+        style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        <thead>
+          <tr style="background: var(--accent); color: white;">
+            <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600;">Feature</th>
+            <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🖥️ Pure
+                HTML/CSS/JavaScript</strong></td>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">No backend required for core
+              functionality</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>📱 PWA-Ready</strong></td>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">Installable as a native app on any
+              device</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🌙 Dark/Light
+                Theme</strong></td>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">Built-in theme switching support
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem 1.5rem;"><strong>🔌 Offline Capable</strong></td>
+            <td style="padding: 1rem 1.5rem;">Works without internet (with Service Worker)</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem 1.5rem;"><strong>🖨️ Print-Optimized</strong></td>
+            <td style="padding: 1rem 1.5rem;">Generate professional receipts and waivers</td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem 1.5rem;"><strong>📊 Integrated Billing</strong></td>
+            <td style="padding: 1rem 1.5rem;">Complete insurance and payment processing</td>
+          </tr>
+        </tbody>
+      </table>
       <p>The PAL Optical Tool Kit was born out of a real-world need to reduce friction in the eyewear order workflow.
         The optical industry still relies heavily on paper forms, manual calculations, and disconnected processes. This
         toolkit brings those workflows into a modern, browser-based environment — accessible from any device, with data
@@ -304,6 +369,268 @@
     </div>
 
     <hr class="divider" />
+
+    <!-- Applications -->
+    <div id="applications" class="section">
+      <p class="section-title">🚀 Applications - Complete Toolkit</p>
+      <p style="color: var(--muted); margin-bottom: 1.5rem;">Pure HTML/JS, offline PWA for optical lab/retail. Click
+        tool names or demos 🖱️
+      </p>
+
+      <table
+        style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-size: 0.9rem;">
+        <thead>
+          <tr style="background: var(--accent2); color: white;">
+            <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">#</th>
+            <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">Tool</th>
+            <th style="padding: 1rem; text-align: center; font-weight: 600;">Live Demo</th>
+            <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem; font-weight: 600; color: var(--accent);">1️⃣</td>
+            <td style="padding: 1rem 1rem;"><strong>P.O.S.T. Write-Ups</strong><br><small>Flagship tool</small></td>
+            <td style="padding: 1rem; text-align: center;"><video src="po.mp4"
+                style="width: 120px; height: 80px; object-fit: cover; border-radius: 6px;" muted loop
+                playsinline></video></td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">⭐
+                Flagship</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">2️⃣</td>
+            <td style="padding: 1rem 1rem;">Contact Lens Orders</td>
+            <td style="padding: 1rem; text-align: center;">📱</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">3️⃣</td>
+            <td style="padding: 1rem 1rem;">Dr. Itemized Receipt</td>
+            <td style="padding: 1rem; text-align: center;">📄</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">4️⃣</td>
+            <td style="padding: 1rem 1rem;">Master Dashboard</td>
+            <td style="padding: 1rem; text-align: center;">🏠 Dashboard</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">5️⃣</td>
+            <td style="padding: 1rem 1rem;">Pal Optical Receipt</td>
+            <td style="padding: 1rem; text-align: center;">🧾</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">6️⃣</td>
+            <td style="padding: 1rem 1rem;">Lab FSV Order Sheet</td>
+            <td style="padding: 1rem; text-align: center;">🔬</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">7️⃣</td>
+            <td style="padding: 1rem 1rem;">Lens Availability</td>
+            <td style="padding: 1rem; text-align: center;">🔍</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">8️⃣</td>
+            <td style="padding: 1rem 1rem;">Optician Calculator</td>
+            <td style="padding: 1rem; text-align: center;">🧮</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">9️⃣</td>
+            <td style="padding: 1rem 1rem;">PAL Quote Tool</td>
+            <td style="padding: 1rem; text-align: center;">💰</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 1rem 1rem;">🔟</td>
+            <td style="padding: 1rem 1rem;">Frame Inventory</td>
+            <td style="padding: 1rem; text-align: center;">🕶️</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 1rem 1rem;">1️⃣1️⃣</td>
+            <td style="padding: 1rem 1rem;">Lens Guide</td>
+            <td style="padding: 1rem; text-align: center;">📖</td>
+            <td style="padding: 1rem 1rem;"><span
+                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
+                Live</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <details style="margin-top: 1.5rem;">
+        <summary
+          style="cursor: pointer; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); font-weight: 600; color: var(--accent);">
+          🔍 Feature Matrix (All Tools)</summary>
+        <div
+          style="padding: 1.5rem; background: rgba(124, 58, 237, 0.05); border-radius: var(--radius); margin-top: 1rem;">
+          <table style="width: 100%; font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th style="padding: 0.8rem 0.5rem; text-align: left;">Tool</th>
+                <th style="padding: 0.8rem 0.5rem; text-align: left;">Key Features</th>
+                <th style="padding: 0.8rem 0.5rem; text-align: left;">Data</th>
+                <th style="padding: 0.8rem 0.5rem; text-align: left;">Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td><strong>P.O.S.T.</strong></td>
+                <td>Camera PD/Seg, 400+ lens catalog, Firebase sync, multi-lang forms, waivers</td>
+                <td>JSON pricing, Rx calc</td>
+                <td>3-page print (slips/forms/waivers), HTML export</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td>Contacts</td>
+                <td>Supply tracking, ins/payments</td>
+                <td>LocalStorage</td>
+                <td>Excel export, print list</td>
+              </tr>
+              <tr>
+                <td>Receipts</td>
+                <td>Dynamic items, ins adj, payments</td>
+                <td>Live calc</td>
+                <td>Professional receipts</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <hr class="divider" />
+
+    <div id="post" class="section">
+      <p class="section-title">⭐ P.O.S.T. Write-Up System - Deep Dive</p>
+      <img src="pomyt.jpg" alt="P.O.S.T. System"
+        style="width: 100%; max-width: 400px; border-radius: var(--radius); box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 1.5rem; display: block; margin-left: auto; margin-right: auto;">
+      <p
+        style="text-align: center; background: rgba(255,165,0,0.1); padding: 1rem; border-radius: var(--radius); margin-bottom: 2rem; font-weight: 600;">
+        The flagship application - complete digital replacement for traditional paper write-ups (5000+ JS lines)</p>
+
+      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🔐 User
+        Authentication</h3>
+      <p>Secure login system with personalized access codes for 12 staff members (James→Lisa) with initials display.</p>
+
+      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">📋 Patient
+        Management</h3>
+      <ul style="color: var(--muted); list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 0.5rem;">✅ New Patient Information Sheets (EN/ES/FR multi-language)</li>
+        <li style="margin-bottom: 0.5rem;">✅ HIPAA Consent Tracking</li>
+        <li style="margin-bottom: 0.5rem;">✅ Guardian Information for minors</li>
+        <li style="margin-bottom: 0.5rem;">✅ Insurance Details capture</li>
+        <li>✅ Patient History with one-click reload</li>
+      </ul>
+
+      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🏥 Insurance
+        Integration</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: var(--accent); color: white;">
+            <th style="padding: 0.8rem; text-align: left;">Provider</th>
+            <th style="padding: 0.8rem; text-align: left;">Type</th>
+          </tr>
+        </thead>
+        <tbody style="background: var(--surface);">
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td>Private Pay</td>
+            <td>Cash</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td>MEDICAID</td>
+            <td>Aetna, Humana, Wellcare etc.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td>EYE-MED</td>
+            <td>Commercial</td>
+          </tr>
+          <tr>
+            <td>VSP</td>
+            <td>Commercial (20% frame discount)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="color: var(--muted);">Auto copay/allowance deductions, Medicaid billing codes (92340, prior auth).</p>
+
+      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">📷 Camera
+        Measurement Tool</h3>
+      <pre
+        style="background: var(--surface); padding: 1.5rem; border-radius: var(--radius); overflow-x: auto; font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">
+┌────────────────────────────────────────────────────┐
+│                CAMERA MEASUREMENT                 │
+├────────────────────────────────────────────────────┤
+│ 1. LEFT edge of credit card (85.6mm scale)         │
+│ ↓                                                  │
+│ 2. RIGHT edge of credit card                       │
+│ ↓                                                  │
+│ 3. Center of RIGHT pupil                           │
+│ ↓                                                  │
+│ 4. Center of LEFT pupil → Instant PD               │
+│ ↓                                                  │
+│ 5. Bottom of right lens → Instant Seg Height       │
+└────────────────────────────────────────────────────┘
+      </pre>
+      <p>5-click calibration using standard credit card for accurate PD/Seg measurements, auto-populates form.</p>
+
+      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🔍 Lens Catalog
+        (400+)</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem;">
+        <thead>
+          <tr style="background: var(--accent2); color: white;">
+            <th style="padding: 0.6rem; text-align: left;">Category</th>
+            <th style="padding: 0.6rem; text-align: left;">Popular Options</th>
+          </tr>
+        </thead>
+        <tbody style="background: var(--surface);">
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td>Plastic</td>
+            <td>Varilux X ($530), Shamir III ($465)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td>Polycarbonate</td>
+            <td>Unity VIA ($410), Younger ($295)</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td>High Index</td>
+            <td>1.67/1.74 SV ($365/$400)</td>
+          </tr>
+          <tr>
+            <td>Transitions/Polarized</td>
+            <td>Light adaptive, KBCO, Drivewear</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Auto-pricing w/ insurance overrides, oversize/high Rx/add auto-charges (+$10-30).</p>
+
+      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🖨️ Print & Export
+      </h3>
+      <p>3-page professional output: Dual lab slips, Patient sheet (multi-lang), Waivers (expired Rx, POF, thickness,
+        etc.). HTML auto-save w/ patient/job# timestamp.</p>
+
+    </div>
 
     <div class="section">
       <p class="section-title">Key Features</p>
@@ -349,15 +676,135 @@
 
     <hr class="divider" />
 
-    <div class="section">
-      <p class="section-title">Tech Stack</p>
-      <div class="tech-list">
-        <span class="tech-pill">HTML / CSS / JavaScript</span>
-        <span class="tech-pill">Firebase Firestore</span>
-        <span class="tech-pill">Firebase Authentication</span>
-        <span class="tech-pill">Firebase Hosting</span>
-        <span class="tech-pill">Responsive Design</span>
+    <div id="tech" class="section">
+      <p class="section-title">🔧 Technical Stack</p>
+      <table
+        style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin-bottom: 1rem;">
+        <thead>
+          <tr style="background: var(--accent); color: white;">
+            <th style="padding: 1rem 1.5rem; text-align: left;">Technology</th>
+            <th style="padding: 1rem 1.5rem; text-align: left;">Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td><strong>HTML5</strong></td>
+            <td>Semantic markup, offline capabilities</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td><strong>CSS3</strong></td>
+            <td>Styling, animations, print styles</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td><strong>JavaScript ES6+</strong></td>
+            <td>App logic, Firebase integration</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td><strong>Firebase</strong></td>
+            <td>Realtime DB, auth</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td><strong>Service Worker</strong></td>
+            <td>PWA offline</td>
+          </tr>
+          <tr>
+            <td><strong>Canvas API</strong></td>
+            <td>Signature, measurements</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="color: var(--muted); font-size: 0.9rem;">Browser Support: Chrome/Edge ✅, Firefox ✅, Safari ✅, Mobile ✅
+      </p>
+
+      <h4 style="margin-top: 2rem;">Browser Support</h4>
+      <table style="width: 100%; font-size: 0.85rem;">
+        <tr>
+          <td>🟦 Chrome/Edge</td>
+          <td>✅ Recommended</td>
+        </tr>
+        <tr>
+          <td>🟧 Firefox</td>
+          <td>✅ Supported</td>
+        </tr>
+        <tr>
+          <td>🟦 Safari</td>
+          <td>✅ Supported</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <hr class="divider" />
+
+    <div id="quickstart" class="section">
+      <p class="section-title">📦 Quick Start</p>
+      <ol style="color: var(--muted);">
+        <li><code>start index.html</code> (Windows) → Click any tool 🖱️</li>
+        <li>For PWA/server: <code>npx serve .</code> or <code>python -m http.server 8000</code></li>
+      </ol>
+      <p style="color: var(--accent); font-weight: 600; margin-top: 1rem;">All tools work offline after first load ✨</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div id="features" class="section">
+      <p class="section-title">🎯 Features</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h4>P.O.S.T. Digital Write-Up</h4>
+          <p>Full replacement for paper slips</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>Real-Time Billing</h4>
+          <p>Insurance adjustments & payments</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏥</div>
+          <h4>Insurance (10+ Providers)</h4>
+          <p>VSP/EyeMed/Medicaid</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>Responsive Design</h4>
+          <p>Tablet/phone optimized</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h4>Dark Mode</h4>
+          <p>Theme switching</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔌</div>
+          <h4>Offline PWA</h4>
+          <p>Service Worker caching</p>
+        </div>
       </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div id="security" class="section">
+      <p class="section-title">🔐 Security</p>
+      <ul style="color: var(--muted);">
+        <li>🔑 Unique staff credentials</li>
+        <li>🔒 Firebase secure auth/DB</li>
+        <li>📋 HIPAA-compliant forms</li>
+        <li>⚠️ Note: Upgrade to BAA for production HIPAA</li>
+      </ul>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">The Problem It Solves</p>
+      <span class="tech-pill">Firebase Firestore</span>
+      <span class="tech-pill">Firebase Authentication</span>
+      <span class="tech-pill">Firebase Hosting</span>
+      <span class="tech-pill">Responsive Design</span>
+    </div>
     </div>
 
     <hr class="divider" />
