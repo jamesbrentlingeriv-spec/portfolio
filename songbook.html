@@ -323,7 +323,65 @@
         background-position: 200%
       }
     }
+
+    /* Thumbnail screenshots */
+    .screenshots {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .thumbnail {
+      width: 200px;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .thumbnail:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+    }
+
+    /* Modal */
+    #image-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    #image-modal.active {
+      display: flex;
+    }
+
+    #modal-img {
+      max-width: 95vw;
+      max-height: 95vh;
+      border-radius: var(--radius);
+      box-shadow: 0 0 60px rgba(124, 58, 237, 0.5);
+    }
+
+    @media (max-width: 640px) {
+      .thumbnail {
+        width: 150px;
+      }
+
+      #image-modal {
+        padding: 1rem;
+      }
+    }
   </style>
+
 </head>
 
 <body>
@@ -386,6 +444,11 @@
             <h4>Scan with OCR</h4>
             <p>Use your device camera to photograph any handwritten or printed lyrics sheet. The OCR engine processes
               the image and transcribes the text, which you can review and edit before saving.</p>
+            <div class="screenshots">
+              <img src="screenshot/ocrsb.png" alt="OCR Scan Example" class="thumbnail" data-full="screenshot/ocrsb.png">
+              <img src="screenshot/newsb.png" alt="New Songbook Example" class="thumbnail"
+                data-full="screenshot/newsb.png">
+            </div>
           </div>
         </div>
         <div class="flow-step">
@@ -461,6 +524,37 @@
     </div>
 
   </main>
+
+  <!-- Image Modal -->
+  <div id="image-modal">
+    <img id="modal-img" src="" alt="Full screenshot">
+  </div>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    thumbnails.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const fullSrc = thumb.dataset.full;
+        modalImg.src = fullSrc;
+        modal.classList.add('active');
+      });
+    });
+
+    modal.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+      }
+    });
+  </script>
 
   <footer>Designed & built by James · 2025</footer>
 
