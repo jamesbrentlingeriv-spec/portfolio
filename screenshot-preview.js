@@ -48,8 +48,13 @@
   }
 
   // Get all thumbnails (img/video with data-full)
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    ) || window.innerWidth <= 768;
   const thumbnails = document.querySelectorAll(
-    '[data-full][class*="thumb"], .thumbnail, .app-thumb, .hero-preview',
+    '[data-full][class*="thumb"], .thumbnail, .app-thumb' +
+      (isMobile ? "" : ", .hero-preview"),
   );
 
   thumbnails.forEach((thumb) => {
@@ -147,7 +152,8 @@
   const observer = new MutationObserver(() => {
     // Re-attach to new thumbnails
     const newThumbs = document.querySelectorAll(
-      '[data-full][class*="thumb"], .thumbnail, .app-thumb, .hero-preview',
+      '[data-full][class*="thumb"], .thumbnail, .app-thumb' +
+        (isMobile ? "" : ", .hero-preview"),
     );
     // Only process new ones not already processed
     newThumbs.forEach((thumb) => {

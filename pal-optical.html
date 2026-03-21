@@ -132,6 +132,21 @@
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
     }
 
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      .hero-img {
+        display: none;
+      }
+
+      .hero-text {
+        text-align: center;
+      }
+
+      .hero-sub {
+        font-size: 1rem;
+      }
+    }
+
     @media (max-width: 860px) {
       .hero-content {
         flex-direction: column;
