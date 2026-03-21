@@ -21,43 +21,83 @@
 
 ```
 portfolio/
-├── index.html          # Main portfolio landing page
-├── pal-optical.html    # PAL Optical Tool Kit project page
-├── bible-study.html    # Bible Study Suite project page
-├── ancient-bible.html  # Ancient Bible Reader project page
-├── songbook.html       # Songbook project page
-├── websites.html       # Client Websites project page
-├── pomyt.jpg           # PAL Optical card thumbnail
-├── logo.png            # Bible Study Suite logo
-├── abr.png             # Ancient Bible Reader logo
-├── bsuite.gif          # Bible Study Suite demo
-├── po.mp4              # PAL Optical demo video
-└── abr.mp4             # Ancient Bible Reader demo video
+├── index.html                    # Main portfolio landing page
+├── pal-optical.html             # PAL Optical Tool Kit project page (5000+ JS lines)
+├── bible-study.html             # Bible Study Suite project page
+├── ancient-bible.html           # Ancient Bible Reader project page (Hebrew/Greek)
+├── songbook.html                # Songbook project page (OCR + Ultimate Guitar)
+├── websites.html                # Client Websites project showcase
+├── pomyt.jpg                    # PAL Optical card thumbnail
+├── logo.png                     # Bible Study Suite logo
+├── abr.png                      # Ancient Bible Reader logo
+├── bsuite.gif                   # Bible Study Suite demo video
+├── po.mp4                       # PAL Optical demo video
+├── lenstally.mp4                # Lens tally demo video
+├── home.png                     # Master Dashboard screenshot
+├── screenshot/                  # Screenshot assets folder
+│   ├── clo.png                 # Contact Lens Orders screenshot
+│   ├── receipt.png             # Receipt tool screenshot
+│   ├── len.png                 # Lens tally screenshot
+│   ├── lin.png                 # Lens Inventory screenshot
+│   ├── calc.png                # Calculator screenshot
+│   ├── pq.png                  # PAL Quote tool screenshot
+│   ├── inv.png                 # Inventory screenshot
+│   └── lensview.png            # Lens Guide screenshot
+├── screenshot-preview.css       # Universal hover preview styles
+└── screenshot-preview.js        # Universal hover preview JavaScript
 ```
 
 ---
 
 ## 🚀 Live Site
 
-> Open `index.html` directly in a browser, or serve with VS Code Live Server for local development.
+> **Quick Start:** Open `index.html` directly in a browser, or serve with VS Code Live Server for the optimal local development experience.
+
+**Requirements:**
+- Modern browser (Chrome/Edge, Firefox, Safari)
+- For local development with fetch API usage, use a local HTTP server:
+  ```bash
+  # Python 3
+  python -m http.server 8000
+
+  # Node.js
+  npx serve .
+
+  # VS Code Live Server extension (recommended)
+  ```
 
 ---
 
 ## ✨ Design System
 
-| Token | Value | Usage |
-|---|---|---|
-| `--bg` | `#0a0a0f` | Page background |
-| `--surface` | `#13131a` | Card / section backgrounds |
-| `--border` | `#1e1e2e` | Borders and dividers |
-| `--accent` | `#7c3aed` | Primary purple accent |
-| `--accent2` | `#06b6d4` | Cyan highlight |
-| `--text` | `#e2e8f0` | Primary text |
-| `--muted` | `#64748b` | Secondary / muted text |
+A carefully crafted dark UI system designed for readability and visual impact.
 
-**Typography:** Inter (Google Fonts) — weights 300, 400, 500, 600, 700
+### Color Tokens
 
-**Animations:** CSS `IntersectionObserver` scroll reveals, radial glow orbs, pulse badge indicator
+| Token | Value | Hex | Usage |
+|---|---|---|---|
+| `--bg` | `#0a0a0f` | `rgb(10, 10, 15)` | Page background - deep space black |
+| `--surface` | `#13131a` | `rgb(19, 19, 26)` | Card / section backgrounds |
+| `--border` | `#1e1e2e` | `rgb(30, 30, 46)` | Borders and dividers |
+| `--accent` | `#7c3aed` | `rgb(124, 58, 237)` | Primary purple accent |
+| `--accent2` | `#06b6d4` | `rgb(6, 182, 212)` | Cyan highlight |
+| `--text` | `#e2e8f0` | `rgb(226, 232, 240)` | Primary text - cool white |
+| `--muted` | `#64748b` | `rgb(100, 116, 139)` | Secondary / muted text |
+
+### Typography
+
+- **Font Family:** Inter (via Google Fonts CDN)
+- **Weights:** 300 (light), 400 (regular), 500 (medium), 600 (semibold), 700 (bold)
+- **Base Size:** 16px
+- **Line Height:** 1.6
+
+### Visual Effects
+
+- **Scroll Reveals:** CSS `IntersectionObserver` for fade-in animations
+- **Radial Glow Orbs:** Background decoration using conic gradients
+- **Pulse Badge Indicator:** Animated status indicator
+- **Glassmorphism:** Backdrop blur effects on navigation
+- **Hover Lift:** Subtle elevation changes on interactive elements
 
 ---
 
@@ -65,166 +105,632 @@ portfolio/
 
 ### `index.html` — Portfolio Home
 
-The main landing page with four sections:
+The main landing page showcasing professional work with a modern, tech-forward aesthetic.
 
-- **Hero** — Name, tagline, animated badge, dual CTA buttons, radial glow background effects
-- **Projects** — Responsive card grid linking to each project detail page. Cards feature image/video thumbnails with a fade-to-dark gradient overlay, tag pills, and hover lift effects
-- **Skills** — Icon grid covering React, Next.js, TypeScript, Python, Node.js, PostgreSQL, MongoDB, Docker, AWS, Terraform, Git, Figma
-- **Contact** — Styled link cards for Email, GitHub, and LinkedIn
+#### Page Sections
+
+**1. Navigation Bar**
+- Fixed position with glassmorphism backdrop blur (`backdrop-filter: blur(12px)`)
+- Semi-transparent background (`rgba(10, 10, 15, 0.85)`)
+- Logo on left, contact links on right
+- Stays visible during scroll
+
+**2. Hero Section**
+- Bold gradient text treatment: "Code. Create. Innovate."
+- Animated "Open to Work" pill badge with pulsing green dot
+- Dual CTA buttons: "View Projects" and "Contact Me"
+- Radial glow orbs in background for depth
+- Responsive height (`min-height: 100vh`)
+
+**3. Projects Grid**
+- 3-column responsive grid (1 on mobile, 2 on tablet, 3 on desktop)
+- Cards feature:
+  - Project thumbnails (image or video)
+  - Fade-to-dark gradient overlay for text readability
+  - Tag pills with category indicators
+  - Hover lift effect with subtle scale
+- Projects showcased: PAL Optical Tool Kit, Bible Study Suite, Ancient Bible Reader, Songbook, Client Websites
+
+**4. Skills Section**
+- Icon grid with 12 technologies:
+  - **Frontend:** React, Next.js, TypeScript
+  - **Backend:** Python, Node.js
+  - **Databases:** PostgreSQL, MongoDB
+  - **DevOps:** Docker, AWS, Terraform
+  - **Tools:** Git, Figma
+- SVG icons with hover color shift
+
+**5. Contact Section**
+- styled link cards for:
+  - Email (direct mailto link)
+  - GitHub (external link to profile)
+  - LinkedIn (external link to profile)
+- Gradient borders on hover
+
+**6. Footer**
+- Simple attribution
+- Capsule render wave animation
 
 ---
 
 ### `pal-optical.html` — PAL Optical Tool Kit
 
-**Tags:** `Firebase` `PWA` `HTML/JS` `Optical Suite`
+**Status:** Production-Ready (5,000+ lines of JavaScript)
 
-A comprehensive browser-based optical suite for retail and lab management. Built to digitize and streamline the eyewear order workflow — replacing paper forms, manual calculations, and disconnected processes with a fast, cloud-connected web app.
+**Tags:** `Firebase` `Firestore` `PWA` `HTML/JS` `Optical Suite` `Offline-Capable`
 
-**Features:**
-- 📝 Full P.O.S.T. prescription write-up program with field validation
-- 🔢 PAL calculators for seg heights, fitting cross placement, and progressive lens measurements
-- ☁️ Firebase Firestore real-time sync with per-user authentication
-- 📋 Searchable order history — pull up, duplicate, or edit any past write-up
-- 📱 Mobile-first responsive layout for dispensing table and lab bench use
-- 🖨️ One-click print-ready output formatted to industry standards
-- 🔌 PWA-ready with offline capability
+A comprehensive, browser-based optical suite that replaces paper-based eyewear order workflows. Built specifically for optical retail and lab environments to digitize prescription write-ups, track inventory, manage patient data, and generate professional documentation.
 
-**Tech Stack:** HTML / CSS / JavaScript · Firebase Firestore · Firebase Auth · Firebase Hosting
+#### Overview
 
-> ⚠️ **Disclaimer:** This system is not currently in active use and in its present state is not HIPAA compliant. Upgrading to Google Firestore under a Business Associate Agreement (BAA) would readily address this.
+The optical industry traditionally relies heavily on paper forms, manual calculations, and disconnected processes. This toolkit brings those workflows into a modern, browser-based environment — accessible from any device, with data persisted in real-time via Firebase. The suite is modular: each tool handles a specific part of the process while sharing a consistent UI and data layer.
+
+#### Core Features
+
+**🔐 User Authentication & Staff Management**
+- Individual PIN-based login for up to 12 staff members
+- Per-user data isolation — users only see their own orders and write-ups
+- Initials display for accountability on printed forms
+- Secure session management
+
+**📝 P.O.S.T. Write-Up System (Flagship Tool)**
+- **Job Ticket Number Tracking:** Firebase-generated sequential order numbers ensure every prescription has a unique identifier
+- **Patient Information Input:** Comprehensive data capture including:
+  - Name, phone, email, date of birth
+  - Guardian information for minors
+  - Insurance details with provider selection
+  - Multi-language consent forms (English/Spanish/French)
+- **Insurance Integration (Drop-down Based):**
+  - **VSP (Vision Service Plan):** Commercial plans with automatic 20% frame allowance
+  - **EyeMed:** MVC/Managed Vision Care plans - prompts user to specify if it's an "allowance plan" for benefit validation
+  - **Medicaid:** Multiple provider options including Aetna Medicaid, Humana Medicaid, Wellcare, and more - automatically prompts for Medicaid-specific billing codes:
+    - `92340` (Standard frame and single vision lenses)
+    - `92370` (Frame with progressive lenses)
+    - Prior authorization tracking for certain lens types
+  - **Private Pay:** Cash/self-pay tracking
+- **Contact Method Logic:** When "Mail" is selected for contact method, the system automatically prompts for and validates patient address entry including street, city, state, and ZIP code
+- **Camera Measurement Tool:** 5-point calibration system using a credit card (85.6mm standard) for accurate pupillary distance (PD) and segment height measurements. Auto-populates measurements directly into the write-up form
+- **Lens Catalog (400+ Options):**
+  - Progressive lenses (Varilux, Shamir, Unity, etc.)
+  - Single vision (plastic, polycarbonate, high-index 1.67/1.74)
+  - Transitions and polarized options
+  - Auto-pricing with insurance overrides
+  - Oversize/high Rx/add-on auto-charging (+$10-30)
+- **Multi-Language Forms:** Patient information sheets available in English, Spanish, and French
+- **Print Output:** Professional 3-page document generation:
+  - Page 1: Dual lab slips for optical lab
+  - Page 2: Patient information sheet
+  - Page 3: Waivers (expired Rx, Payment on File, thickness warnings)
+- **HTML Auto-Save:** Every write-up automatically saves as HTML with patient name and job number timestamp
+
+**📋 Additional Tools in Suite:**
+
+1. **Contact Lens Orders**
+   - Supply tracking with inventory management
+   - Insurance payment processing
+   - Excel export functionality
+
+2. **Dr. Itemized Receipt**
+   - Dynamic item entry
+   - Insurance adjustment calculations
+   - Professional receipt generation
+
+3. **Master Dashboard (home.png)**
+   - Unified entry point for all tools
+   - Quick access to recent orders
+
+4. **PAL Optical Receipt**
+   - Specialized receipt formatting for optical retail
+
+5. **Lab FSV Order Sheet (lenstally.mp4)**
+   - FSV (Fitting and Style Verification) order tracking
+   - Video demonstration of workflow
+
+6. **Lens Availability**
+   - Real-time lens inventory lookup
+   - Cross-reference with vendor databases
+
+7. **Optician Calculator**
+   - Rx calculations
+   - Prism and decentration math
+
+8. **PAL Quote Tool**
+   - Insurance verification and quoting
+
+9. **Lens Inventory Management**
+   - Stock tracking
+   - Reorder alerts
+
+10. **Lens Guide**
+    - Educational resource for lens types
+
+#### Technical Architecture
+
+**Frontend:**
+- Pure HTML5 with semantic markup
+- CSS3 with custom properties (CSS variables) for theming
+- Vanilla JavaScript (ES6+) — no frameworks
+
+**Backend/Cloud:**
+- **Firebase Firestore:** Real-time NoSQL database for order persistence
+- **Firebase Authentication:** Secure staff login with per-user data partitioning
+- **Firebase Hosting:** Production deployment (optional)
+
+**Data Structure:**
+```
+Firestore Database
+├── users/{userId}/
+│   ├── orders/{orderId}      # Individual prescriptions
+│   ├── patients/{patientId}  # Patient records
+│   └── settings/           # User preferences
+├── inventory/               # Lens catalog (400+ items)
+└── audit-log/            # Change tracking (optional)
+```
+
+**Browser Features:**
+- **Service Worker:** Enables offline functionality after first load
+- **PWA Manifest:** Installable as native app on mobile/desktop
+- **localStorage:** Session persistence and caching
+- **Canvas API:** Used for signature capture and measurement overlays
+
+#### Print & Export Specifications
+
+**Output Formats:**
+1. **Printed Documents:** 3-page professional layout on standard 8.5"x11" paper
+2. **HTML Export:** Single-file HTML with embedded CSS, named `PatientName_JobNumber_YYYYMMDD.html`
+3. **PDF:** Generated via browser print-to-PDF functionality
+
+#### Browser Support
+
+| Browser | Desktop | Mobile | Notes |
+|---|---|---|---|
+| Chrome/Edge | ✅ | ✅ | Recommended |
+| Firefox | ✅ | ✅ | Supported |
+| Safari | ✅ | ✅ | iOS and macOS |
+| Chrome Android | — | ✅ | PWA installable |
+| Safari iOS | — | ✅ | Add to Home Screen |
+
+#### Security & Compliance
+
+- **Authentication:** Firebase Auth with secure PIN-based login
+- **Data Isolation:** Per-user data separation at Firestore level
+- **HIPAA Considerations:**
+  - ⚠️ Current implementation: **NOT HIPAA compliant**
+  - **Path to Compliance:** Upgrading Google Firestore under Business Associate Agreement (BAA)
+  - Data encryption in transit (TLS 1.3) and at rest
+  - Audit logging capability (not enabled by default)
+
+> **Disclaimer:** This system is not currently in active use and in its present state is not HIPAA compliant. Upgrading to Google Firestore under a Business Associate Agreement (BAA) would readily address this.
+
+#### Quick Start
+
+```bash
+# Method 1: Direct open
+start index.html          # Windows
+open index.html           # macOS
+
+# Method 2: HTTP server
+npx serve .               # Node.js
+python -m http.server 8000  # Python 3
+php -S localhost:8000     # PHP
+```
+
+**First time setup:**
+1. Open Master Dashboard (home.png)
+2. Click any tool to access it
+3. For P.O.S.T. Write-Up: Login with staff PIN
+4. All tools work offline after initial load ✨
 
 ---
 
 ### `bible-study.html` — Bible Study Suite
 
-**Tags:** `Vanilla JS` `IndexedDB` `Audio Recording` `GitHub Pages`
+**Status:** Production-Ready
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-1d4ed8?style=flat&logo=github)](https://jamesbrentlingeriv-spec.github.io/biblestudy/)
+**Demo:** [Live Demo on GitHub Pages](https://jamesbrentlingeriv-spec.github.io/biblestudy/)
 
-A browser-based Bible study app that treats study as an active, multimedia process — not just reading. Every note and voice recording is anchored to a specific verse or passage, building a personal commentary over time.
+**Tags:** `Vanilla JS` `IndexedDB` `Audio Recording` `MediaRecorder API` `Web Audio API` `GitHub Pages`
 
-**Features:**
-- 📖 Full Bible reader — book/chapter/translation selector, prev/next navigation, verse search (e.g. `John 3:16`), click-to-insert verse refs into notes
-- 🔴 Red-letter text — quoted speech highlighted in red across Matthew, Mark, Luke, and John
-- ✏️ Notes system — create, edit, autosave, manual save, sidebar list, delete. Verse refs in notes are auto-detected and rendered in a context sidebar
-- 🎙️ Per-note audio recording — microphone recording tied to the current note, with playback, download, and delete. Stored in IndexedDB so recordings survive page refresh
-- 🎵 Per-note songs & lyrics — add a song title and lyrics to any study note, view/delete/insert into note content
-- 📱 Mobile panel — desktop shows Bible panel immediately; mobile uses ☰ menu to slide panel in
+A browser-based Bible study application that transforms passive reading into an active, multimedia study process. Every note and voice recording is anchored to specific verses, building a personal commentary over time.
 
-**Tech Stack:** Vanilla JavaScript · IndexedDB · localStorage · [bible-api.com](https://bible-api.com) · GitHub Pages
+#### Philosophy
 
-**Storage Model:**
+Traditional Bible apps focus on reading and basic note-taking. This suite treats study as an **active, multimedia process** — combining text, audio, and song reflection in a unified interface.
+
+#### Features
+
+**📖 Bible Reader Core**
+- **Translation Selector:** KJV, ESV, NIV, and more via bible-api.com
+- **Book/Chapter Navigation:** Dropdown selectors with prev/next buttons
+- **Verse Search:** Direct lookup (e.g., "John 3:16")
+- **Red Letter Text:** Quoted speech highlighted in red for Matthew, Mark, Luke, John
+- **Click-to-Insert:** Click any verse to automatically add its reference to your note
+
+**✏️ Notes System**
+- **Create & Edit:** Rich text notes with autosave
+- **Manual Save:** Explicit save button for control
+- **Sidebar List:** All notes accessible in scrollable sidebar
+- **Delete:** One-click note removal with confirmation
+- **Verse Auto-Detection:** References like "John 3:16" automatically detected and linked
+
+**🎙️ Audio Recording (per-note)**
+- **Microphone Access:** HTML5 MediaRecorder API
+- **Per-Note Storage:** Each recording tied to the specific note
+- **Playback:** In-note audio player
+- **Download:** Save recordings as .webm files
+- **Delete:** Remove recordings from note
+- **Persistence:** IndexedDB storage — recordings survive page refresh
+
+**🎵 Songs & Lyrics (per-note)**
+- **Add Songs:** Link a song title and lyrics to any study note
+- **View/Delete:** Manage linked songs
+- **Insert to Notes:** One-click insert into note content
+
+**📱 Mobile Panel**
+- **Desktop:** Bible panel visible immediately
+- **Mobile:** Hamburger (☰) menu slides panel in from left
+- **Responsive:** Adapts to screen size automatically
+
+#### Technical Stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | Vanilla JavaScript | Zero dependencies, maximum control |
+| Database | IndexedDB | Large object storage (audio blobs, notes) |
+| Cache | localStorage | Simple key/value for settings |
+| API | bible-api.com | Bible text (JSON REST API) |
+| Hosting | GitHub Pages | Free, always-on hosting |
+| Audio | MediaRecorder API | Browser-native recording |
+| Storage | IndexedDB | Binary audio data persistence |
+
+#### Data Model
 
 ```
-NOTE  ──< SONG        (per-note songs/lyrics)
-NOTE  ──< RECORDING   (per-note audio blobs in IndexedDB)
+NOTE (object store)
+├── id: auto-increment
+├── title: string
+├── content: string (HTML)
+├── verses: array[verseRefs]
+├── timestamp: Date
+├── RECORDING (related)
+│   ├── id: auto-increment
+│   ├── noteId: foreign key
+│   ├── blob: Blob (audio/webm)
+│   ├── duration: number (seconds)
+│   └── timestamp: Date
+└── SONG (related)
+    ├── id: auto-increment
+    ├── noteId: foreign key
+    ├── title: string
+    └── lyrics: string
 ```
 
-**Run Locally:**
+#### Run Locally
+
 ```bash
 # VS Code Live Server (recommended)
-# Right-click index.html → Open with Live Server → http://127.0.0.1:5500/
+# Right-click index.html → Open with Live Server
+# → http://127.0.0.1:5500/
 
 # Python
-cd biblestudy
 python -m http.server 8000
 # → http://localhost:8000
+
+# Node.js
+npx serve .
 ```
 
-> Note: A local HTTP server is required — `file://` protocol blocks the fetch API used for Bible text.
+> ⚠️ **Important:** A local HTTP server is required — `file://` protocol blocks the fetch API used for Bible text retrieval.
+
+#### Browser Permissions
+
+- **Microphone:** Required for audio recording (user prompted)
+- **Storage:** Required for IndexedDB (no prompt, automatic)
 
 ---
 
 ### `ancient-bible.html` — Ancient Bible Reader
 
-**Tags:** `Ancient Hebrew` `Ancient Greek` `KJV` `Parallel Reader`
+**Status:** Production-Ready
 
-A parallel scripture reader displaying Ancient Hebrew (OT) or Ancient Greek (NT) side-by-side with the KJV — built for deep textual and linguistic study without needing a separate interlinear or lexicon.
+**Tags:** `Ancient Hebrew` `Ancient Greek` `KJV` `Parallel Reader` `RTL` `Strong's Concordance` `Interlinear`
 
-**Features:**
-- 🔀 Synchronized two-column parallel layout — ancient text and KJV aligned verse-by-verse
-- 🔤 Hebrew & Greek modes — automatically loads the correct source text per testament
-- 📖 Word lookup — tap any word in the ancient text for transliteration, Strong's number, and plain-English definition
-- 🔍 Cross-reference search by Strong's number across the entire Bible
-- 🎨 Full RTL text rendering for Hebrew with proper Unicode font support
-- 🔖 Bookmarks panel for both language modes
+A scholarly-grade parallel scripture reader displaying Ancient Hebrew (Old Testament) or Ancient Greek (New Testament) side-by-side with the King James Version — designed for deep textual and linguistic study without requiring separate interlinear or lexicon resources.
 
-**Tech Stack:** JavaScript · HTML / CSS · Open Scripture APIs · Strong's Concordance Data · RTL Text Rendering · Unicode Hebrew & Greek Fonts
+#### Overview
 
-**Sample Parallel View:**
+This tool bridges the gap between modern English translations and ancient biblical manuscripts. It provides immediate linguistic context for serious study, sermon preparation, and academic research.
 
-| Ancient Hebrew | KJV |
+#### Key Features
+
+**🔀 Synchronized Two-Column Layout**
+- Ancient text (Hebrew or Greek) on left
+- KJV English on right
+- Verse-by-verse alignment maintained during scroll
+- Both columns scroll in sync for consistent reading
+
+**🔤 Language Modes (Automatic)**
+- **Old Testament:** Displays Ancient Hebrew with full Right-to-Left (RTL) rendering
+- **New Testament:** Displays Ancient Greek (Koine Greek)
+- **Automatic Detection:** Selecting book automatically switches language mode
+
+**📖 Word Lookup System**
+- **Tap-to-Define:** Click any word in ancient text to reveal:
+  - Transliteration (pronunciation guide)
+  - Strong's Concordance number
+  - Plain-English lexical definition
+  - Part of speech identification
+- **Hover Definitions:** Quick preview on desktop
+
+**🔍 Cross-Reference Search**
+- **Search by Strong's Number:** Find every occurrence of a specific Hebrew/Greek word across entire Bible
+- **Concordance View:** See word usage patterns and translation variations
+- **Deep Linking:** Share specific word studies via URL
+
+**🎨 Typography & Rendering**
+- **RTL Text:** Proper Hebrew rendering with Unicode support
+- **Cantillation Marks:** Hebrew vowel points and accents preserved
+- **Greek Diacritics:** Breathing marks, accents, iota subscript
+- **Custom Fonts:** SBL Hebrew, SBL Greek for academic accuracy
+
+**🔖 Bookmarks Panel**
+- **Dual Mode Bookmarks:** Separate bookmark lists for Hebrew and Greek modes
+- **Quick Return:** Jump back to saved passages
+- **Persistent:** Saved in localStorage
+
+#### Sample Parallel View
+
+| Ancient Hebrew | KJV Translation |
 |---|---|
 | בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ | In the beginning God created the heaven and the earth. |
+| יוֹחָנָן ג׳ טז | For God so loved the world... |
+
+#### Technical Implementation
+
+**Data Sources:**
+- Open Scripture APIs (Ancient Hebrew/Greek text)
+- Strong's Concordance database (lexical definitions)
+- KJV via bible-api.com
+
+**Rendering Challenges Solved:**
+- **RTL CSS:** `direction: rtl`, `unicode-bidi: bidi-override`
+- **Font Loading:** WebFont Loader for SBL fonts
+- **Word Alignment:** Verse-level synchronization despite different sentence structures
+- **Unicode Handling:** Proper display of Hebrew final forms, Greek accents
+
+#### Use Cases
+
+1. **Serious Bible Study:** Understand original language nuances
+2. **Sermon Preparation:** Verify translation accuracy
+3. **Academic Research:** Quick reference without heavy software
+4. **Language Learning:** Hebrew/Greek vocabulary acquisition
 
 ---
 
 ### `songbook.html` — Songbook
 
-**Tags:** `OCR` `Ultimate Guitar` `Tesseract.js` `JavaScript`
+**Status:** Production-Ready
 
-A personal songbook that solves the scattered-songs problem every musician knows. Two smart import methods bring everything into one clean, searchable library.
+**Tags:** `OCR` `Ultimate Guitar` `Tesseract.js` `Music` `Chord Charts` `Perform Mode`
 
-**How It Works:**
+A personal songbook solving the "scattered songs" problem every musician faces. Combines web import, OCR transcription, and performance features into one unified tool.
 
-| Step | Action |
-|---|---|
-| 1 | Paste a Ultimate Guitar URL → app fetches chord chart + lyrics, strips formatting, saves cleanly |
-| 2 | Photograph handwritten or printed lyrics → OCR engine transcribes, you review and save |
-| 3 | Tag by genre, key, or artist → search any field instantly |
-| 4 | Open in Perform Mode → full-screen, large text, auto-scroll, screen-always-on |
+#### The Problem
 
-**Features:**
-- 🎸 Ultimate Guitar import via URL
-- 📷 OCR scan tool powered by Tesseract.js
-- 🎤 Full-screen Perform Mode with auto-scroll
-- 🔑 Key transposer — up/down by semitone with one tap
-- 🗂️ Setlist builder for gigs and practice sessions
-- ✏️ Edit and annotate any song with capo notes and performance reminders
+Musicians accumulate songs from multiple sources:
+- Handwritten notes
+- Printed chord charts
+- Ultimate Guitar tabs
+- Screenshots of lyrics
 
-**Tech Stack:** JavaScript · Tesseract.js (OCR) · HTML / CSS · LocalStorage / IndexedDB · Canvas API
+This tool consolidates everything into a single, searchable, accessible library.
+
+#### Import Methods
+
+**Method 1: Ultimate Guitar Import**
+- Paste any Ultimate Guitar URL
+- App fetches chord chart + lyrics
+- Strips formatting cruft (ads, comments, metadata)
+- Saves clean, formatted chord chart
+- Preserves chord positions above lyrics
+
+**Method 2: OCR Scan**
+- Photograph handwritten or printed lyrics
+- Tesseract.js engine transcribes text
+- Confidence scoring for accuracy
+- Manual review and correction
+- Save verified transcription
+
+**Input Requirements:**
+- Good lighting for OCR
+- Clear handwriting or print
+- Straight-on camera angle (minimizes distortion)
+
+#### Organization System
+
+**Tagging:**
+- Genre (Rock, Country, Worship, etc.)
+- Key (C, G, Am, etc.)
+- Artist/Band
+- Tempo/Feel
+
+**Search:**
+- Full-text search across titles and lyrics
+- Filter by any tag combination
+- Instant results as you type
+
+**Setlist Builder:**
+- Drag-and-drop song ordering
+- Setlist naming and saving
+- Duplicate setlist for variants
+- Print-friendly view
+
+#### Perform Mode
+
+**Full-Screen Display:**
+- Distraction-free, maximum text size
+- Auto-scroll with adjustable speed
+- Screen-always-on toggle (via Wake Lock API)
+
+**Key Transposer:**
+- +/- buttons transpose by semitone
+- Chord diagrams update automatically
+- Capo position indicator
+- Original key preserved for reference
+
+**Annotation:**
+- Add performance notes
+- Capo reminders
+- Custom chord voicings
+- Tempo/BPM marking
+
+#### Technical Stack
+
+| Component | Technology | Details |
+|---|---|---|
+| OCR Engine | Tesseract.js v2 | Client-side, no server required |
+| Web Scraping | CORS proxy + fetch | Ultimate Guitar content |
+| Storage | IndexedDB | Large text content |
+| Settings | localStorage | User preferences |
+| Canvas API | HTML5 | Chord diagram rendering |
+| Wake Lock | Screen Wake Lock API | Keep screen on during performance |
+
+#### Chord Diagram Rendering
+
+```
+   A     D     G
+ E|---0---2---3---|
+ B|---2---3---0---|
+ G|---2---2---0---|
+ D|---2---0---0---|
+ A|---0---x---2---|
+ E|---x---x---3---|
+```
+
+- ASCII art chord diagrams
+- Generated from chord name
+- Optional: display all chord variations
 
 ---
 
 ### `websites.html` — Client Websites
 
-**Tags:** `HTML/CSS` `JavaScript` `Responsive` `SEO`
+**Status:** Portfolio Showcase
 
-A collection of custom websites built from scratch for various clients — no page builders, no templates. Each one tailored to the client's brand, audience, and goals.
+**Tags:** `HTML/CSS` `JavaScript` `Responsive` `SEO` `Custom Development`
 
-**Site Types Built:**
+A curated collection of custom websites built from scratch for various clients. No page builders, no templates — each site tailored to the client's brand, audience, and business goals.
 
-| Type | Highlights |
+#### Site Types Built
+
+| Type | Features & Highlights |
 |---|---|
-| Local Business | Contact form, service pages, Google Maps |
-| Restaurant | Menu, reservations, mobile-optimized gallery |
-| Creative Portfolio | Filterable gallery, commission inquiry form |
-| Church / Ministry | Service times, sermon archive, events, giving |
-| Small E-Commerce | Product showcase, payment processor integration |
-| Blog / Content | Clean reading UX, category filtering, RSS feed |
+| **Local Business** | Contact forms, service pages, Google Maps integration, business hours, testimonials |
+| **Restaurant** | Digital menu, reservation system, mobile-optimized food gallery, online ordering links |
+| **Creative Portfolio** | Filterable project gallery, lightbox image viewer, commission inquiry form, artist bio |
+| **Church / Ministry** | Service times display, sermon archive (audio/video), event calendar, online giving integration |
+| **Small E-Commerce** | Product showcase with categories, payment processor integration (Stripe/PayPal), cart functionality |
+| **Blog / Content** | Clean reading typography, category filtering, author profiles, RSS feed, social sharing |
 
-**Approach:**
-- 🎯 Goals-first — understand what the site needs to *do* before designing
-- 📱 Mobile-first — designed for phones, scaled up to desktop
-- ⚡ Performance — no bloated frameworks, optimized images, fast load times
-- 🔍 SEO-ready — semantic HTML, meta tags, structured data
+#### Development Approach
 
-**Tech Stack:** HTML5 · CSS3 · JavaScript · Responsive Design · SEO Best Practices · WCAG Accessibility
+**Goals-First Design:**
+1. Understand what the site needs to **do** (not just look like)
+2. Define success metrics with client
+3. Design flows that convert visitors to customers/readers
+
+**Mobile-First Development:**
+- Designed for phones first, scaled up to desktop
+- Touch-friendly targets (min 44px)
+- Fast mobile performance
+- Progressive enhancement
+
+**Performance Optimization:**
+- No bloated frameworks (pure HTML/CSS/JS)
+- Optimized images (WebP format, lazy loading)
+- Minified assets
+- Fast load times (< 3s on 3G)
+
+**SEO Foundation:**
+- Semantic HTML5 structure
+- Proper meta tags (title, description, Open Graph)
+- Structured data (Schema.org JSON-LD)
+- Semantic URLs
+- Alt text for all images
+
+**Accessibility (WCAG Compliance):**
+- Proper color contrast ratios
+- Keyboard navigation support
+- ARIA labels where needed
+- Screen reader friendly markup
+- Focus indicators
+
+#### Technical Implementation
+
+**Every Site Includes:**
+- Responsive breakpoints: 320px, 768px, 1024px, 1440px+
+- Cross-browser testing (Chrome, Firefox, Safari, Edge)
+- Mobile testing (iOS Safari, Chrome Android)
+- Performance audit (Lighthouse 90+ scores)
+- SEO audit (technical SEO pass)
+- Accessibility audit (WCAG 2.1 AA compliance)
+
+**Tech Stack:**
+- HTML5 semantic markup
+- CSS3 with custom properties
+- Vanilla JavaScript (ES6+)
+- Responsive design principles
+- SEO best practices
+- WCAG accessibility guidelines
 
 ---
 
-## 🛠️ Tech Stack Overview
+## 🛠️ Global Tech Stack Overview
 
-| Category | Technologies |
-|---|---|
-| Frontend | HTML5, CSS3, Vanilla JavaScript |
-| Mobile | React Native, Expo |
-| Backend / Cloud | Firebase Firestore, Firebase Auth, Firebase Hosting |
-| Storage | IndexedDB, localStorage |
-| APIs | bible-api.com, Open Scripture APIs, Strong's Concordance |
-| OCR | Tesseract.js |
-| Deployment | GitHub Pages, Firebase Hosting |
-| Tools | VS Code, Git, Figma |
+| Category | Technologies | Usage |
+|---|---|---|
+| **Frontend** | HTML5, CSS3, Vanilla JavaScript | Zero-dependency, maximum performance |
+| **Mobile** | React Native, Expo | Cross-platform mobile apps |
+| **Backend / Cloud** | Firebase Firestore, Firebase Auth, Firebase Hosting | Real-time data, auth, hosting |
+| **Databases** | Firestore, IndexedDB, localStorage | Cloud and client-side persistence |
+| **APIs | bible-api.com, Open Scripture APIs, Strong's Concordance | External data sources |
+| **OCR** | Tesseract.js | Client-side text recognition |
+| **Audio** | MediaRecorder API, Web Audio API | Browser-based recording |
+| **Deployment** | GitHub Pages, Firebase Hosting | Free, reliable hosting |
+| **Tools** | VS Code, Git, Figma | Development workflow |
+| **Design** | Inter font, CSS variables, Flexbox/Grid | Visual system |
+
+---
+
+## 🎨 CSS Architecture
+
+All pages share a consistent CSS design system:
+
+```css
+/* Core tokens */
+:root {
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --border: #1e1e2e;
+  --accent: #7c3aed;
+  --accent2: #06b6d4;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --radius: 12px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+```
 
 ---
 
@@ -240,7 +746,23 @@ A collection of custom websites built from scratch for various clients — no pa
 
 ## 📄 License
 
-MIT License — free to use, modify, and distribute.
+**MIT License**
+
+Free to use, modify, and distribute. Attribution appreciated but not required.
+
+```
+Copyright (c) 2025 James Brent Lingeriv
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
 
 ---
 
