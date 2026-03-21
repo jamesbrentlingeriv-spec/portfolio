@@ -1,17 +1,35 @@
-# PAL Optical Screenshots Task ✓
+# PAL Optical Screenshots Update Task (Feedback Iteration)
 
-## Steps:
+## Information Gathered
 
-- [x] 1. Add CSS for thumbnails (small 120x80px) and full-screen modal overlay
-     with close button.
-- [x] 2. Update table rows #2, #3, #8, #9, #11 with img/video thumbnails using
-     screenshot/\*.png/mp4, data-full for expansion.
-- [x] 3. Add JS event listeners for click-to-expand modal (support img/video,
-     close on overlay/ESC).
-- [x] 4. Test: Thumbnails display correctly, modal opens/closes, responsive on
-     mobile.
-- [x] 5. Mark complete and preview with 'start pal-optical.html'
+- File analyzed: pal-optical.html
+- Section: Applications - Complete Toolkit table (lines ~380-480)
+- Current #4 (Master Dashboard): src="home.png" data-full="home.png"
+- Current #10: "Lens Inventory" → Needs change to "Frame Inventory"
+- screenshot/home.png confirmed available (VSCode tabs)
 
-**Status:** Complete! Screenshots added to Applications section in
-pal-optical.html. Thumbnails small, click to expand full-res/modal (img/video).
-Run `start pal-optical.html` to view.
+## Plan
+
+**File: pal-optical.html**
+
+1. Update Master Dashboard screenshot consistency:
+   - Replace src="home.png" → src="screenshot/home.png"
+   - Replace data-full="home.png" → data-full="screenshot/home.png"
+2. Update tool name #10:
+   - Replace `<td style="padding: 1rem 1rem;">Lens Inventory</td>` →
+     `<td style="padding: 1rem 1rem;">Frame Inventory</td>`
+
+## Dependent Files to be edited
+
+None.
+
+## Followup steps
+
+- Verify screenshots display correctly after edits
+- No installations needed
+
+**Status** ✅ Complete - Updates applied per feedback:
+
+- Tool #10: Lens Inventory → Frame Inventory
+- Master Dashboard screenshot path: home.png → screenshot/home.png (both src and
+  data-full)
