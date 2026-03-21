@@ -7,6 +7,7 @@
   <title>PAL Optical Tool Kit — James</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="screenshot-preview.css">
   <style>
     *,
     *::before,
@@ -37,6 +38,7 @@
       color: var(--text);
       line-height: 1.6;
     }
+
 
     nav {
       position: fixed;
@@ -122,8 +124,9 @@
       min-width: 0;
     }
 
-    .hero-img video {
-      width: 100%;
+    .hero-img video.hero-preview {
+      width: 50vw;
+      max-width: 500px;
       border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
@@ -254,85 +257,7 @@
     }
 
     /* NEW: Screenshot Modal Styles */
-    .app-thumb {
-      width: 120px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-      cursor: zoom-in;
-      transition: transform 0.2s;
-      border: 1px solid var(--border);
-    }
-
-    .app-thumb:hover {
-      transform: scale(1.05);
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
-      animation: fadeIn 0.3s;
-    }
-
-    .modal-content {
-      position: relative;
-      margin: auto;
-      padding: 20px;
-      max-width: 90%;
-      max-height: 90%;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal img,
-    .modal video {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 8px;
-    }
-
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .close:hover {
-      color: var(--accent);
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .app-thumb {
-        width: 100px;
-        height: 67px;
-      }
-    }
-
+    /* Custom styles - app-thumb is handled by screenshot-preview.css */
     footer {
       text-align: center;
       padding: 2rem;
@@ -341,6 +266,7 @@
       border-top: 1px solid var(--border);
     }
   </style>
+  <script defer src="screenshot-preview.js"></script>
 </head>
 
 <body>
@@ -362,8 +288,7 @@
         style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444; padding: 0.3rem 0.8rem; border-radius: 20px;">📅
         Last Updated Feb 2025</span>
     </div>
-    <img src="pomyt.jpg" alt="Pal Optical Logo"
-      style="width: 120px; height: auto; margin-bottom: 0.5rem; border-radius: 8px;">
+
     <p style="color: var(--muted); font-size: 1rem; margin: 0;">A powerful, offline-capable suite of optical retail and
       lab management tools built with HTML, CSS, and JavaScript</p>
   </div>
@@ -390,7 +315,8 @@
           insurance, camera measurements, lens catalog, Firebase sync). PWA-ready, offline-capable.</p>
       </div>
       <div class="hero-img">
-        <video src="po.mp4" autoplay loop muted playsinline></video>
+        <video src="po.mp4" class="hero-preview" muted loop autoplay playsinline
+          style="width: 50vw; max-width: 500px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); object-fit: cover;"></video>
       </div>
     </div>
   </div>
@@ -652,8 +578,7 @@
 
     <div id="post" class="section">
       <p class="section-title">⭐ P.O.S.T. Write-Up System - Deep Dive</p>
-      <img src="pomyt.jpg" alt="P.O.S.T. System"
-        style="width: 100%; max-width: 400px; border-radius: var(--radius); box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-bottom: 1.5rem; display: block; margin-left: auto; margin-right: auto;">
+
       <p
         style="text-align: center; background: rgba(255,165,0,0.1); padding: 1rem; border-radius: var(--radius); margin-bottom: 2rem; font-weight: 600;">
         The flagship application - complete digital replacement for traditional paper write-ups (5000+ JS lines)</p>
@@ -947,15 +872,6 @@
 
   </main>
 
-  <!-- NEW: Screenshot Modal -->
-  <div id="screenshotModal" class="modal">
-    <span class="close">&times;</span>
-    <div class="modal-content">
-      <img id="modalImg" style="display: none;" />
-      <video id="modalVideo" style="display: none;" controls loop muted playsinline></video>
-    </div>
-  </div>
-
   <footer>Designed & built by James · 2025</footer>
 
   <div style="background:#1a0a0a; border-top:1px solid #3b1a1a; padding:1.2rem 6%; text-align:center;">
@@ -964,53 +880,7 @@
       Agreement (BAA) would readily address this.</p>
   </div>
 
-  <!-- NEW: Modal JavaScript -->
-  <script>
-    // Screenshot modal functionality
-    const modal = document.getElementById('screenshotModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalVideo = document.getElementById('modalVideo');
-    const closeBtn = document.querySelector('.close');
-
-    document.querySelectorAll('.app-thumb').forEach(thumb => {
-      thumb.addEventListener('click', () => {
-        const fullSrc = thumb.getAttribute('data-full');
-        if (thumb.tagName === 'VIDEO') {
-          modalImg.style.display = 'none';
-          modalVideo.src = fullSrc;
-          modalVideo.style.display = 'block';
-          modalVideo.play();
-        } else {
-          modalVideo.style.display = 'none';
-          modalImg.src = fullSrc;
-          modalImg.style.display = 'block';
-        }
-        modal.style.display = 'block';
-      });
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-      modalVideo.pause();
-      modalVideo.currentTime = 0;
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.style.display === 'block') {
-        modal.style.display = 'none';
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
-      }
-    });
-  </script>
+  <!-- Screenshot preview handled by screenshot-preview.js -->
 
 </body>
 
