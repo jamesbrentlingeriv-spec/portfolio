@@ -253,6 +253,86 @@
       margin: 3rem 0;
     }
 
+    /* NEW: Screenshot Modal Styles */
+    .app-thumb {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: zoom-in;
+      transition: transform 0.2s;
+      border: 1px solid var(--border);
+    }
+
+    .app-thumb:hover {
+      transform: scale(1.05);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      animation: fadeIn 0.3s;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      padding: 20px;
+      max-width: 90%;
+      max-height: 90%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img,
+    .modal video {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .close:hover {
+      color: var(--accent);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .app-thumb {
+        width: 100px;
+        height: 67px;
+      }
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -332,8 +412,8 @@
           <tr>
             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🖥️ Pure
                 HTML/CSS/JavaScript</strong></td>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">No backend required for core
-              functionality</td>
+            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">
+            </td>
           </tr>
           <tr>
             <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>📱 PWA-Ready</strong></td>
@@ -401,7 +481,8 @@
           <tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 1rem 1rem;">2️⃣</td>
             <td style="padding: 1rem 1rem;">Contact Lens Orders</td>
-            <td style="padding: 1rem; text-align: center;">📱</td>
+            <td style="padding: 1rem; text-align: center;"><img src="screenshot/clo.png" alt="Contact Lens Orders"
+                class="app-thumb" data-full="screenshot/clo.png"></td>
             <td style="padding: 1rem 1rem;"><span
                 style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
                 Live</span></td>
@@ -409,7 +490,8 @@
           <tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 1rem 1rem;">3️⃣</td>
             <td style="padding: 1rem 1rem;">Dr. Itemized Receipt</td>
-            <td style="padding: 1rem; text-align: center;">📄</td>
+            <td style="padding: 1rem; text-align: center;"><img src="screenshot/receipt.png" alt="Dr. Itemized Receipt"
+                class="app-thumb" data-full="screenshot/receipt.png"></td>
             <td style="padding: 1rem 1rem;"><span
                 style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
                 Live</span></td>
@@ -433,7 +515,8 @@
           <tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 1rem 1rem;">6️⃣</td>
             <td style="padding: 1rem 1rem;">Lab FSV Order Sheet</td>
-            <td style="padding: 1rem; text-align: center;">🔬</td>
+            <td style="padding: 1rem; text-align: center;"><video src="lenstally.mp4" class="app-thumb"
+                data-full="lenstally.mp4" muted loop playsinline></video></td>
             <td style="padding: 1rem 1rem;"><span
                 style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
                 Live</span></td>
@@ -449,7 +532,8 @@
           <tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 1rem 1rem;">8️⃣</td>
             <td style="padding: 1rem 1rem;">Optician Calculator</td>
-            <td style="padding: 1rem; text-align: center;">🧮</td>
+            <td style="padding: 1rem; text-align: center;"><img src="screenshot/calc.png" alt="Optician Calculator"
+                class="app-thumb" data-full="screenshot/calc.png"></td>
             <td style="padding: 1rem 1rem;"><span
                 style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
                 Live</span></td>
@@ -457,7 +541,8 @@
           <tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 1rem 1rem;">9️⃣</td>
             <td style="padding: 1rem 1rem;">PAL Quote Tool</td>
-            <td style="padding: 1rem; text-align: center;">💰</td>
+            <td style="padding: 1rem; text-align: center;"><img src="screenshot/pq.png" alt="PAL Quote Tool"
+                class="app-thumb" data-full="screenshot/pq.png"></td>
             <td style="padding: 1rem 1rem;"><span
                 style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
                 Live</span></td>
@@ -473,7 +558,8 @@
           <tr>
             <td style="padding: 1rem 1rem;">1️⃣1️⃣</td>
             <td style="padding: 1rem 1rem;">Lens Guide</td>
-            <td style="padding: 1rem; text-align: center;">📖</td>
+            <td style="padding: 1rem; text-align: center;"><img src="screenshot/lensview.png" alt="Lens Guide"
+                class="app-thumb" data-full="screenshot/lensview.png"></td>
             <td style="padding: 1rem 1rem;"><span
                 style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
                 Live</span></td>
@@ -820,6 +906,15 @@
 
   </main>
 
+  <!-- NEW: Screenshot Modal -->
+  <div id="screenshotModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+      <img id="modalImg" style="display: none;" />
+      <video id="modalVideo" style="display: none;" controls loop muted playsinline></video>
+    </div>
+  </div>
+
   <footer>Designed & built by James · 2025</footer>
 
   <div style="background:#1a0a0a; border-top:1px solid #3b1a1a; padding:1.2rem 6%; text-align:center;">
@@ -827,6 +922,54 @@
       in use and in its present state is not HIPAA compliant. Upgrading to Google Firestore under a Business Associate
       Agreement (BAA) would readily address this.</p>
   </div>
+
+  <!-- NEW: Modal JavaScript -->
+  <script>
+    // Screenshot modal functionality
+    const modal = document.getElementById('screenshotModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalVideo = document.getElementById('modalVideo');
+    const closeBtn = document.querySelector('.close');
+
+    document.querySelectorAll('.app-thumb').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        const fullSrc = thumb.getAttribute('data-full');
+        if (thumb.tagName === 'VIDEO') {
+          modalImg.style.display = 'none';
+          modalVideo.src = fullSrc;
+          modalVideo.style.display = 'block';
+          modalVideo.play();
+        } else {
+          modalVideo.style.display = 'none';
+          modalImg.src = fullSrc;
+          modalImg.style.display = 'block';
+        }
+        modal.style.display = 'block';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      }
+    });
+  </script>
 
 </body>
 
