@@ -2,828 +2,668 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PAL Optical Tool Kit — James</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="screenshot-preview.css">
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAL Optical Tool Kit — James</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../screenshot-preview.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    :root {
-      --bg: #0a0a0f;
-      --surface: #13131a;
-      --border: #1e1e2e;
-      --accent: #7c3aed;
-      --accent2: #06b6d4;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --radius: 12px;
-    }
+        :root {
+            --bg: #0a0a0f;
+            --surface: #13131a;
+            --border: #1e1e2e;
+            --accent: #7c3aed;
+            --accent2: #06b6d4;
+            --text: #e2e8f0;
+            --muted: #64748b;
+            --radius: 12px;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 6%;
-      background: rgba(10, 10, 15, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 6%;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
 
-    .logo {
-      font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: -0.5px;
-      text-decoration: none;
-      color: var(--text);
-    }
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text);
+        }
 
-    .logo span {
-      color: var(--accent);
-    }
+        .logo span {
+            color: var(--accent);
+        }
 
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color .2s;
-    }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color .2s;
+        }
 
-    .back-btn:hover {
-      color: var(--text);
-    }
+        .back-btn:hover {
+            color: var(--text);
+        }
 
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 8rem 6% 4rem;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    }
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 8rem 6% 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        }
 
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 60%);
-      pointer-events: none;
-    }
+        .hero-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(124, 58, 237, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+        }
 
-    .hero-emoji {
-      font-size: 5rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
+        .hero-emoji {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
 
-    .hero-content {
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      gap: 4rem;
-      width: 100%;
-    }
+        .hero-content {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 4rem;
+            width: 100%;
+        }
 
-    .hero-text {
-      flex: 1;
-      min-width: 280px;
-    }
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
 
-    .hero-img {
-      flex: 1;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      min-width: 0;
-    }
+        .hero-img {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            min-width: 0;
+        }
 
-    /* Simple video container - no hover effects, 16:9 aspect ratio */
-    .video-container {
-      width: 100%;
-      max-width: 900px;
-      /* Increased for larger display */
-      aspect-ratio: 16/9;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-      overflow: hidden;
-      background: var(--surface);
-    }
+        /* Simple video container - no hover effects, 16:9 aspect ratio */
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            /* Increased for larger display */
+            aspect-ratio: 16/9;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            background: var(--surface);
+        }
 
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      /* No hover effects, no cursor pointer */
-      pointer-events: none;
-      /* Prevent interaction */
-    }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            /* No hover effects, no cursor pointer */
+            pointer-events: none;
+            /* Prevent interaction */
+        }
 
-    /* Mobile optimizations */
-    @media (max-width: 768px) {
-      .hero-content {
-        flex-direction: column;
-        gap: 2rem;
-      }
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
 
-      .hero-img {
-        width: 100%;
-        justify-content: center;
-        padding: 0 1rem;
-      }
+            .hero-img {
+                width: 100%;
+                justify-content: center;
+                padding: 0 1rem;
+            }
 
-      .video-container {
-        max-width: 100%;
-        /* Full width on mobile */
-      }
+            .video-container {
+                max-width: 100%;
+                /* Full width on mobile */
+            }
 
-      .hero-text {
-        text-align: center;
-      }
+            .hero-text {
+                text-align: center;
+            }
 
-      .hero-sub {
-        font-size: 1rem;
-      }
-    }
+            .hero-sub {
+                font-size: 1rem;
+            }
+        }
 
-    @media (max-width: 860px) {
-      .hero-content {
-        flex-direction: column;
-        gap: 2rem;
-      }
+        @media (max-width: 860px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
 
-      .hero-img {
-        justify-content: center;
-      }
-    }
+            .hero-img {
+                justify-content: center;
+            }
+        }
 
-    .tag-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
+        .tag-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
 
-    .tag {
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(124, 58, 237, 0.2);
-      color: #a78bfa;
-      border: 1px solid rgba(124, 58, 237, 0.3);
-    }
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, 0.2);
+            color: #a78bfa;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
 
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      margin-bottom: 1rem;
-    }
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+        }
 
-    .hero-sub {
-      color: rgba(226, 232, 240, 0.7);
-      font-size: 1.1rem;
-      max-width: 600px;
-    }
+        .hero-sub {
+            color: rgba(226, 232, 240, 0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
 
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 5rem 6%;
-    }
+        main {
+            max-width: 860px;
+            margin: 0 0 0 6%;
+            padding: 5rem 0;
+        }
 
-    .section {
-      margin-bottom: 4rem;
-    }
+        .section {
+            margin-bottom: 4rem;
+        }
 
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--accent2);
-      letter-spacing: -0.5px;
-    }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent2);
+            letter-spacing: -0.5px;
+        }
 
-    p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-size: 0.97rem;
-    }
+        p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.97rem;
+        }
 
-    p:last-child {
-      margin-bottom: 0;
-    }
+        p:last-child {
+            margin-bottom: 0;
+        }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1rem;
-    }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
 
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      transition: border-color .2s;
-    }
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem;
+            transition: border-color .2s;
+        }
 
-    .feature-card:hover {
-      border-color: var(--accent);
-    }
+        .feature-card:hover {
+            border-color: var(--accent);
+        }
 
-    .feature-icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-    }
+        .feature-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
 
-    .feature-card h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
+        .feature-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
 
-    .feature-card p {
-      font-size: 0.83rem;
-      margin: 0;
-    }
+        .feature-card p {
+            font-size: 0.83rem;
+            margin: 0;
+        }
 
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
 
-    .tech-pill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.35rem 1rem;
-      font-size: 0.82rem;
-      color: var(--text);
-    }
+        .tech-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            font-size: 0.82rem;
+            color: var(--text);
+        }
 
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 3rem 0;
-    }
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3rem 0;
+        }
 
-    /* NEW: Screenshot Modal Styles */
-    /* Custom styles - app-thumb is handled by screenshot-preview.css */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border);
-    }
-  </style>
-  <script defer src="screenshot-preview.js"></script>
+        /* NEW: Screenshot Modal Styles */
+        /* Custom styles - app-thumb is handled by screenshot-preview.css */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+    <script defer src="../screenshot-preview.js"></script>
 </head>
 
 <body>
-  <!-- Badges & Header -->
-  <div
-    style="background: linear-gradient(135deg, #0a0a0f, #13131a); padding: 1.5rem 6%; text-align: center; border-bottom: 1px solid var(--border);">
+    <!-- Badges & Header -->
     <div
-      style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center; margin-bottom: 1rem; font-size: 0.85rem;">
-      <span
-        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(6, 214, 212, 0.2); border: 1px solid rgba(6, 214, 212, 0.4); color: #06b6d4; padding: 0.3rem 0.8rem; border-radius: 20px;">📱
-        PWA Ready</span>
-      <span
-        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(255, 165, 0, 0.2); border: 1px solid rgba(255, 165, 0, 0.4); color: #ffaa00; padding: 0.3rem 0.8rem; border-radius: 20px;">📦
-        License: Proprietary</span>
-      <span
-        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.4); color: #22c55e; padding: 0.3rem 0.8rem; border-radius: 20px;">🔢
-        Version 5.0</span>
-      <span
-        style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444; padding: 0.3rem 0.8rem; border-radius: 20px;">📅
-        Last Updated Feb 2025</span>
-    </div>
-
-    <p style="color: var(--muted); font-size: 1rem; margin: 0;">A powerful, offline-capable suite of optical retail and
-      lab management tools built with HTML, CSS, and JavaScript</p>
-  </div>
-
-
-  <nav>
-    <span class="logo">james<span>.</span></span>
-    <span class="back-btn" style="cursor: default; opacity: 0.6;">PAL Optical Suite</span>
-  </nav>
-
-  <div class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <span class="hero-emoji">👓</span>
-        <div class="tag-row">
-          <span class="tag">Firebase</span>
-          <span class="tag">PWA</span>
-          <span class="tag">HTML/JS</span>
-          <span class="tag">Optical Suite</span>
-        </div>
-        <h1>PAL Optical Tool Kit</h1>
-        <p class="hero-sub">POMA: Comprehensive HTML/JS optical suite for retail/lab management (P.O.S.T. write-ups,
-          insurance, camera measurements, lens catalog, Firebase sync). PWA-ready, offline-capable.</p>
-      </div>
-      <div class="hero-img">
-        <div class="video-container">
-          <video src="po.mp4" muted loop autoplay playsinline></video>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <main>
-
-    <div id="overview" class="section">
-      <p class="section-title">🌟 Overview</p>
-
-      <table
-        style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-        <thead>
-          <tr style="background: var(--accent); color: white;">
-            <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600;">Feature</th>
-            <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600;">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🖥️ Pure
-                HTML/CSS/JavaScript</strong></td>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>📱 PWA-Ready</strong></td>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">Installable as a native app on any
-              device</td>
-          </tr>
-          <tr>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🌙 Dark/Light
-                Theme</strong></td>
-            <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">Built-in theme switching support
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 1rem 1.5rem;"><strong>🔌 Offline Capable</strong></td>
-            <td style="padding: 1rem 1.5rem;">Works without internet (with Service Worker)</td>
-          </tr>
-          <tr>
-            <td style="padding: 1rem 1.5rem;"><strong>🖨️ Print-Optimized</strong></td>
-            <td style="padding: 1rem 1.5rem;">Generate professional receipts and waivers</td>
-          </tr>
-          <tr>
-            <td style="padding: 1rem 1.5rem;"><strong>📊 Integrated Billing</strong></td>
-            <td style="padding: 1rem 1.5rem;">Complete insurance and payment processing</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>The PAL Optical Tool Kit was born out of a real-world need to reduce friction in the eyewear order workflow.
-        The optical industry still relies heavily on paper forms, manual calculations, and disconnected processes. This
-        toolkit brings those workflows into a modern, browser-based environment — accessible from any device, with data
-        persisted in real time via Firebase.</p>
-      <p>The suite is designed to be modular: each tool handles a specific part of the process, and they all share a
-        consistent UI and data layer so information flows naturally between them.</p>
-    </div>
-
-    <hr class="divider" />
-
-    <!-- Applications -->
-    <div id="applications" class="section">
-      <p class="section-title">🚀 Applications - Complete Toolkit</p>
-      <p style="color: var(--muted); margin-bottom: 1.5rem;">Pure HTML/JS, offline PWA for optical lab/retail. Click
-        tool names or demos 🖱️
-      </p>
-
-      <table
-        style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-size: 0.9rem;">
-        <thead>
-          <tr style="background: var(--accent2); color: white;">
-            <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">#</th>
-            <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">Tool</th>
-            <th style="padding: 1rem; text-align: center; font-weight: 600;">Live Demo</th>
-            <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem; font-weight: 600; color: var(--accent);">1️⃣</td>
-            <td style="padding: 1rem 1rem;"><strong>P.O.S.T. Write-Ups</strong><br><small>Flagship tool</small></td>
-            <td style="padding: 1rem; text-align: center;">
-              <video src="po.mp4" style="width: 120px; height: 80px; object-fit: cover; border-radius: 6px;" muted loop
-                playsinline></video>
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">⭐
-                Flagship</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">2️⃣</td>
-            <td style="padding: 1rem 1rem;">Contact Lens Orders</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/clo.png" alt="Contact Lens Orders" class="app-thumb" data-full="screenshot/clo.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">3️⃣</td>
-            <td style="padding: 1rem 1rem;">Dr. Itemized Receipt</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/receipt.png" alt="Dr. Itemized Receipt" class="app-thumb"
-                data-full="screenshot/receipt.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">4️⃣</td>
-            <td style="padding: 1rem 1rem;">Master Dashboard</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="home.png" alt="Master Dashboard" class="app-thumb" data-full="home.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">5️⃣</td>
-            <td style="padding: 1rem 1rem;">Pal Optical Receipt</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/receipt.png" alt="Pal Optical Receipt" class="app-thumb"
-                data-full="screenshot/receipt.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">6️⃣</td>
-            <td style="padding: 1rem 1rem;">Lab FSV Order Sheet</td>
-            <td style="padding: 1rem; text-align: center;">
-              <video src="lenstally.mp4" class="app-thumb" data-full="lenstally.mp4" muted loop playsinline
-                style="width: 120px; height: 80px; object-fit: cover; border-radius: 6px;"></video>
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">7️⃣</td>
-            <td style="padding: 1rem 1rem;">Lens Availability</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/lin.png" alt="Lens Availability" class="app-thumb" data-full="screenshot/lin.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">8️⃣</td>
-            <td style="padding: 1rem 1rem;">Optician Calculator</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/calc.png" alt="Optician Calculator" class="app-thumb"
-                data-full="screenshot/calc.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">9️⃣</td>
-            <td style="padding: 1rem 1rem;">PAL Quote Tool</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/pq.png" alt="PAL Quote Tool" class="app-thumb" data-full="screenshot/pq.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 1rem 1rem;">🔟</td>
-            <td style="padding: 1rem 1rem;">Lens Inventory</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/inv.png" alt="Lens Inventory" class="app-thumb" data-full="screenshot/inv.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding: 1rem 1rem;">1️⃣1️⃣</td>
-            <td style="padding: 1rem 1rem;">Lens Guide</td>
-            <td style="padding: 1rem; text-align: center;">
-              <img src="screenshot/lensview.png" alt="Lens Guide" class="app-thumb" data-full="screenshot/lensview.png">
-            </td>
-            <td style="padding: 1rem 1rem;">
-              <span
-                style="background: #22c55e; color: white; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">🟢
-                Live</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <hr class="divider" />
-
-      <!-- NEW: PALHTML Source Files Section -->
-      <div id="source-files" class="section">
-        <p class="section-title">📁 PALHTML Source Files - Complete Toolkit</p>
-        <p style="color: var(--muted); margin-bottom: 1.5rem;">Detailed mapping of all 11 source HTML files from PALHTML
-          directory with key features and demos</p>
-        <table
-          style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-size: 0.85rem;">
-          <thead>
-            <tr style="background: var(--accent2); color: white;">
-              <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">File Name</th>
-              <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">Tool Name</th>
-              <th style="padding: 1rem; text-align: center; font-weight: 600;">Key Features</th>
-              <th style="padding: 1rem 1rem; text-align: center; font-weight: 600;">Demo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem; font-weight: 600;"><code>WRITEUP.html</code></td>
-              <td style="padding: 1rem 1rem;"><strong>⭐ P.O.S.T. Master Write-Up</strong><br><small>Flagship tool (5000+
-                  JS lines)</small></td>
-              <td style="padding: 1rem; text-align: left;">
-                <span style="display:block; font-size:0.8rem;">• Camera PD/Seg measurement<br>• 400+ lens catalog w/
-                  pricing<br>• Firebase auth/sync (12 staff)<br>• Multi-lang patient sheets<br>• Insurance billing (10+
-                  providers)<br>• 3-page print (slips/waivers)</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <video src="po.mp4" style="width: 100px; height: 60px; object-fit: cover; border-radius: 6px;" muted
-                  loop playsinline></video>
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>opticalc.html</code></td>
-              <td style="padding: 1rem 1rem;">Optician Calculator</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Decentrations • MBS calc • Lens thickness estimator<br>• Receipt printer
-                  • 3 themes (Pip-Boy, Rainbow)<br>• Session logging</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/calc.png" alt="Optician Calculator" class="app-thumb"
-                  data-full="screenshot/calc.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>lensavail.html</code></td>
-              <td style="padding: 1rem 1rem;">Lens Availability Database</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Progressives + Multifocals tables<br>• Editable ranges (Sph/Cyl/Add)<br>•
-                  JSON import/export<br>• Material filters • LocalStorage</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/lin.png" alt="Lens Inventory" class="app-thumb" data-full="screenshot/lin.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>lens-guide.html</code></td>
-              <td style="padding: 1rem 1rem;">Lens Viewing Guide</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Educational visual diagrams<br>• SV/Bifocal/Trifocal/Prog comparison<br>•
-                  Vision corridor illustrations<br>• Dark mode support</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/lensview.png" alt="Lens Guide" class="app-thumb"
-                  data-full="screenshot/lensview.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>PALQUOTE (1).HTML</code></td>
-              <td style="padding: 1rem 1rem;">PAL Quote Estimator</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• 400+ lens catalog pricing<br>• Shopping cart + insurance copays<br>•
-                  Frame quoting • Medicaid handling<br>• Print-ready quotes</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/pq.png" alt="PAL Quote Tool" class="app-thumb" data-full="screenshot/pq.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>DRITEMIZEDRECPT.HTML</code></td>
-              <td style="padding: 1rem 1rem;">Dr. Klecker Receipt</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Itemized billing table<br>• Insurance adjustments • Payment tracking<br>•
-                  Professional medical receipt<br>• Print optimized</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/receipt.png" alt="Dr. Itemized Receipt" class="app-thumb"
-                  data-full="screenshot/receipt.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>contact.html</code></td>
-              <td style="padding: 1rem 1rem;">Contact Lens Orders</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Annual/6mo/Custom supply sizing<br>• Insurance/payment tracking<br>•
-                  Excel export • Print list<br>• LocalStorage persistence</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/clo.png" alt="Contact Lens Orders" class="app-thumb"
-                  data-full="screenshot/clo.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>LABLENS.HTML</code></td>
-              <td style="padding: 1rem 1rem;">Lab Lens Tally Scanner</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• QR/barcode scanner<br>• Rx matrix tally (sph/cyl)<br>• Poly/plastic
-                  sheets<br>• Print tally slips • CSV export<br>• Dark/Light modes</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <video src="lenstally.mp4" class="app-thumb" data-full="lenstally.mp4" muted loop playsinline
-                  style="width: 100px; height: 60px; object-fit: cover; border-radius: 6px;"></video>
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>TracyFrameInventory.html</code></td>
-              <td style="padding: 1rem 1rem;">Frame Inventory</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Tracy's frame stock tracker<br>• Inventory management<br>• Lab/retail
-                  coordination</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/inv.png" alt="Frame Inventory" class="app-thumb" data-full="screenshot/inv.png">
-              </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border);">
-              <td style="padding: 1rem 1rem;"><code>PAL OPTICAL RECEIPT.HTML</code></td>
-              <td style="padding: 1rem 1rem;">PAL Optical Receipt</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Internal receipt printer<br>• Job costing • Payment tracking</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="screenshot/receipt.png" alt="PAL Receipt" class="app-thumb"
-                  data-full="screenshot/receipt.png">
-              </td>
-            </tr>
-            <tr>
-              <td style="padding: 1rem 1rem;"><code>index.html</code></td>
-              <td style="padding: 1rem 1rem;">Master Dashboard</td>
-              <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
-                <span style="display:block;">• Unified launcher<br>• Tool quick-links • PWA installer</span>
-              </td>
-              <td style="padding: 1rem; text-align: center;">
-                <img src="home.png" alt="Master Dashboard" class="app-thumb" data-full="home.png">
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <details style="margin-top: 1.5rem;">
-        <summary
-          style="cursor: pointer; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); font-weight: 600; color: var(--accent);">
-          🔍 Feature Matrix (All Tools)</summary>
+        style="background: linear-gradient(135deg, #0a0a0f, #13131a); padding: 1.5rem 6% 1.5rem 6%; text-align: left; border-bottom: 1px solid var(--border);">
         <div
-          style="padding: 1.5rem; background: rgba(124, 58, 237, 0.05); border-radius: var(--radius); margin-top: 1rem;">
-          <table style="width: 100%; font-size: 0.85rem;">
-            <thead>
-              <tr>
-                <th style="padding: 0.8rem 0.5rem; text-align: left;">Tool</th>
-                <th style="padding: 0.8rem 0.5rem; text-align: left;">Key Features</th>
-                <th style="padding: 0.8rem 0.5rem; text-align: left;">Data</th>
-                <th style="padding: 0.8rem 0.5rem; text-align: left;">Output</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td><strong>P.O.S.T.</strong></td>
-                <td>Camera PD/Seg, 400+ lens catalog, Firebase sync, multi-lang forms, waivers</td>
-                <td>JSON pricing, Rx calc</td>
-                <td>3-page print (slips/forms/waivers), HTML export</td>
-              </tr>
-              <tr style="border-bottom: 1px solid var(--border);">
-                <td>Contacts</td>
-                <td>Supply tracking, ins/payments</td>
-                <td>LocalStorage</td>
-                <td>Excel export, print list</td>
-              </tr>
-              <tr>
-                <td>Receipts</td>
-                <td>Dynamic items, ins adj, payments</td>
-                <td>Live calc</td>
-                <td>Professional receipts</td>
-              </tr>
-            </tbody>
-          </table>
+            style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center; margin-bottom: 1rem; font-size: 0.85rem;">
+            <span
+                style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(6, 214, 212, 0.2); border: 1px solid rgba(6, 214, 212, 0.4); color: #06b6d4; padding: 0.3rem 0.8rem; border-radius: 20px;">📱
+                PWA Ready</span>
+            <span
+                style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(255, 165, 0, 0.2); border: 1px solid rgba(255, 165, 0, 0.4); color: #ffaa00; padding: 0.3rem 0.8rem; border-radius: 20px;">📦
+                License: Proprietary</span>
+            <span
+                style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(34, 197, 94, 0.2); border: 1px solid rgba(34, 197, 94, 0.4); color: #22c55e; padding: 0.3rem 0.8rem; border-radius: 20px;">🔢
+                Version 5.0</span>
+            <span
+                style="display: inline-flex; align-items: center; gap: 0.25rem; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #ef4444; padding: 0.3rem 0.8rem; border-radius: 20px;">📅
+                Last Updated Feb 2025</span>
         </div>
-      </details>
+
+        <p style="color: var(--muted); font-size: 1rem; margin: 0;">A powerful, offline-capable suite of optical retail
+            and
+            lab management tools built with HTML, CSS, and JavaScript</p>
     </div>
 
-    <hr class="divider" />
 
-    <div id="post" class="section">
-      <p class="section-title">⭐ P.O.S.T. Write-Up System - Deep Dive</p>
+    <nav>
+        <span class="logo">james<span>.</span></span>
+        <span class="back-btn" style="cursor: default; opacity: 0.6;">PAL Optical Suite</span>
+    </nav>
 
-      <p
-        style="text-align: center; background: rgba(255,165,0,0.1); padding: 1rem; border-radius: var(--radius); margin-bottom: 2rem; font-weight: 600;">
-        The flagship application - complete digital replacement for traditional paper write-ups (5000+ JS lines)</p>
+    <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <span class="hero-emoji">👓</span>
+                <div class="tag-row">
+                    <span class="tag">Firebase Ascent
+                        <span class="tag">PWA</span>
+                        <span class="tag">HTML/JS</span>
+                        <span class="tag">Optical Suite</span>
+                </div>
+                <h1>PAL Optical Tool Kit</h1>
+                <p class="hero-sub">POMA: Comprehensive HTML/JS optical suite for retail/lab management (P.O.S.T.
+                    write-ups,
+                    insurance, camera measurements, lens catalog, Firebase sync). PWA-ready, offline-capable.</p>
+            </div>
+            <div class="hero-img">
+                <div class="video-container">
+                    <video src="po.mp4" muted loop autoplay playsinline></video>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🔐 User
-        Authentication</h3>
-      <p>Secure login system with personalized access codes for 12 staff members (James→Lisa) with initials display.</p>
+    <main>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">📋 Patient
-        Management</h3>
-      <ul style="color: var(--muted); list-style: none; padding-left: 0;">
-        <li style="margin-bottom: 0.5rem;">✅ New Patient Information Sheets (EN/ES/FR multi-language)</li>
-        <li style="margin-bottom: 0.5rem;">✅ HIPAA Consent Tracking</li>
-        <li style="margin-bottom: 0.5rem;">✅ Guardian Information for minors</li>
-        <li style="margin-bottom: 0.5rem;">✅ Insurance Details capture</li>
-        <li>✅ Patient History with one-click reload</li>
-      </ul>
+        <div id="overview" class="section">
+            <p class="section-title">🌟 Overview</p>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🏥 Insurance
-        Integration</h3>
-      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem;">
-        <thead>
-          <tr style="background: var(--accent); color: white;">
-            <th style="padding: 0.8rem; text-align: left;">Provider</th>
-            <th style="padding: 0.8rem; text-align: left;">Type</th>
-          </tr>
-        </thead>
-        <tbody style="background: var(--surface);">
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td>Private Pay</td>
-            <td>Cash</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td>MEDICAID</td>
-            <td>Aetna, Humana, Wellcare etc.</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td>EYE-MED</td>
-            <td>Commercial</td>
-          </tr>
-          <tr>
-            <td>VSP</td>
-            <td>Commercial (20% frame discount)</td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="color: var(--muted);">Auto copay/allowance deductions, Medicaid billing codes (92340, prior auth).</p>
+            <table
+                style="width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                <thead>
+                    <tr style="background: var(--accent); color: white;">
+                        <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600;">Feature</th>
+                        <th style="padding: 1rem 1.5rem; text-align: left; font-weight: 600;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🖥️ Pure
+                                HTML/CSS/JavaScript</strong></td>
+                        <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>📱
+                                PWA-Ready</strong></td>
+                        <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">Installable as a
+                            native app on any
+                            device</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);"><strong>🌙 Dark/Light
+                                Theme</strong></td>
+                        <td style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem;"><strong>🔌 Offline Capable</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Works without internet (with Service Worker)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem;"><strong>🖨️ Print-Optimized</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Generate professional receipts and waivers</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem;"><strong>📊 Integrated Billing</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Complete insurance and payment processing</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>The PAL Optical Tool Kit was born out of a real-world need to reduce friction in the eyewear order
+                workflow.
+                The optical industry still relies heavily on paper forms, manual calculations, and disconnected
+                processes. This
+                toolkit brings those workflows into a modern, browser-based environment — accessible from any device,
+                with data
+                persisted in real time via Firebase.</p>
+            <p>The suite is designed to be modular: each tool handles a specific part of the process, and they all share
+                a
+                consistent UI and data layer so information flows naturally between them.</p>
+        </div>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">📷 Camera
-        Measurement Tool</h3>
-      <pre
-        style="background: var(--surface); padding: 1.5rem; border-radius: var(--radius); overflow-x: auto; font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">
+        <hr class="divider" />
+
+        <!-- Complete Toolkit - PALHTML Source Files (Sole Application List) -->
+        <div id="applications" class="section">
+            <p class="section-title">📁 Complete Toolkit</p>
+            <p style="color: var(--muted); margin-bottom: 1.5rem;">Detailed mapping of all 11 source HTML files from
+                PALHTML directory with key features and demos</p>
+            <table
+                style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-size: 0.85rem;">
+                <thead>
+                    <tr style="background: var(--accent2); color: white;">
+                        <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">File Name</th>
+                        <th style="padding: 1rem 1rem; text-align: left; font-weight: 600;">Tool Name</th>
+                        <th style="padding: 1rem; text-align: center; font-weight: 600;">Key Features</th>
+                        <th style="padding: 1rem 1rem; text-align: center; font-weight: 600;">Demo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem; font-weight: 600;"><code>WRITEUP.html</code></td>
+                        <td style="padding: 1rem 1rem;"><strong>⭐ P.O.S.T. Master Write-Up</strong><br><small>Flagship
+                                tool (5000+
+                                JS lines)</small></td>
+                        <td style="padding: 1rem; text-align: left;">
+                            <span style="display:block; font-size:0.8rem;">• Camera PD/Seg measurement<br>• 400+ lens
+                                catalog w/
+                                pricing<br>• Firebase auth/sync (12 staff)<br>• Multi-lang patient sheets<br>• Insurance
+                                billing (10+
+                                providers)<br>• 3-page print (slips/waivers)</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <video src="po.mp4"
+                                style="width: 100px; height: 60px; object-fit: cover; border-radius: 6px;" muted loop
+                                playsinline></video>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>opticalc.html</code></td>
+                        <td style="padding: 1rem 1rem;">Optician Calculator</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Decentrations • MBS calc • Lens thickness estimator<br>•
+                                Receipt printer
+                                • 3 themes (Pip-Boy, Rainbow)<br>• Session logging</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/calc.png" alt="Optician Calculator" class="app-thumb"
+                                data-full="screenshot/calc.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>lensavail.html</code></td>
+                        <td style="padding: 1rem 1rem;">Lens Availability Database</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Progressives + Multifocals tables<br>• Editable ranges
+                                (Sph/Cyl/Add)<br>•
+                                JSON import/export<br>• Material filters • LocalStorage</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/lin.png" alt="Lens Inventory" class="app-thumb"
+                                data-full="screenshot/lin.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>lens-guide.html</code></td>
+                        <td style="padding: 1rem 1rem;">Lens Viewing Guide</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Educational visual diagrams<br>• SV/Bifocal/Trifocal/Prog
+                                comparison<br>•
+                                Vision corridor illustrations<br>• Dark mode support</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/lensview.png" alt="Lens Guide" class="app-thumb"
+                                data-full="screenshot/lensview.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>PALQUOTE (1).HTML</code></td>
+                        <td style="padding: 1rem 1rem;">PAL Quote Estimator</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• 400+ lens catalog pricing<br>• Shopping cart + insurance
+                                copays<br>•
+                                Frame quoting • Medicaid handling<br>• Print-ready quotes</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/pq.png" alt="PAL Quote Tool" class="app-thumb"
+                                data-full="screenshot/pq.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>DRITEMIZEDRECPT.HTML</code></td>
+                        <td style="padding: 1rem 1rem;">Dr. Klecker Receipt</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Itemized billing table<br>• Insurance adjustments • Payment
+                                tracking<br>•
+                                Professional medical receipt<br>• Print optimized</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/receipt.png" alt="Dr. Itemized Receipt" class="app-thumb"
+                                data-full="screenshot/receipt.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>contact.html</code></td>
+                        <td style="padding: 1rem 1rem;">Contact Lens Orders</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Annual/6mo/Custom supply sizing<br>• Insurance/payment
+                                tracking<br>•
+                                Excel export • Print list<br>• LocalStorage persistence</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/clo.png" alt="Contact Lens Orders" class="app-thumb"
+                                data-full="screenshot/clo.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>LABLENS.HTML</code></td>
+                        <td style="padding: 1rem 1rem;">Lab Lens Tally Scanner</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• QR/barcode scanner<br>• Rx matrix tally (sph/cyl)<br>•
+                                Poly/plastic
+                                sheets<br>• Print tally slips • CSV export<br>• Dark/Light modes</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <video src="lenstally.mp4" class="app-thumb" data-full="lenstally.mp4" muted loop
+                                playsinline
+                                style="width: 100px; height: 60px; object-fit: cover; border-radius: 6px;"></video>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>TracyFrameInventory.html</code></td>
+                        <td style="padding: 1rem 1rem;">Frame Inventory</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Tracy's frame stock tracker<br>• Inventory management<br>•
+                                Lab/retail
+                                coordination</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/inv.png" alt="Frame Inventory" class="app-thumb"
+                                data-full="screenshot/inv.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1rem;"><code>PAL OPTICAL RECEIPT.HTML</code></td>
+                        <td style="padding: 1rem 1rem;">PAL Optical Receipt</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Internal receipt printer<br>• Job costing • Payment
+                                tracking</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="screenshot/receipt.png" alt="PAL Receipt" class="app-thumb"
+                                data-full="screenshot/receipt.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1rem;"><code>index.html</code></td>
+                        <td style="padding: 1rem 1rem;">Master Dashboard</td>
+                        <td style="padding: 1rem; text-align: left; font-size:0.8rem;">
+                            <span style="display:block;">• Unified launcher<br>• Tool quick-links • PWA installer</span>
+                        </td>
+                        <td style="padding: 1rem; text-align: center;">
+                            <img src="home.png" alt="Master Dashboard" class="app-thumb" data-full="home.png"
+                                style="width: 90px; height: 60px; object-fit: cover; border-radius: 12px; cursor: pointer;">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="divider" />
+
+        <div id="post" class="section">
+            <p class="section-title">⭐ P.O.S.T. Write-Up System - Deep Dive</p>
+
+            <p
+                style="text-align: center; background: rgba(255,165,0,0.1); padding: 1rem; border-radius: var(--radius); margin-bottom: 2rem; font-weight: 600;">
+                The flagship application - complete digital replacement for traditional paper write-ups (5000+ JS lines)
+            </p>
+
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🔐 User
+                Authentication</h3>
+            <p>Secure login system with personalized access codes for 12 staff members (James→Lisa) with initials
+                display.</p>
+
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">📋 Patient
+                Management</h3>
+            <ul style="color: var(--muted); list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.5rem;">✅ New Patient Information Sheets (EN/ES/FR multi-language)</li>
+                <li style="margin-bottom: 0.5rem;">✅ HIPAA Consent Tracking</li>
+                <li style="margin-bottom: 0.5rem;">✅ Guardian Information for minors</li>
+                <li style="margin-bottom: 0.5rem;">✅ Insurance Details capture</li>
+                <li>✅ Patient History with one-click reload</li>
+            </ul>
+
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🏥 Insurance
+                Integration</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem;">
+                <thead>
+                    <tr style="background: var(--accent); color: white;">
+                        <th style="padding: 0.8rem; text-align: left;">Provider
+
+                        </th>
+                        <th style="padding: 0.8rem; text-align: left;">Type</th>
+                    </tr>
+                </thead>
+                <tbody style="background: var(--surface);">
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td>Private Pay</td>
+                        <td>Cash</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td>MEDICAID</td>
+                        <td>Aetna, Humana, Wellcare etc.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td>EYE-MED</td>
+                        <td>Commercial</td>
+                    </tr>
+                    <tr>
+                        <td>VSP</td>
+                        <td>Commercial (20% frame discount)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="color: var(--muted);">Auto copay/allowance deductions, Medicaid billing codes (92340, prior auth).
+            </p>
+
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">📷 Camera
+                Measurement Tool</h3>
+            <pre
+                style="background: var(--surface); padding: 1.5rem; border-radius: var(--radius); overflow-x: auto; font-size: 0.85rem; color: var(--muted); margin: 1rem 0;">
 ┌────────────────────────────────────────────────────┐
 │                CAMERA MEASUREMENT                 │
 ├────────────────────────────────────────────────────┤
@@ -838,242 +678,257 @@
 │ 5. Bottom of right lens → Instant Seg Height       │
 └────────────────────────────────────────────────────┘
       </pre>
-      <p>5-click calibration using standard credit card for accurate PD/Seg measurements, auto-populates form.</p>
+            <p>5-click calibration using standard credit card for accurate PD/Seg measurements, auto-populates form.</p>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🔍 Lens Catalog
-        (400+)</h3>
-      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem;">
-        <thead>
-          <tr style="background: var(--accent2); color: white;">
-            <th style="padding: 0.6rem; text-align: left;">Category</th>
-            <th style="padding: 0.6rem; text-align: left;">Popular Options</th>
-          </tr>
-        </thead>
-        <tbody style="background: var(--surface);">
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td>Plastic</td>
-            <td>Varilux X ($530), Shamir III ($465)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td>Polycarbonate</td>
-            <td>Unity VIA ($410), Younger ($295)</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td>High Index</td>
-            <td>1.67/1.74 SV ($365/$400)</td>
-          </tr>
-          <tr>
-            <td>Transitions/Polarized</td>
-            <td>Light adaptive, KBCO, Drivewear</td>
-          </tr>
-        </tbody>
-      </table>
-      <p>Auto-pricing w/ insurance overrides, oversize/high Rx/add auto-charges (+$10-30).</p>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🔍 Lens
+                Catalog
+                (400+)</h3>
+            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem;">
+                <thead>
+                    <tr style="background: var(--accent2); color: white;">
+                        <th style="padding: 0.6rem; text-align: left;">Category</th>
+                        <th style="padding: 0.6rem; text-align: left;">Popular Options</th>
+                    </tr>
+                </thead>
+                <tbody style="background: var(--surface);">
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td>Plastic</td>
+                        <td>Varilux X ($530), Shamir III ($465)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td>Polycarbonate</td>
+                        <td>Unity VIA ($410), Younger ($295)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td>High Index</td>
+                        <td>1.67/1.74 SV ($365/$400)</td>
+                    </tr>
+                    <tr>
+                        <td>Transitions/Polarized</td>
+                        <td>Light adaptive, KBCO, Drivewear</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Auto-pricing w/ insurance overrides, oversize/high Rx/add auto-charges (+$10-30).</p>
 
-      <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🖨️ Print & Export
-      </h3>
-      <p>3-page professional output: Dual lab slips, Patient sheet (multi-lang), Waivers (expired Rx, POF, thickness,
-        etc.). HTML auto-save w/ patient/job# timestamp.</p>
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem 0; color: var(--accent);">🖨️ Print &
+                Export
+            </h3>
+            <p>3-page professional output: Dual lab slips, Patient sheet (multi-lang), Waivers (expired Rx, POF,
+                thickness,
+                etc.). HTML auto-save w/ patient/job# timestamp.</p>
 
+        </div>
+
+        <div class="section">
+            <p class="section-title">Key Features</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h4>Full Write-Up Program</h4>
+                    <p>Complete prescription write-up tool with all standard optical fields, validation, and Firebase
+                        sync for
+                        instant saving and retrieval.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔢</div>
+                    <h4>PAL Calculators</h4>
+                    <p>Automated calculations for seg heights, fitting cross placement, and progressive lens
+                        measurements to
+                        eliminate manual math errors.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h4>Firebase Backend</h4>
+                    <p>Real-time Firestore database stores all orders and write-ups, with authentication so each user
+                        sees only
+                        their own data.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Order History</h4>
+                    <p>Searchable log of past orders with the ability to pull up, duplicate, or edit any previous
+                        write-up in
+                        seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Mobile-First Design</h4>
+                    <p>Fully responsive layout designed to work on tablets and phones used at the dispensing table or
+                        lab bench.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖨️</div>
+                    <h4>Print-Ready Output</h4>
+                    <p>One-click print view formats the write-up into a clean, lab-ready document that matches industry
+                        standards.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div id="tech" class="section">
+            <p class="section-title">🔧 Technical Stack</p>
+            <table
+                style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin-bottom: 1rem;">
+                <thead>
+                    <tr style="background: var(--accent); color: white;">
+                        <th style="padding: 1rem 1.5rem; text-align: left;">Technology</th>
+                        <th style="padding: 1rem 1.5rem; text-align: left;">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td><strong>HTML5</strong></td>
+                        <td>Semantic markup, offline capabilities</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td><strong>CSS3</strong></td>
+                        <td>Styling, animations, print styles</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td><strong>JavaScript ES6+</strong></td>
+                        <td>App logic, Firebase integration</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td><strong>Firebase</strong></td>
+                        <td>Realtime DB, auth</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td><strong>Service Worker</strong></td>
+                        <td>PWA offline</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Canvas API</strong></td>
+                        <td>Signature, measurements</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="color: var(--muted); font-size: 0.9rem;">Browser Support: Chrome/Edge ✅, Firefox ✅, Safari ✅,
+                Mobile ✅
+            </p>
+
+            <h4 style="margin-top: 2rem;">Browser Support</h4>
+            <table style="width: 100%; font-size: 0.85rem;">
+                <tr>
+                    <td>🟦 Chrome/Edge</td>
+                    <td>✅ Recommended</td>
+                </tr>
+                <tr>
+                    <td>🟧 Firefox</td>
+                    <td>✅ Supported</td>
+                </tr>
+                <tr>
+                    <td>🟦 Safari</td>
+                    <td>✅ Supported</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <hr class="divider" />
+
+        <div id="quickstart" class="section">
+            <p class="section-title">📦 Quick Start</p>
+            <ol style="color: var(--muted);">
+                <li><code>start index.html</code> (Windows) → Click any tool 🖱️</li>
+                <li>For PWA/server: <code>npx serve .</code> or <code>python -m http.server 8000</code></li>
+            </ol>
+            <p style="color: var(--accent); font-weight: 600; margin-top: 1rem;">All tools work offline after first load
+                ✨</p>
+        </div>
+
+        <hr class="divider" />
+
+        <div id="features" class="section">
+            <p class="section-title">🎯 Features</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h4>P.O.S.T. Digital Write-Up</h4>
+                    <p>Full replacement for paper slips</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h4>Real-Time Billing</h4>
+                    <p>Insurance adjustments & payments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏥</div>
+                    <h4>Insurance (10+ Providers)</h4>
+                    <p>VSP/EyeMed/Medicaid</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive Design</h4>
+                    <p>Tablet/phone optimized</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h4>Dark Mode</h4>
+                    <p>Theme switching</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h4>Offline PWA</h4>
+                    <p>Service Worker caching</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div id="security" class="section">
+            <p class="section-title">🔐 Security</p>
+            <ul style="color: var(--muted);">
+                <li>🔑 Unique staff credentials</li>
+                <li>🔒 Firebase secure auth/DB</li>
+                <li>📋 HIPAA-compliant forms</li>
+                <li>⚠️ Note: Upgrade to BAA for production HIPAA</li>
+            </ul>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">The Problem It Solves</p>
+            <span class="tech-pill">Firebase Firestore</span>
+            <span class="tech-pill">Firebase Authentication</span>
+            <span class="tech-pill">Firebase Hosting</span>
+            <span class="tech-pill">Responsive Design</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">The Problem It Solves</p>
+            <p>Traditional optical write-up processes involve handwritten forms, manual seg height calculations, and
+                physical
+                order logs that are easy to lose and hard to search. Errors in these calculations can result in
+                incorrectly made
+                lenses — a costly and time-consuming mistake for both the lab and the patient.</p>
+            <p>The PAL Optical Tool Kit eliminates these pain points by digitizing the entire workflow, providing
+                instant
+                validation, and keeping a permanent, searchable cloud record of every order.</p>
+        </div>
+
+    </main>
+
+    <footer>Designed & built by James · 2025</footer>
+
+    <div style="background:#1a0a0a; border-top:1px solid #3b1a1a; padding:1.2rem 6%; text-align:center;">
+        <p style="color:#f87171; font-size:0.8rem; margin:0;">⚠️ <strong>Disclaimer:</strong> This system is not
+            currently
+            in use and in its present state is not HIPAA compliant. Upgrading to Google Firestore under a Business
+            Associate
+            Agreement (BAA) would readily address this.</p>
     </div>
 
-    <div class="section">
-      <p class="section-title">Key Features</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h4>Full Write-Up Program</h4>
-          <p>Complete prescription write-up tool with all standard optical fields, validation, and Firebase sync for
-            instant saving and retrieval.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔢</div>
-          <h4>PAL Calculators</h4>
-          <p>Automated calculations for seg heights, fitting cross placement, and progressive lens measurements to
-            eliminate manual math errors.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">☁️</div>
-          <h4>Firebase Backend</h4>
-          <p>Real-time Firestore database stores all orders and write-ups, with authentication so each user sees only
-            their own data.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📋</div>
-          <h4>Order History</h4>
-          <p>Searchable log of past orders with the ability to pull up, duplicate, or edit any previous write-up in
-            seconds.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h4>Mobile-First Design</h4>
-          <p>Fully responsive layout designed to work on tablets and phones used at the dispensing table or lab bench.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🖨️</div>
-          <h4>Print-Ready Output</h4>
-          <p>One-click print view formats the write-up into a clean, lab-ready document that matches industry standards.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider" />
-
-    <div id="tech" class="section">
-      <p class="section-title">🔧 Technical Stack</p>
-      <table
-        style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin-bottom: 1rem;">
-        <thead>
-          <tr style="background: var(--accent); color: white;">
-            <th style="padding: 1rem 1.5rem; text-align: left;">Technology</th>
-            <th style="padding: 1rem 1.5rem; text-align: left;">Usage</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td><strong>HTML5</strong></td>
-            <td>Semantic markup, offline capabilities</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td><strong>CSS3</strong></td>
-            <td>Styling, animations, print styles</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td><strong>JavaScript ES6+</strong></td>
-            <td>App logic, Firebase integration</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td><strong>Firebase</strong></td>
-            <td>Realtime DB, auth</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td><strong>Service Worker</strong></td>
-            <td>PWA offline</td>
-          </tr>
-          <tr>
-            <td><strong>Canvas API</strong></td>
-            <td>Signature, measurements</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p style="color: var(--muted); font-size: 0.9rem;">Browser Support: Chrome/Edge ✅, Firefox ✅, Safari ✅, Mobile ✅
-      </p>
-
-      <h4 style="margin-top: 2rem;">Browser Support</h4>
-      <table style="width: 100%; font-size: 0.85rem;">
-        <tr>
-          <td>🟦 Chrome/Edge</td>
-          <td>✅ Recommended</td>
-        </tr>
-        <tr>
-          <td>🟧 Firefox</td>
-          <td>✅ Supported</td>
-        </tr>
-        <tr>
-          <td>🟦 Safari</td>
-          <td>✅ Supported</td>
-        </tr>
-      </table>
-
-    </div>
-
-    <hr class="divider" />
-
-    <div id="quickstart" class="section">
-      <p class="section-title">📦 Quick Start</p>
-      <ol style="color: var(--muted);">
-        <li><code>start index.html</code> (Windows) → Click any tool 🖱️</li>
-        <li>For PWA/server: <code>npx serve .</code> or <code>python -m http.server 8000</code></li>
-      </ol>
-      <p style="color: var(--accent); font-weight: 600; margin-top: 1rem;">All tools work offline after first load ✨</p>
-    </div>
-
-    <hr class="divider" />
-
-    <div id="features" class="section">
-      <p class="section-title">🎯 Features</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h4>P.O.S.T. Digital Write-Up</h4>
-          <p>Full replacement for paper slips</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h4>Real-Time Billing</h4>
-          <p>Insurance adjustments & payments</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🏥</div>
-          <h4>Insurance (10+ Providers)</h4>
-          <p>VSP/EyeMed/Medicaid</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h4>Responsive Design</h4>
-          <p>Tablet/phone optimized</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🌙</div>
-          <h4>Dark Mode</h4>
-          <p>Theme switching</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔌</div>
-          <h4>Offline PWA</h4>
-          <p>Service Worker caching</p>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider" />
-
-    <div id="security" class="section">
-      <p class="section-title">🔐 Security</p>
-      <ul style="color: var(--muted);">
-        <li>🔑 Unique staff credentials</li>
-        <li>🔒 Firebase secure auth/DB</li>
-        <li>📋 HIPAA-compliant forms</li>
-        <li>⚠️ Note: Upgrade to BAA for production HIPAA</li>
-      </ul>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">The Problem It Solves</p>
-      <span class="tech-pill">Firebase Firestore</span>
-      <span class="tech-pill">Firebase Authentication</span>
-      <span class="tech-pill">Firebase Hosting</span>
-      <span class="tech-pill">Responsive Design</span>
-    </div>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">The Problem It Solves</p>
-      <p>Traditional optical write-up processes involve handwritten forms, manual seg height calculations, and physical
-        order logs that are easy to lose and hard to search. Errors in these calculations can result in incorrectly made
-        lenses — a costly and time-consuming mistake for both the lab and the patient.</p>
-      <p>The PAL Optical Tool Kit eliminates these pain points by digitizing the entire workflow, providing instant
-        validation, and keeping a permanent, searchable cloud record of every order.</p>
-    </div>
-
-  </main>
-
-  <footer>Designed & built by James · 2025</footer>
-
-  <div style="background:#1a0a0a; border-top:1px solid #3b1a1a; padding:1.2rem 6%; text-align:center;">
-    <p style="color:#f87171; font-size:0.8rem; margin:0;">⚠️ <strong>Disclaimer:</strong> This system is not currently
-      in use and in its present state is not HIPAA compliant. Upgrading to Google Firestore under a Business Associate
-      Agreement (BAA) would readily address this.</p>
-  </div>
-
-  <!-- Screenshot preview handled by screenshot-preview.js -->
+    <!-- Screenshot preview handled by screenshot-preview.js -->
 
 </body>
 
