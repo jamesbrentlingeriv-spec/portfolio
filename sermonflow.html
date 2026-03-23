@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SermonFlow — James</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="screenshot-preview.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #000000;
+            --blue: #1d4ed8;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 6%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--blue);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all .2s;
+        }
+
+        .back-btn:hover {
+            color: var(--blue);
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 8rem 6% 4rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--blue), #1e40af);
+        }
+
+        .hero h1 {
+            color: var(--black);
+        }
+
+        .hero .hero-sub,
+        .hero .tag-row {
+            color: var(--white);
+        }
+
+        .hero-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-content {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 4rem;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            min-width: 0;
+        }
+
+        .hero-preview {
+            width: 60vw;
+            max-width: 600px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            object-fit: cover;
+        }
+
+        @media (max-width: 860px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-img {
+                justify-content: flex-start;
+            }
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 5rem 6%;
+            background: var(--black);
+            color: var(--white);
+            min-height: calc(100vh - 70vh);
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 0.97rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .flow-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .flow-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-num {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            background: var(--blue);
+            border: 1px solid var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--white);
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .step-content h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .step-content p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: var(--white);
+        }
+
+        .screenshots {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .thumbnail {
+            width: 200px;
+            height: auto;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .thumbnail:hover {
+            border-color: var(--blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(29, 78, 216, 0.3);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 1.4rem;
+            transition: all .2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            border-color: var(--blue);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--blue);
+        }
+
+        .feature-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--white);
+        }
+
+        .feature-card p {
+            font-size: 0.83rem;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            font-size: 0.82rem;
+            color: var(--white);
+            backdrop-filter: blur(10px);
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 3rem 0;
+        }
+
+        .gold-btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--white);
+            text-decoration: none;
+            background: var(--blue);
+            box-shadow: 0 4px 20px rgba(29, 78, 216, 0.4);
+            margin-top: 1.5rem;
+            transition: all .2s;
+            border: 1px solid var(--blue);
+        }
+
+        .gold-btn:hover {
+            background: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(29, 78, 216, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--black);
+        }
+
+        /* Modal styles from screenshot-preview.css assumed */
+    </style>
+    <script defer src="screenshot-preview.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">james<span>.</span></a>
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <img src="sermonflowlogo.png" alt="SermonFlow Logo" style="height: 5rem; width: auto;">
+                <div class="tag-row">
+                    <span class="tag">Web App</span>
+                    <span class="tag">Sermon Prep</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+                <h1>SermonFlow</h1>
+                <p class="hero-sub">App to assist pastors in making sermons. Streamline preparation with scripture
+                    tools, outline builders, notes, and more.</p>
+                <a href="https://sermonflow-840075680860.us-west1.run.app/" target="_blank" class="gold-btn">Try
+                    SermonFlow →</a>
+            </div>
+            <div class="hero-img">
+                <video src="sermonflow.mp4" class="hero-preview" muted loop playsinline autoplay
+                    style="aspect-ratio: 16/9; width: 50vw; max-width: 500px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); object-fit: cover; height: 100%;"></video>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <div class="section">
+            <p class="section-title">Overview</p>
+            <p>SermonFlow is designed for busy pastors who need an efficient way to prepare sermons. From initial
+                scripture selection to final outline, this web app handles the workflow so you can focus on the message.
+            </p>
+            <p>Live demo available at the blue button above. Fully responsive and ready for deployment.</p>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">How It Works</p>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Scripture Research</h4>
+                        <p>Search, compare translations, and gather verses quickly with integrated Bible tools.</p>
+                        <div class="screenshots">
+                            <img src="screenshot/sermonflow.png" alt="SermonFlow Main" class="thumbnail"
+                                data-full="screenshot/sermonflow.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Outline Builder</h4>
+                        <p>Structured sermon outline with points, subpoints, and timing estimates.</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Notes & Illustrations</h4>
+                        <p>Attach personal notes, stories, quotes, and cross-references to each section.</p>
+                    </div>
+                </div>
+                <div class="flow-step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Export & Share</h4>
+                        <p>Generate printable outlines or share digitally with worship team.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">Key Features</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h4>Bible Integration</h4>
+                    <p>Multiple translations, verse lookup, and cross-referencing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Sermon Outlines</h4>
+                    <p>Drag-and-drop structure builder with timing and word count.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✍️</div>
+                    <h4>Rich Notes</h4>
+                    <p>Formatted text, images, links, and voice-to-text support.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⏱️</div>
+                    <h4>Pacing Tools</h4>
+                    <p>Sermon timer, word count estimates, and delivery practice mode.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Mobile Optimized</h4>
+                    <p>Use on phone, tablet, or desktop during prep and pulpit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h4>Cloud Sync</h4>
+                    <p>Save sermons across devices and access sermon history.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">Tech Stack</p>
+            <div class="tech-list">
+                <span class="tech-pill">HTML5 / CSS3 / JavaScript</span>
+                <span class="tech-pill">Responsive Design</span>
+                <span class="tech-pill">Bible API Integration</span>
+                <span class="tech-pill">LocalStorage / Cloud Sync</span>
+                <span class="tech-pill">PWA Ready</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>Designed & built by James · 2025</footer>
+
+</body>
+
+</html>
