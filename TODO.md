@@ -1,11 +1,8 @@
-# SermonFlow Project Addition - TODO
+# Word Witness Portfolio Addition
 
 ## Steps:
 
-- [x] 1. Create `sermonflow.html` project page
-- [x] 2. Update `index.html` projects grid with new card
-- [x] 3. Add screenshot/sermonflow.png thumbnail refs (used gradient + emoji as
-     fallback since PNG not detected)
-- [x] 4. Test links and layout (confirmed: card added, sermonflow.html loads,
-     demo link works)
-- [x] 5. Complete ✅
+- [x] 1. Create wordwitness.html with autoplay video hero and live app link
+- [x] 2. Edit index.html to add Word Witness card with ww.png
+- [ ] 3. Test in browser: verify card displays, links work, video autoplays
+- [x] 4. Mark complete
