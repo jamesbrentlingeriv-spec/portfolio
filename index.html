@@ -1,3 +1,4 @@
+nc
 <!DOCTYPE html>
 <html lang="en">
 
@@ -320,7 +321,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
 
@@ -333,7 +334,14 @@
             cursor: pointer;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            height: 380px;
+        }
+
+        .card .card-body {
+            flex: 1;
+            overflow: hidden;
         }
 
         .card:hover {
@@ -517,6 +525,135 @@
             transform: none;
         }
 
+        /* ABOUT */
+        #about {
+            background: var(--bg);
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-portrait {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .about-portrait img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            display: block;
+        }
+
+        .about-portrait .portrait-name {
+            margin-top: 1.25rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .about-portrait .portrait-title {
+            color: var(--muted);
+            font-size: 0.88rem;
+            margin-top: 0.25rem;
+        }
+
+        .about-certs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .cert-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, 0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(124, 58, 237, 0.25);
+        }
+
+        .about-content {
+            padding-top: 0.25rem;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            font-size: 0.97rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-content p strong {
+            color: var(--text);
+        }
+
+        .about-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .pillar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem;
+            transition: border-color .2s, transform .2s;
+        }
+
+        .pillar:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .pillar-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .pillar h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--text);
+        }
+
+        .pillar p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        @media (max-width: 860px) {
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .about-portrait {
+                position: static;
+                max-width: 280px;
+            }
+
+            .about-pillars {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         @media (max-width: 600px) {
             nav ul {
                 display: none;
@@ -524,6 +661,10 @@
 
             .contact-card {
                 padding: 1.5rem;
+            }
+
+            .about-pillars {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -534,6 +675,7 @@
     <nav>
         <div class="logo">james<span>.</span></div>
         <ul>
+            <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -558,6 +700,58 @@
                 <video id="introVideo" src="james.mp4" playsinline></video>
                 <div class="play-overlay" id="playOverlay">
                     <div class="play-btn">&#9654;</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="reveal">
+            <p class="section-label">About Me</p>
+            <h2 class="section-title">Developer. Optician. Creator.</h2>
+        </div>
+        <div class="about-inner reveal">
+            <div class="about-portrait">
+                <img src="portrait.png" alt="James Brentlinger" />
+                <p class="portrait-name">James Brentlinger IV</p>
+                <p class="portrait-title">Optician & Full-Stack Developer</p>
+                <div class="about-certs">
+                    <span class="cert-badge">ABOC</span>
+                    <span class="cert-badge">NCLEC</span>
+                </div>
+            </div>
+            <div class="about-content">
+                <p>Working as an optician at <strong>PAL Optical</strong>, I've carved out a unique niche by blending
+                    clinical expertise with technical development. My work is defined by a commitment to efficiency and
+                    modernization — building custom tools that streamline the workplace from the inside out.</p>
+                <p>From <strong>complex quoting systems</strong> and <strong>inventory management tools</strong> to
+                    <strong>digital patient intake forms</strong>, I've acted as an in-house developer, bridging the gap
+                    between optical services and functional software solutions.
+                </p>
+                <p>Beyond the office, my creative energy shifts toward music and gaming. I'm a
+                    <strong>singer-songwriter</strong> — admittedly a much better songwriter than singer — channeling
+                    the same drive to create into original music.
+                </p>
+                <p>Whether I'm <strong>engineering mods for Fallout 4</strong>, experimenting with <strong>AI-driven
+                        creative software</strong>, or keeping my ABOC and NCLEC certifications sharp, I consistently
+                    find ways to build, refine, and innovate across every corner of my life.</p>
+                <div class="about-pillars">
+                    <div class="pillar">
+                        <div class="pillar-icon">👁️</div>
+                        <h4>Clinical Expertise</h4>
+                        <p>Licensed optician with ABOC & NCLEC certifications and years of hands-on patient care.</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">💻</div>
+                        <h4>In-House Dev</h4>
+                        <p>Built quoting systems, inventory tools, and patient forms that modernized daily workflows.
+                        </p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">🎸</div>
+                        <h4>Music & Gaming</h4>
+                        <p>Singer-songwriter. Fallout 4 modder. AI creative experimenter.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -626,6 +820,17 @@
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
+            <a class="card reveal" href="ocu-sync.html">
+                <div class="card-img" style="background: url('ocu-sync.png') center/cover no-repeat;"></div>
+                <div class="card-body">
+                    <div class="card-tags"><span class="tag">HIPAA</span><span class="tag">React</span><span
+                            class="tag">Firebase</span><span class="tag">Healthcare</span></div>
+                    <h3>Ocu-Sync</h3>
+                    <p>HIPAA-compliant secure messaging platform for healthcare professionals. E2E encryption, audit
+                        logs, patient portals.</p>
+                    <div class="card-links"><span class="card-link">View Project →</span></div>
+                </div>
+            </a>
             <a class="card reveal" href="sermonflow.html">
                 <div class="card-img" style="background: url('sermonflow.png') center/cover no-repeat;"></div>
                 <div class="card-body">
@@ -637,13 +842,25 @@
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
-            <a class="card reveal" href="wordwitness.html">
+            <a class="card reveal" href="word-witness.html">
                 <div class="card-img" style="background: url('ww.png') center/cover no-repeat;"></div>
                 <div class="card-body">
                     <div class="card-tags"><span class="tag">Bible</span><span class="tag">Web App</span><span
                             class="tag">Kids</span></div>
                     <h3>Word Witness</h3>
                     <p>Helps kids learn to read through interactive Bible stories.</p>
+                    <div class="card-links"><span class="card-link">View Project →</span></div>
+                </div>
+            </a>
+            <a class="card reveal" href="pal-optical-site.html">
+                <div class="card-img"
+                    style="background: url('pallogo.gif') center/cover no-repeat; background-color: #0a0a0f;"></div>
+                <div class="card-body">
+                    <div class="card-tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span
+                            class="tag">Tailwind CSS</span></div>
+                    <h3>Pal Optical Boutique Site</h3>
+                    <p>Premium "Gold & Dark" boutique website with designer showcases, fluid animations, and a fully
+                        responsive layout.</p>
                     <div class="card-links"><span class="card-link">View Project →</span></div>
                 </div>
             </a>
