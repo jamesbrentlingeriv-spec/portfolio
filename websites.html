@@ -17,15 +17,16 @@
     }
 
     :root {
-      --bg: #0a0a0f;
-      --surface: #13131a;
-      --border: #1e1e2e;
-      --accent: #7c3aed;
-      --accent2: #10b981;
-      --text: #e2e8f0;
-      --muted: #64748b;
+      --bg: #000;
+      --surface: #111;
+      --border: #222;
+      --accent: #f472b6;
+      --accent2: #4ade80;
+      --text: #fff;
+      --muted: #aaa;
       --radius: 12px;
     }
+    @keyframes rainbow { 0% { background-position:0% } 100% { background-position:300% } }
 
     html {
       scroll-behavior: smooth;
@@ -85,13 +86,13 @@
       padding: 8rem 6% 4rem;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, #064e3b, #065f46, #047857);
+      background: #000;
     }
 
     .hero-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 40% 60%, rgba(16, 185, 129, 0.2) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 40% 60%, rgba(74,222,128,0.1) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -155,9 +156,9 @@
       font-weight: 500;
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      background: rgba(16, 185, 129, 0.15);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     h1 {
@@ -187,8 +188,13 @@
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
-      color: var(--accent2);
       letter-spacing: -0.5px;
+      background: linear-gradient(90deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6);
+      background-size: 300% auto;
+      animation: rainbow 4s linear infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     p {
@@ -261,9 +267,9 @@
       font-size: 0.7rem;
       padding: 0.15rem 0.5rem;
       border-radius: 999px;
-      background: rgba(16, 185, 129, 0.1);
-      color: #6ee7b7;
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .approach-list {

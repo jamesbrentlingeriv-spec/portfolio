@@ -19,15 +19,16 @@
         }
 
         :root {
-            --bg: #0a0a0f;
-            --surface: #13131a;
-            --border: #1e1e2e;
-            --accent: #7c3aed;
-            --accent2: #06b6d4;
-            --text: #e2e8f0;
-            --muted: #64748b;
+            --bg: #000;
+            --surface: #111;
+            --border: #222;
+            --accent: #f472b6;
+            --accent2: #60a5fa;
+            --text: #fff;
+            --muted: #aaa;
             --radius: 12px;
         }
+        @keyframes rainbow { 0% { background-position:0% } 100% { background-position:300% } }
 
         html {
             scroll-behavior: smooth;
@@ -88,7 +89,7 @@
             padding: 8rem 6% 4rem;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: #000;
         }
 
         .hero-glow {

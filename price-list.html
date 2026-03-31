@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Price List — James</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #000;
+            --surface: #111;
+            --border: #222;
+            --accent: #f472b6;
+            --accent2: #60a5fa;
+            --text: #fff;
+            --muted: #aaa;
+            --radius: 12px;
+        }
+        @keyframes rainbow { 0% { background-position:0% } 100% { background-position:300% } }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 6%;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo span { color: var(--accent); }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color .2s;
+        }
+
+        .back-btn:hover { color: var(--text); }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 8rem 6% 4rem;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-content {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            gap: 4rem;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            min-width: 0;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            background: var(--surface);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .screenshots-grid img {
+            width: 100%;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .screenshots-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 860px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .hero-img { justify-content: center; }
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            color: rgba(226, 232, 240, 0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 0 0 6%;
+            padding: 5rem 0;
+        }
+
+        .section { margin-bottom: 4rem; }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(90deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6);
+            background-size: 300% auto;
+            animation: rainbow 4s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.97rem;
+        }
+
+        p:last-child { margin-bottom: 0; }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.4rem;
+            transition: border-color .2s;
+        }
+
+        .feature-card:hover { border-color: var(--accent); }
+
+        .feature-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .feature-card p {
+            font-size: 0.83rem;
+            margin: 0;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tech-pill {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.35rem 1rem;
+            font-size: 0.82rem;
+            color: var(--text);
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 3rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">james<span>.</span></a>
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <img src="pal-optical-logo.png" alt="PAL Optical" style="height:80px; margin-bottom:1.5rem; display:block;">
+                <div class="tag-row">
+                    <span class="tag">React</span>
+                    <span class="tag">Tailwind CSS</span>
+                    <span class="tag">Framer Motion</span>
+                    <span class="tag">Vite</span>
+                </div>
+                <h1>Interactive Price List</h1>
+                <p class="hero-sub">A comprehensive, interactive price list for PAL Optical lenses, materials, and
+                    coatings — with real-time search, category filtering, and a built-in OptiCalc integration.</p>
+            </div>
+            <div class="hero-img">
+                <video src="pricelist.mp4" autoplay loop muted playsinline
+                    style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.6);"></video>
+            </div>
+        </div>
+    </div>
+
+    <main>
+
+        <div class="section">
+            <p class="section-title">🌟 Overview</p>
+            <p>The PAL Optical Interactive Price List was built to replace a static printed price sheet that staff had
+                to manually update and reprint every time pricing changed. The new version lives in the browser,
+                updates instantly, and lets anyone on the floor find exactly what they need in seconds.</p>
+            <p>It covers the full catalog — progressive lenses, single vision, bifocals, materials (plastic, poly,
+                high-index), and coatings — all in one searchable, filterable interface with a dark mode designed for
+                long shifts.</p>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">📸 Screenshots</p>
+            <div class="screenshots-grid">
+                <img src="pricelist1.png" alt="Price List screenshot 1" />
+                <img src="pricelist2.png" alt="Price List screenshot 2" />
+                <img src="pricelist3.png" alt="Price List screenshot 3" />
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">✨ Features</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h4>Real-Time Search</h4>
+                    <p>Instantly filter the entire catalog as you type — no page reloads, no waiting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗂️</div>
+                    <h4>Category Filtering</h4>
+                    <p>Browse by lens type, material, or coating category with one click.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h4>OptiCalc Integration</h4>
+                    <p>Built-in optical calculator for quick on-the-spot pricing and lens calculations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h4>Dark Mode</h4>
+                    <p>Sleek, eye-friendly dark theme designed for professional optical retail environments.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h4>Responsive Design</h4>
+                    <p>Fully optimized for desktop and mobile — works on any device at the dispensing table.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Smooth Animations</h4>
+                    <p>Framer Motion powers fluid transitions and interactions throughout the UI.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">🔧 Tech Stack</p>
+            <table
+                style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin-bottom: 1.5rem;">
+                <thead>
+                    <tr style="background: var(--accent); color: white;">
+                        <th style="padding: 1rem 1.5rem; text-align: left;">Technology</th>
+                        <th style="padding: 1rem 1.5rem; text-align: left;">Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1.5rem;"><strong>React</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Core framework for the interactive UI</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1.5rem;"><strong>Tailwind CSS</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Sleek, professional, and responsive styling</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1.5rem;"><strong>Lucide React</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Clean and consistent iconography</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem 1.5rem;"><strong>Framer Motion</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Smooth and professional animations</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 1.5rem;"><strong>Vite</strong></td>
+                        <td style="padding: 1rem 1.5rem;">Fast and efficient build tool</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="tech-list">
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Tailwind CSS</span>
+                <span class="tech-pill">Framer Motion</span>
+                <span class="tech-pill">Lucide React</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">Dark Mode</span>
+                <span class="tech-pill">Responsive</span>
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">📦 Getting Started</p>
+            <ol style="color: var(--muted); padding-left: 1.2rem; line-height: 2;">
+                <li>Clone the repository</li>
+                <li>Run <code
+                        style="background: var(--surface); padding: 0.1rem 0.5rem; border-radius: 4px;">npm install</code>
+                </li>
+                <li>Run <code
+                        style="background: var(--surface); padding: 0.1rem 0.5rem; border-radius: 4px;">npm run dev</code>
+                    to start the dev server</li>
+                <li>Run <code
+                        style="background: var(--surface); padding: 0.1rem 0.5rem; border-radius: 4px;">npm run build</code>
+                    for production</li>
+            </ol>
+        </div>
+
+    </main>
+
+    <footer>Designed & built by James · 2025</footer>
+
+</body>
+
+</html>
