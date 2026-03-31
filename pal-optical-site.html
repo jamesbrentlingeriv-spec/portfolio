@@ -4,224 +4,137 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pal Optical Boutique Site — James</title>
+    <title>PAL Optical Site — James</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --bg: #0a0a0f;
-            --surface: #13131a;
-            --border: #1e1e2e;
-            --accent: #D4AF37;
-            --accent-dim: rgba(212, 175, 55, 0.15);
-            --accent-border: rgba(212, 175, 55, 0.3);
-            --text: #e2e8f0;
-            --muted: #64748b;
+            --bg: #000;
+            --surface: #111;
+            --border: #222;
+            --accent: #f472b6;
+            --accent2: #60a5fa;
+            --text: #fff;
+            --muted: #aaa;
             --radius: 12px;
         }
+        @keyframes rainbow { 0% { background-position:0% } 100% { background-position:300% } }
 
         html { scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
         nav {
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
             padding: 1.2rem 6%;
             background: rgba(10, 10, 15, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
         }
 
-        .logo { font-weight: 700; text-decoration: none; color: var(--text); font-size: 1.1rem; }
+        .logo { font-weight: 700; font-size: 1.2rem; letter-spacing: -0.5px; text-decoration: none; color: var(--text); }
         .logo span { color: var(--accent); }
 
-        .back-btn { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+        .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
         .back-btn:hover { color: var(--text); }
 
-        /* HERO */
         .hero {
-            padding: 10rem 6% 5rem;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            background:
-                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.07), transparent 50%),
-                radial-gradient(circle at 85% 50%, rgba(212, 175, 55, 0.05), transparent 50%);
+            min-height: 70vh; display: flex; align-items: flex-end;
+            padding: 8rem 6% 4rem; position: relative; overflow: hidden;
+            background: #000;
         }
 
-        .hero-content { flex: 1; }
-        .hero-visual { flex: 1; min-width: 0; }
-
-        .brand-logo {
-            height: 64px;
-            width: auto;
-            margin-bottom: 1.5rem;
-            display: block;
+        .hero-glow {
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.1) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .hero-emoji { font-size: 5rem; margin-bottom: 1.5rem; display: block; }
 
-        .tag {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 0.3rem 0.8rem;
-            border-radius: 99px;
-            background: var(--accent-dim);
-            color: var(--accent);
-            border: 1px solid var(--accent-border);
-        }
+        .hero-content { position: relative; display: flex; align-items: flex-end; gap: 4rem; width: 100%; }
 
-        h1 {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
-        }
+        .hero-text { flex: 1; min-width: 280px; }
 
-        .hero-sub {
-            color: var(--muted);
-            font-size: 1.05rem;
-            max-width: 520px;
-            margin-bottom: 2rem;
-        }
+        .hero-img { flex: 1; display: flex; align-items: flex-end; justify-content: flex-end; min-width: 0; }
 
-        .hero-video {
-            width: 100%;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
-            aspect-ratio: 16/9;
-            background: var(--surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .hero-video video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--radius);
-            display: block;
-        }
-
-        /* MAIN */
-        main { max-width: 920px; margin: 0 auto; padding: 5rem 6%; }
-
-        .section { margin-bottom: 5rem; }
-
-        .section-label {
-            display: inline-block;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 1rem;
-        }
-
-        .section-body {
-            color: var(--muted);
-            font-size: 0.97rem;
-            line-height: 1.8;
-        }
-
-        .section-body strong { color: var(--text); }
-
-        hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 0 5rem; }
-
-        /* FEATURE GRID */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.25rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.75rem;
-            transition: transform .2s, border-color .2s;
-        }
-
-        .feature-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-
-        .feature-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
-
-        .feature-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--text); }
-        .feature-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
-
-        /* TECH STACK */
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-
-        .tech-item {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
-            padding: 0.4rem 0.9rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--accent);
-            transition: border-color .2s;
-        }
-
-        .tech-item:hover { border-color: var(--accent); }
-
-        /* STRUCTURE */
-        .structure-block {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.5rem 2rem;
-            margin-top: 1.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
-            color: var(--muted);
-            line-height: 1.9;
-        }
-
-        .structure-block .dir { color: var(--accent); }
-        .structure-block .file { color: var(--text); }
-        .structure-block .comment { color: var(--muted); }
-
-        footer {
-            text-align: center;
-            padding: 2.5rem;
-            color: var(--muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
+        .hero-img video {
+            width: 100%; border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
         }
 
         @media (max-width: 860px) {
-            .hero { flex-direction: column; padding-top: 8rem; gap: 2.5rem; }
+            .hero-content { flex-direction: column; gap: 2rem; }
+            .hero-img { justify-content: flex-start; }
         }
+
+        .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+        .tag {
+            font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.7rem; border-radius: 999px;
+            background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -1.5px; margin-bottom: 1rem; }
+
+        .hero-sub { color: rgba(226, 232, 240, 0.7); font-size: 1.1rem; max-width: 600px; }
+
+        .demo-btn {
+            display: inline-block; padding: 0.75rem 2rem; border-radius: 999px;
+            font-weight: 600; font-size: 0.95rem; color: #fff; text-decoration: none;
+            background: #000; border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); margin-top: 1.5rem; transition: background .2s;
+        }
+        .demo-btn:hover { background: #111; }
+
+        main { max-width: 860px; margin: 0 auto; padding: 5rem 6%; }
+
+        .section { margin-bottom: 4rem; }
+
+        .section-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: -0.5px; background: linear-gradient(90deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6); background-size:300% auto; animation:rainbow 4s linear infinite; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+        p { color: var(--muted); margin-bottom: 1rem; font-size: 0.97rem; }
+        p:last-child { margin-bottom: 0; }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .screenshots-grid img {
+            width: 100%; border-radius: var(--radius);
+            border: 1px solid var(--border); display: block;
+        }
+
+        @media (max-width: 600px) { .screenshots-grid { grid-template-columns: 1fr; } }
+
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+
+        .feature-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.4rem; transition: border-color .2s;
+        }
+        .feature-card:hover { border-color: var(--accent2); }
+
+        .feature-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+        .feature-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+        .feature-card p { font-size: 0.83rem; margin: 0; }
+
+        .tech-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+        .tech-pill {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 999px; padding: 0.35rem 1rem; font-size: 0.82rem; color: var(--text);
+        }
+
+        .divider { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+        footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
     </style>
 </head>
 
@@ -232,74 +145,85 @@
         <a href="index.html" class="back-btn">← Back to Portfolio</a>
     </nav>
 
-    <header class="hero">
+    <div class="hero">
+        <div class="hero-glow"></div>
         <div class="hero-content">
-            <!-- Logo placeholder — swap with pallogo.gif when ready -->
-            <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">⚜️</div>
-            <div class="tag-row">
-                <span class="tag">React 19</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Tailwind CSS 4</span>
-                <span class="tag">Vite 6</span>
-                <span class="tag">Apache 2.0</span>
+            <div class="hero-text">
+                <span class="hero-emoji">👓</span>
+                <div class="tag-row">
+                    <span class="tag">HTML / CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Responsive</span>
+                    <span class="tag">Client Work</span>
+                </div>
+                <h1>PAL Optical Site</h1>
+                <p class="hero-sub">A clean, professional public-facing website for PAL Optical — showcasing services,
+                    staff, and contact information with a fully responsive design built for every device.</p>
+                <a href="https://jamesbrentlingeriv-spec.github.io/PALSITE/index.html" target="_blank"
+                    class="demo-btn">PAL Optical Site →</a>
             </div>
-            <h1>Pal Optical Boutique.</h1>
-            <p class="hero-sub">A premium "Gold & Dark" web experience for a luxury eyewear boutique in Lexington, KY — designer showcases, professional care info, and fluid animations throughout.</p>
+            <div class="hero-img">
+                <video src="palsite2.mp4" autoplay loop muted playsinline></video>
+            </div>
         </div>
-        <div class="hero-visual">
-            <!-- Video placeholder — swap src when ready -->
-            <div class="hero-video">Video coming soon</div>
-        </div>
-    </header>
+    </div>
 
     <main>
 
         <div class="section">
-            <span class="section-label">Overview</span>
-            <h2 class="section-title">A Luxury Experience, Online</h2>
-            <p class="section-body">
-                Pal Optical Boutique is a modern, high-end web application designed to reflect the premium nature of the designer brands it carries. The <strong>"Gold & Dark"</strong> aesthetic runs throughout every component — from the color palette to the motion design — communicating quality before a single word is read.
-            </p>
-            <p class="section-body" style="margin-top: 1rem;">
-                Built with <strong>React 19 + TypeScript</strong> on <strong>Vite 6</strong>, the site is fast, type-safe, and structured for long-term maintainability. <strong>Tailwind CSS 4</strong> handles styling with precision, while <strong>Motion</strong> (formerly Framer Motion) powers seamless page transitions and interactive elements that feel native and polished.
-            </p>
+            <p class="section-title">🌟 Overview</p>
+            <p>PAL Optical needed a public website that matched the professionalism of their practice — something clean,
+                fast, and easy to navigate for patients looking up hours, services, or contact details.</p>
+            <p>Built from scratch with no frameworks or page builders, the site is fully responsive, loads fast on any
+                connection, and presents the practice in the best possible light across desktop and mobile.</p>
         </div>
 
         <hr class="divider" />
 
         <div class="section">
-            <span class="section-label">Key Features</span>
-            <h2 class="section-title">Built for Boutique</h2>
+            <p class="section-title">📸 Screenshots</p>
+            <div class="screenshots-grid">
+                <img src="palsite1.png" alt="PAL Optical Site screenshot 1" />
+                <img src="palsite2.png" alt="PAL Optical Site screenshot 2" />
+                <img src="palsite3.png" alt="PAL Optical Site screenshot 3" />
+                <img src="palsite4.png" alt="PAL Optical Site screenshot 4" />
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="section">
+            <p class="section-title">✨ Features</p>
             <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">💎</div>
-                    <h4>Designer Showcases</h4>
-                    <p>High-resolution galleries presenting premium eyewear brands with the visual weight they deserve.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📅</div>
-                    <h4>Professional Care Info</h4>
-                    <p>Dedicated sections for on-site eye doctors, consultation services, and appointment details.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎭</div>
-                    <h4>Fluid Animations</h4>
-                    <p>Seamless page transitions and interactive elements powered by Motion for a premium feel.</p>
-                </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
                     <h4>Fully Responsive</h4>
-                    <p>A flawless experience across mobile, tablet, and desktop — no compromises at any breakpoint.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📍</div>
-                    <h4>Local Presence</h4>
-                    <p>Integrated contact and location information for the Lexington, KY boutique location.</p>
+                    <p>Designed mobile-first and tested across all screen sizes — phones, tablets, and desktops.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h4>Vite-Powered Speed</h4>
-                    <p>Near-instant dev server and optimized production builds via Vite 6 for peak performance.</p>
+                    <h4>Fast Load Times</h4>
+                    <p>No bloated frameworks. Pure HTML, CSS, and JavaScript for maximum performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Custom Design</h4>
+                    <p>Tailored to PAL Optical's brand — colors, typography, and layout built specifically for them.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4>Location & Hours</h4>
+                    <p>Clear display of practice location, hours of operation, and contact information.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h4>SEO Ready</h4>
+                    <p>Semantic HTML, proper meta tags, and fast performance for strong local search visibility.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h4>Accessible</h4>
+                    <p>Built with accessibility in mind — proper contrast, alt text, and keyboard navigation.</p>
                 </div>
             </div>
         </div>
@@ -307,38 +231,20 @@
         <hr class="divider" />
 
         <div class="section">
-            <span class="section-label">Tech Stack</span>
-            <h2 class="section-title">Modern Frontend, Top to Bottom</h2>
-            <div class="tech-stack">
-                <span class="tech-item">React 19</span>
-                <span class="tech-item">TypeScript</span>
-                <span class="tech-item">Vite 6</span>
-                <span class="tech-item">Tailwind CSS 4</span>
-                <span class="tech-item">Motion</span>
-                <span class="tech-item">React Router 7</span>
-                <span class="tech-item">Lucide React</span>
-            </div>
-        </div>
-
-        <hr class="divider" />
-
-        <div class="section">
-            <span class="section-label">Project Structure</span>
-            <h2 class="section-title">Clean & Modular Architecture</h2>
-            <div class="structure-block">
-                <span class="dir">├── src/</span><br>
-                <span class="file">&nbsp;&nbsp;&nbsp;&nbsp;├── components/</span><span class="comment">&nbsp;&nbsp;&nbsp;# Reusable UI — Navbar, Footer, Cards</span><br>
-                <span class="file">&nbsp;&nbsp;&nbsp;&nbsp;├── pages/</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Home, Brands, Contact</span><br>
-                <span class="file">&nbsp;&nbsp;&nbsp;&nbsp;├── App.tsx</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Entry point & routing</span><br>
-                <span class="file">&nbsp;&nbsp;&nbsp;&nbsp;└── index.css</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;# Global styles & Tailwind config</span><br>
-                <span class="dir">├── public/</span><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Static assets</span><br>
-                <span class="file">└── vite.config.ts</span><span class="comment">&nbsp;&nbsp;&nbsp;# Vite configuration</span>
+            <p class="section-title">🔧 Tech Stack</p>
+            <div class="tech-list">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Responsive Design</span>
+                <span class="tech-pill">SEO Best Practices</span>
+                <span class="tech-pill">Performance Optimization</span>
             </div>
         </div>
 
     </main>
 
-    <footer>⚜️ Crafted for Pal Optical Boutique · Built by James Brentlinger IV · 2026</footer>
+    <footer>Designed & built by James · 2025</footer>
 
 </body>
 
