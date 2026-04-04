@@ -27,22 +27,18 @@
       --radius: 12px;
     }
 
-    @keyframes rainbow {
-      0%   { background-position: 0% }
-      100% { background-position: 300% }
-    }
+    @keyframes yellowglow {
 
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-      background: linear-gradient(90deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6);
-      background-size: 300% auto;
-      animation: rainbow 4s linear infinite;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      0%,
+      100% {
+        color: #facc15;
+        text-shadow: 0 0 8px #facc15, 0 0 24px #fbbf24, 0 0 48px #f59e0b;
+      }
+
+      50% {
+        color: #fde68a;
+        text-shadow: 0 0 4px #fde68a, 0 0 10px #fde68a;
+      }
     }
 
     html {
@@ -65,7 +61,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 6%;
-      background: rgba(10, 10, 15, 0.85);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -106,21 +102,26 @@
       background: #000;
     }
 
+    .hero-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .hero-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 40% 50%, rgba(96,165,250,0.12) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .hero-emoji {
-      font-size: 5rem;
-      margin-bottom: 1.5rem;
-      display: block;
+      z-index: 1;
     }
 
     .hero-content {
       position: relative;
+      z-index: 2;
       display: flex;
       align-items: flex-end;
       gap: 4rem;
@@ -174,9 +175,9 @@
       font-weight: 500;
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     h1 {
@@ -192,6 +193,25 @@
       max-width: 600px;
     }
 
+    .demo-btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      text-decoration: none;
+      background: #000;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      margin-top: 1.5rem;
+      transition: background .2s;
+    }
+
+    .demo-btn:hover {
+      background: #111;
+    }
+
     main {
       max-width: 860px;
       margin: 0 auto;
@@ -200,6 +220,15 @@
 
     .section {
       margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+      animation: yellowglow 2s ease-in-out infinite;
+      color: #facc15;
     }
 
     p {
@@ -223,11 +252,12 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 1.4rem;
-      transition: border-color .2s;
+      transition: border-color .2s, transform .2s;
     }
 
     .feature-card:hover {
       border-color: var(--accent2);
+      transform: translateY(-3px);
     }
 
     .feature-icon {
@@ -239,6 +269,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 0.4rem;
+      color: #fff;
     }
 
     .feature-card p {
@@ -267,21 +298,42 @@
       margin: 3rem 0;
     }
 
-    .demo-btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #fff;
-      text-decoration: none;
-      background: #000;
-      border: 1px solid rgba(255,255,255,0.15);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      margin-top: 1.5rem;
-      transition: background .2s;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
-    .demo-btn:hover { background: #111; }
+
+    th {
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td:first-child {
+      color: var(--text);
+    }
+
+    code {
+      background: var(--surface);
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+      color: #a78bfa;
+    }
 
     footer {
       text-align: center;
@@ -301,17 +353,21 @@
   </nav>
 
   <div class="hero">
+    <video class="hero-bg-video" src="biblest.mp4" autoplay loop muted playsinline></video>
     <div class="hero-glow"></div>
     <div class="hero-content">
       <div class="hero-text">
-        <img
-          src="https://capsule-render.vercel.app/api?type=waving&color=0:1d4ed8,100:0f172a&height=220&section=header&text=Bible%20Study%20Suite&fontSize=44&fontColor=ffffff&animation=fadeIn&fontAlignY=38"
-          alt="Bible Study Suite banner" />
-
+        <div class="tag-row">
+          <span class="tag">Vanilla JS</span>
+          <span class="tag">IndexedDB</span>
+          <span class="tag">bible-api.com</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
         <h1>Bible Study Suite</h1>
-        <p class="hero-sub">Browser-based Bible study app with Bible reading, note-taking, verse context, per-note
-          audio, and per-note songs/lyrics. ([Live Demo](https://jamesbrentlingeriv--spec.github.io/biblestudy/))</p>
-        <a href="https://jamesbrentlingeriv-spec.github.io/biblestudy/" target="_blank" class="demo-btn">Bible Study Suite →</a>
+        <p class="hero-sub">Browser-based Bible study app with Bible reading, note-taking, verse context, per-note audio
+          recordings, and per-note songs/lyrics. All data stored locally.</p>
+        <a href="https://jamesbrentlingeriv-spec.github.io/biblestudy/" target="_blank" class="demo-btn">Bible Study
+          Suite →</a>
       </div>
       <div class="hero-img">
         <img src="bsuite.gif" alt="Bible Study Suite demo" />
@@ -322,62 +378,247 @@
   <main>
 
     <div class="section">
-      <p class="section-title">Quick Navigation</p>
-      <p>Bible Study Suite is a browser-based app with Bible reading, note-taking, verse context, per-note audio
-        recordings, and per-note songs/lyrics. All data stored locally (IndexedDB/localStorage). Fetches Bible text from
-        bible-api.com.</p>
+      <p class="section-title">🗺️ Quick Navigation</p>
+      <table>
+        <thead>
+          <tr style="background:#facc15;">
+            <th style="color:#000;">Section</th>
+            <th style="color:#000;">What You Get</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Features</td>
+            <td>Bible reader, notes, red-letter text, songs, recordings</td>
+          </tr>
+          <tr>
+            <td>Architecture</td>
+            <td>App flow and storage model</td>
+          </tr>
+          <tr>
+            <td>Tech Stack</td>
+            <td>Source files and their roles</td>
+          </tr>
+          <tr>
+            <td>Data Storage</td>
+            <td>localStorage and IndexedDB breakdown</td>
+          </tr>
+          <tr>
+            <td>Run Locally</td>
+            <td>Local server setup</td>
+          </tr>
+          <tr>
+            <td>Troubleshooting</td>
+            <td>Fast fixes for common issues</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <hr class="divider" />
 
-
-
-    <hr class="divider" />
-
     <div class="section">
-      <p class="section-title">Features</p>
+      <p class="section-title">✨ Features</p>
       <div class="feature-grid">
         <div class="feature-card">
           <div class="feature-icon">📖</div>
           <h4>Bible Reading</h4>
-          <p>Select book/chapter/translation. Prev/next navigation. Verse search (John 3:16). Click verse to insert ref
-            into notes. Red-letter text in Gospels.</p>
+          <p>Select book, chapter, and translation. Prev/next navigation. Search verse refs like John 3:16 to jump
+            directly. Click a verse to insert its reference into notes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔴</div>
+          <h4>Red-Letter Text</h4>
+          <p>Quoted speech in Matthew, Mark, Luke, and John is highlighted in red — just like a red-letter Bible.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📝</div>
           <h4>Notes</h4>
-          <p>Create, edit, autosave. Sidebar list for quick access. Delete from list. Verse refs in notes auto-detected
-            and shown in sidebar.</p>
+          <p>Create, edit, and autosave notes. Sidebar list for fast recall. Verse references typed in notes are
+            auto-detected and rendered in the context sidebar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📜</div>
+          <h4>Referenced Verses Sidebar</h4>
+          <p>Automatically fetches verse text for any references found in your notes. Shows reference cards and lets you
+            jump to them instantly.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎙️</div>
           <h4>Per-Note Audio</h4>
-          <p>Microphone recording tied to current note. Playback, download, delete. Stored in IndexedDB.</p>
+          <p>Record audio in-browser using your microphone. Recordings attach to the current note. Playback, download,
+            and delete — persisted in IndexedDB.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎵</div>
           <h4>Per-Note Songs</h4>
-          <p>Add song title + lyrics. List view/delete/insert into note. Stored with note.</p>
+          <p>Add a song title and lyrics to any study note. View, delete, or insert saved songs directly into note
+            content.</p>
         </div>
-      </div>
-      <div class="tech-list" style="margin-top: 2rem;">
-        <span class="tech-pill">Vanilla JS</span>
-        <span class="tech-pill">IndexedDB + localStorage</span>
-        <span class="tech-pill">bible-api.com</span>
-        <span class="tech-pill">GitHub Pages</span>
       </div>
     </div>
 
     <hr class="divider" />
 
     <div class="section">
-      <p class="section-title">Run Locally & Deploy</p>
-      <p><strong>Live Server:</strong> Right-click index.html → Open with Live Server (VS Code ext) →
-        http://127.0.0.1:5500/</p>
-      <p><strong>GitHub Pages:</strong> Push to main → Settings/Pages → Deploy from main/root. Live after 5min.</p>
-      <p>Live Demo: <a
-          href="https://jamesbrentlingeriv--spec.github.io/biblestudy/">https://jamesbrentlingeriv--spec.github.io/biblestudy/</a>
-      </p>
+      <p class="section-title">🏗️ Architecture</p>
+      <p style="margin-bottom:1.5rem;">App flow: <code>index.html</code> → <code>apps.js</code> → notes.js / audio.js /
+        bible.js → bible-api.com / localStorage / IndexedDB</p>
+      <table>
+        <thead>
+          <tr style="background:#facc15; color:#000;">
+            <th>Entity</th>
+            <th>Fields</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NOTE</strong></td>
+            <td>id, title, content, translation, timestamp</td>
+          </tr>
+          <tr>
+            <td><strong>SONG</strong></td>
+            <td>id, title, lyrics, createdAt, noteId</td>
+          </tr>
+          <tr>
+            <td><strong>RECORDING</strong></td>
+            <td>id, noteId, timestamp, duration, blob (IndexedDB)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🔧 Tech Stack</p>
+      <table style="margin-bottom:1.5rem;">
+        <thead>
+          <tr style="background:#facc15; color:#000;">
+            <th>File</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>index.html</code></td>
+            <td>App layout and UI containers</td>
+          </tr>
+          <tr>
+            <td><code>style.css</code></td>
+            <td>Custom styling</td>
+          </tr>
+          <tr>
+            <td><code>apps.js</code></td>
+            <td>Main controller, chapter rendering, navigation, search</td>
+          </tr>
+          <tr>
+            <td><code>bible.js</code></td>
+            <td>Bible metadata, regex parsing, API calls to bible-api.com</td>
+          </tr>
+          <tr>
+            <td><code>notes.js</code></td>
+            <td>Notes management, autosave, verse detection, songs UI/data</td>
+          </tr>
+          <tr>
+            <td><code>audio.js</code></td>
+            <td>Recorder, waveform visualizer, IndexedDB audio persistence</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tech-list">
+        <span class="tech-pill">Vanilla JS</span>
+        <span class="tech-pill">IndexedDB</span>
+        <span class="tech-pill">localStorage</span>
+        <span class="tech-pill">bible-api.com</span>
+        <span class="tech-pill">GitHub Pages</span>
+        <span class="tech-pill">Web Audio API</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">💾 Data Storage</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🗄️</div>
+          <h4>localStorage</h4>
+          <p><code>bibleStudyNotes</code> — notes array
+            (title/content/references/songs)<br><br><code>bibleStudyRecordings</code> — recording metadata backup</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h4>IndexedDB</h4>
+          <p>Database: <code>BibleStudyDB</code><br>Store: <code>recordings</code><br>Fields: id, noteId, timestamp,
+            duration, type, blob</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>Privacy</h4>
+          <p>Microphone access only when recording. All notes and audio stored locally in your browser. Bible text
+            fetched from bible-api.com only.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🚀 Run Locally & Deploy</p>
+      <div class="feature-grid" style="margin-bottom:1.5rem;">
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h4>VS Code Live Server</h4>
+          <p>Install the Live Server extension, right-click <code>index.html</code> → Open with Live Server →
+            <code>http://127.0.0.1:5500/</code>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🐍</div>
+          <h4>Python</h4>
+          <p><code>cd biblestudy</code><br><code>python -m http.server 8000</code><br>→
+            <code>http://localhost:8000</code>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h4>GitHub Pages</h4>
+          <p>Push to <code>main</code> → Settings → Pages → Deploy from branch → main / root. Live in 5–10 min.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🛠️ Troubleshooting</p>
+      <table>
+        <thead>
+          <tr style="background:#facc15; color:#000;">
+            <th>Issue</th>
+            <th>Fix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Blank Bible panel</td>
+            <td>Use HTTP server (Live Server), not file://</td>
+          </tr>
+          <tr>
+            <td>No microphone</td>
+            <td>Grant permission when prompted</td>
+          </tr>
+          <tr>
+            <td>Recordings disappear</td>
+            <td>Avoid incognito — IndexedDB is cleared in private mode</td>
+          </tr>
+          <tr>
+            <td>GitHub Pages slow</td>
+            <td>5–10 min deploy time — Ctrl+Shift+R to hard refresh</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   </main>

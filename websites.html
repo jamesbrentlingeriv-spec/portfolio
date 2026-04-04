@@ -26,7 +26,16 @@
       --muted: #aaa;
       --radius: 12px;
     }
-    @keyframes rainbow { 0% { background-position:0% } 100% { background-position:300% } }
+
+    @keyframes rainbow {
+      0% {
+        background-position: 0%
+      }
+
+      100% {
+        background-position: 300%
+      }
+    }
 
     html {
       scroll-behavior: smooth;
@@ -92,7 +101,7 @@
     .hero-glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 40% 60%, rgba(74,222,128,0.1) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 40% 60%, rgba(74, 222, 128, 0.1) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -156,9 +165,9 @@
       font-weight: 500;
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     h1 {
@@ -189,7 +198,7 @@
       font-weight: 600;
       margin-bottom: 1.5rem;
       letter-spacing: -0.5px;
-      background: linear-gradient(90deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6);
+      background: linear-gradient(90deg, #f87171, #fb923c, #facc15, #4ade80, #60a5fa, #a78bfa, #f472b6);
       background-size: 300% auto;
       animation: rainbow 4s linear infinite;
       -webkit-background-clip: text;
@@ -214,10 +223,13 @@
     }
 
     .site-card {
+      display: block;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
+      color: inherit;
+      text-decoration: none;
       transition: border-color .2s, transform .2s;
     }
 
@@ -267,9 +279,9 @@
       font-size: 0.7rem;
       padding: 0.15rem 0.5rem;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .approach-list {
@@ -466,6 +478,19 @@
                 class="site-tag">SEO</span></div>
           </div>
         </div>
+
+        <a class="site-card" href="the-shaking-of-my-hands.html">
+          <div class="site-thumb"
+            style="background: linear-gradient(135deg, rgba(255,78,0,0.4), rgba(20,20,20,0.9)), url('shaking-of-my-hands-assets/book.png') center/contain no-repeat, #090909;">
+          </div>
+          <div class="site-info">
+            <h4>The Shaking of My Hands</h4>
+            <p>Promotional microsite for a novella with a dramatic hero section, thematic story panels, author profile,
+              and EPUB download.</p>
+            <div class="site-tags"><span class="site-tag">Editorial</span><span class="site-tag">Responsive</span><span
+                class="site-tag">Landing Page</span></div>
+          </div>
+        </a>
 
       </div>
     </div>

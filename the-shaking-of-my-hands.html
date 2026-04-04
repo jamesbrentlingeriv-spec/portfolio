@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Official website for the novella The Shaking of My Hands by James Brentlinger." />
+  <title>The Shaking of My Hands</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap");
+
+    :root {
+      --bg: #0a0a0a;
+      --text: #f5f5f5;
+      --muted: rgba(255, 255, 255, 0.68);
+      --line: rgba(255, 255, 255, 0.1);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-soft: rgba(255, 255, 255, 0.03);
+      --accent: #ff4e00;
+      --accent-soft: rgba(255, 78, 0, 0.12);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+      --container: min(1120px, calc(100% - 48px));
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 25% 22%, rgba(255, 78, 0, 0.24), transparent 0 23%),
+        radial-gradient(circle at 80% 28%, rgba(37, 99, 235, 0.14), transparent 0 20%),
+        linear-gradient(180deg, #0c0c0c 0%, #090909 55%, #060606 100%);
+      font-family: "Inter", system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin: 0;
+    }
+
+    .shell {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    .shell::before,
+    .shell::after {
+      content: "";
+      position: fixed;
+      width: 32rem;
+      height: 32rem;
+      border-radius: 999px;
+      filter: blur(120px);
+      opacity: 0.24;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .shell::before {
+      top: -10rem;
+      left: -7rem;
+      background: rgba(255, 78, 0, 0.75);
+    }
+
+    .shell::after {
+      right: -10rem;
+      top: 10rem;
+      background: rgba(37, 99, 235, 0.42);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(10, 10, 10, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .site-nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 1.24rem;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.95rem;
+      animation: tremor 0.1s infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover,
+    .social-links a:hover,
+    .contact-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 108px 0 56px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(120px);
+      z-index: 0;
+      opacity: 0.18;
+    }
+
+    .hero::before {
+      width: 26rem;
+      height: 26rem;
+      left: 16%;
+      top: 24%;
+      background: var(--accent);
+    }
+
+    .hero::after {
+      width: 24rem;
+      height: 24rem;
+      right: 12%;
+      bottom: 20%;
+      background: rgba(59, 130, 246, 0.75);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    .eyebrow,
+    .section-label {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    .section-title,
+    .card h3,
+    .book-card h3,
+    .author-name,
+    .contact-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin-top: 16px;
+      font-size: clamp(3.9rem, 9vw, 8rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      display: block;
+      color: rgba(255, 255, 255, 0.42);
+      font-style: italic;
+    }
+
+    .lead {
+      max-width: 44rem;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.22rem);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 56px;
+      padding: 0 32px;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .button {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .button-secondary {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text);
+    }
+
+    .button:hover,
+    .button-secondary:hover,
+    .card:hover,
+    .book-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .button-arrow {
+      font-size: 1rem;
+      transition: transform 0.25s ease;
+    }
+
+    .button:hover .button-arrow {
+      transform: translateX(4px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      animation: bob 2s infinite;
+      opacity: 0.75;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 96px 0;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 448px);
+      gap: 64px;
+      align-items: center;
+    }
+
+    .glass-panel,
+    .card,
+    .book-card,
+    .redemption,
+    .contact-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      margin-top: 14px;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .body-copy {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .story-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      color: var(--accent);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .story-badge-dot,
+    .theme-icon,
+    .redemption-icon,
+    .author-avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .story-badge-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .book-card {
+      position: relative;
+      overflow: hidden;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 560px;
+    }
+
+    .book-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 35%, rgba(10, 10, 10, 0.75) 100%);
+      z-index: 1;
+    }
+
+    .book-visual {
+      position: absolute;
+      inset: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+    }
+
+    .book-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .book-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .book-card h3 {
+      font-size: 2rem;
+    }
+
+    .book-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .themes {
+      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-head {
+      max-width: 38rem;
+      text-align: center;
+      margin: 0 auto 64px;
+    }
+
+    .section-head p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 32px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 78, 0, 0.3);
+    }
+
+    .theme-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: rgba(255, 78, 0, 0.14);
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: "JetBrains Mono", monospace;
+    }
+
+    .card h3 {
+      margin-top: 24px;
+      font-size: 1.45rem;
+    }
+
+    .card p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .redemption {
+      position: relative;
+      overflow: hidden;
+      padding: 48px;
+    }
+
+    .redemption::after {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      background: rgba(255, 78, 0, 0.12);
+      filter: blur(32px);
+    }
+
+    .redemption-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 48rem;
+    }
+
+    .redemption-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .redemption-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .redemption-copy p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .redemption-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .redemption-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+    }
+
+    .redemption-number {
+      color: var(--accent);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.1rem;
+    }
+
+    .redemption-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .redemption-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .author-section {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .author-layout {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .author-avatar {
+      width: 192px;
+      height: 192px;
+      flex: 0 0 192px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      position: sticky;
+      top: 128px;
+      box-shadow: var(--shadow);
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-copy {
+      max-width: 48rem;
+    }
+
+    .author-name {
+      margin-top: 14px;
+      font-size: 3rem;
+      letter-spacing: -0.04em;
+    }
+
+    .author-copy-body {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .contact-band {
+      padding: 0;
+      background: var(--accent);
+      color: white;
+    }
+
+    .contact-panel {
+      border-radius: 0;
+      border: 0;
+      box-shadow: none;
+      background: linear-gradient(180deg, rgba(255, 78, 0, 0.95), rgba(231, 74, 0, 0.96));
+      text-align: center;
+      padding: 96px 24px;
+    }
+
+    .contact-label {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .contact-title {
+      margin-top: 18px;
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      letter-spacing: -0.05em;
+      line-height: 1.04;
+    }
+
+    .contact-panel p {
+      max-width: 36rem;
+      margin: 20px auto 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.03rem;
+    }
+
+    .signup-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 40rem;
+      margin: 42px auto 0;
+    }
+
+    .signup-form input {
+      flex: 1;
+      min-width: 0;
+      height: 56px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 0 24px;
+      font: inherit;
+      outline: none;
+    }
+
+    .signup-form input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .signup-form button {
+      height: 56px;
+      padding: 0 32px;
+      border: 0;
+      border-radius: 999px;
+      background: white;
+      color: var(--accent);
+      font-size: 0.94rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .signup-note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.64);
+      letter-spacing: 0.04em;
+    }
+
+    footer {
+      padding: 48px 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.42);
+      text-align: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 26px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    @keyframes tremor {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(1px, -1px);
+      }
+
+      50% {
+        transform: translate(-1px, 1px);
+      }
+
+      75% {
+        transform: translate(1px, 1px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(10px);
+      }
+    }
+
+    @media (max-width: 960px) {
+
+      .site-nav .container,
+      .author-layout,
+      .section-grid,
+      .card-grid,
+      .redemption-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-nav .container,
+      .author-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 144px;
+      }
+
+      .book-card {
+        min-height: 460px;
+      }
+
+      .author-avatar {
+        position: relative;
+        top: 0;
+      }
+    }
+
+    @media (max-width: 680px) {
+      :root {
+        --container: min(1120px, calc(100% - 24px));
+      }
+
+      .nav-links,
+      .hero-actions,
+      .signup-form,
+      .social-links {
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .button,
+      .button-secondary,
+      .signup-form button,
+      .signup-form input {
+        width: 100%;
+      }
+
+      .redemption,
+      .book-card,
+      .contact-panel {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .author-name {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <nav class="site-nav">
+      <div class="container">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>The Shaking of My Hands</span>
+        </a>
+        <div class="nav-links">
+          <a href="#synopsis">Synopsis</a>
+          <a href="#themes">Themes</a>
+          <a href="#author">Author</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <span class="eyebrow">A Novella by James Brentlinger</span>
+          <h1>
+            The Shaking
+            <span class="subtitle">of My Hands</span>
+          </h1>
+          <p class="lead">
+            A pediatric neurosurgeon's descent into the shadows of Tardive dyskinesia, addiction, and the fragile line
+            between healing and self-destruction.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#synopsis">Read the Synopsis <span class="button-arrow"
+                aria-hidden="true">&rarr;</span></a>
+            <a class="button-secondary" href="./shaking-of-my-hands-assets/book.epub"
+              download="The Shaking of My Hands.epub">Download Free
+              EPUB</a>
+          </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true"></div>
+      </section>
+
+      <section id="synopsis">
+        <div class="container section-grid">
+          <div>
+            <span class="story-badge"><span class="story-badge-dot" aria-hidden="true"></span> The Story</span>
+            <h2 class="section-title">A Career Built on Precision, Threatened by Involuntary Motion.</h2>
+            <div class="body-copy">
+              <p>
+                Dr. Grant Hayes was the finest pediatric neurosurgeon in the country. His hands were his instruments,
+                capable of the most delicate maneuvers known to medicine. But when the first twitch appeared, his world
+                began to fracture.
+              </p>
+              <p>
+                Diagnosed with Tardive dyskinesia, Grant faced the end of his surgical career. Desperate to maintain the
+                facade of perfection, he turned to the hospital's own supply of Percocet, hoping to quiet the tremors
+                that threatened to expose him.
+              </p>
+              <p>
+                What followed was a spiral into addiction, theft, and the eventual loss of everything he held dear. The
+                Shaking of My Hands is a raw exploration of burnout, the pressure of medical excellence, and the long
+                road to redemption.
+              </p>
+            </div>
+          </div>
+          <aside class="book-card glass-panel">
+            <div class="book-visual">
+              <img src="./shaking-of-my-hands-assets/book.png" alt="The novella cover displayed on a dark panel" />
+            </div>
+            <div class="book-copy">
+              <h3>The Novella</h3>
+              <p>Available as a free digital download.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="themes" class="themes">
+        <div class="container">
+          <div class="section-head">
+            <span class="section-label">Core Themes</span>
+            <h2 class="section-title">Medicine, mental health, and human resilience under pressure.</h2>
+            <p>
+              Exploring the physical, ethical, and emotional fallout that comes when professional identity starts to
+              fail.
+            </p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <span class="theme-icon">01</span>
+              <h3>Tardive Dyskinesia</h3>
+              <p>A deep dive into the physical and psychological toll of movement disorders on high-stakes
+                professionals.</p>
+            </article>
+            <article class="card">
+              <span class="theme-icon">02</span>
+              <h3>The Addiction Spiral</h3>
+              <p>A realistic portrayal of opioid dependency born not from recreation, but from a desperate need to
+                preserve a career.</p>
+            </article>
+            <article class="card">
+              <span class="theme-icon">03</span>
+              <h3>Physician Burnout</h3>
+              <p>Exposing the silent epidemic of burnout among doctors and the dangerous culture of hiding
+                vulnerability.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="redemption glass-panel">
+            <div class="redemption-copy">
+              <div class="redemption-head">
+                <span class="redemption-icon" aria-hidden="true">+</span>
+                <h2 class="section-title">From Surgeon to Speaker</h2>
+              </div>
+              <p>
+                The story does not end in darkness. Grant Hayes's recovery leads him to a new calling: helping other
+                physicians confront burnout and hidden disorders before they lose everything.
+              </p>
+            </div>
+            <div class="redemption-grid">
+              <div class="redemption-item">
+                <div class="redemption-number">01</div>
+                <div>
+                  <strong>Consultancy</strong>
+                  <span>Advising medical boards on physician wellness programs.</span>
+                </div>
+              </div>
+              <div class="redemption-item">
+                <div class="redemption-number">02</div>
+                <div>
+                  <strong>Advocacy</strong>
+                  <span>Breaking the stigma of mental health in the medical community.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="author" class="author-section">
+        <div class="container author-layout">
+          <div class="author-avatar">
+            <img src="./shaking-of-my-hands-assets/portrait.png" alt="Portrait of James Brentlinger" />
+          </div>
+          <div class="author-copy">
+            <span class="section-label">About the Author</span>
+            <h2 class="author-name">James Brentlinger</h2>
+            <div class="author-copy-body">
+              <p>
+                Working as an optician at PAL Optical, James has carved out a unique niche by blending clinical
+                expertise with technical development. His work is defined by a commitment to efficiency and
+                modernization, building custom tools that streamline the workplace from the inside out.
+              </p>
+              <p>
+                From complex quoting systems and inventory management tools to digital patient intake forms, he has
+                acted as an in-house developer, bridging the gap between optical services and functional software
+                solutions.
+              </p>
+              <p>
+                Beyond the office, his creative energy shifts toward writing, music, and gaming. He is a
+                singer-songwriter, admittedly a much better songwriter than singer, channeling the same drive to create
+                into original music.
+              </p>
+              <p>
+                A lifelong tinkerer of novels, James has spent years starting stories that were never meant to be
+                finished. Before The Shaking of My Hands, his literary output was confined to poetry, with his last
+                published work appearing in a college journal over ten years ago.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-band">
+        <div class="contact-panel">
+          <div class="container">
+            <span class="section-label contact-label">Stay Connected</span>
+            <h2 class="contact-title">Stay Connected</h2>
+            <p>
+              Sign up for updates on book signings, speaking engagements, and new releases.
+            </p>
+            <form class="signup-form">
+              <input type="email" placeholder="Your email address" aria-label="Your email address" />
+              <button type="button">Join</button>
+            </form>
+            <div class="signup-note">Static demo form preserved to match the original layout.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+          <a href="#">LinkedIn</a>
+        </div>
+        <div>Copyright 2026 James Brentlinger. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
