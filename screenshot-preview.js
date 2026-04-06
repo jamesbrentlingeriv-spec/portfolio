@@ -43,8 +43,8 @@
         ".gallery-visual img",
         ".gallery-visual video",
         ".hero-img img",
-        ".hero-img video"
-      ].join(", ")
+        ".hero-img video",
+      ].join(", "),
     );
   }
 
@@ -81,7 +81,8 @@
       const fullSrc = thumb.dataset.full || thumb.src;
       if (!fullSrc) return;
 
-      const isVideo = thumb.tagName === "VIDEO" || fullSrc.match(/\.(mp4|webm|ogg)$/i);
+      const isVideo =
+        thumb.tagName === "VIDEO" || fullSrc.match(/\.(mp4|webm|ogg)$/i);
 
       if (isVideo) {
         modalImg.style.display = "none";
@@ -130,6 +131,6 @@
   observer.observe(document.body, { childList: true, subtree: true });
 
   console.log(
-    "Screenshot Preview initialized. Click thumbnails to expand, click again to close."
+    "Screenshot Preview initialized. Click thumbnails to expand, click again to close.",
   );
 })();
