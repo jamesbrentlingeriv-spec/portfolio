@@ -321,7 +321,7 @@ nc
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
         }
 
@@ -657,6 +657,28 @@ nc
         @media (max-width: 600px) {
             nav ul {
                 display: none;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .card {
+                height: auto;
+                min-height: 0;
+            }
+
+            .card .card-body {
+                overflow: visible;
+            }
+
+            .card-img {
+                height: 200px;
+            }
+
+            .card-body {
+                padding: 1.2rem;
             }
 
             .contact-card {

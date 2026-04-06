@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OCU-SYNC — James</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="screenshot-preview.css" />
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         :root {
             --bg: #0a0a0f;
@@ -21,7 +30,9 @@
             --radius: 12px;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -33,7 +44,8 @@
 
         nav {
             position: fixed;
-            top: 0; width: 100%;
+            top: 0;
+            width: 100%;
             z-index: 100;
             display: flex;
             justify-content: space-between;
@@ -44,8 +56,16 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .logo { font-weight: 700; text-decoration: none; color: var(--text); font-size: 1.1rem; }
-        .logo span { color: var(--accent); }
+        .logo {
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
 
         .back-btn {
             color: var(--muted);
@@ -53,7 +73,10 @@
             font-size: 0.9rem;
             transition: color .2s;
         }
-        .back-btn:hover { color: var(--text); }
+
+        .back-btn:hover {
+            color: var(--text);
+        }
 
         /* HERO */
         .hero {
@@ -66,12 +89,28 @@
                 radial-gradient(circle at 85% 60%, rgba(14, 165, 233, 0.09), transparent 50%);
         }
 
-        .hero-content { flex: 1; }
-        .hero-visual { flex: 1; min-width: 0; }
+        .hero-content {
+            flex: 1;
+        }
 
-        .brand-img { height: 52px; width: auto; margin-bottom: 1.5rem; display: block; }
+        .hero-visual {
+            flex: 1;
+            min-width: 0;
+        }
 
-        .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .brand-img {
+            height: 52px;
+            width: auto;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
 
         .tag {
             font-size: 0.7rem;
@@ -111,7 +150,12 @@
             font-size: 0.95rem;
             transition: all .2s;
         }
-        .cta-btn:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(34,197,94,0.35); }
+
+        .cta-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.35);
+        }
 
         .hero-video {
             width: 100%;
@@ -121,9 +165,15 @@
         }
 
         /* MAIN */
-        main { max-width: 920px; margin: 0 auto; padding: 5rem 6%; }
+        main {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 5rem 6%;
+        }
 
-        .section { margin-bottom: 5rem; }
+        .section {
+            margin-bottom: 5rem;
+        }
 
         .section-label {
             display: inline-block;
@@ -149,9 +199,15 @@
             line-height: 1.75;
         }
 
-        .section-body strong { color: var(--text); }
+        .section-body strong {
+            color: var(--text);
+        }
 
-        hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 0 5rem; }
+        hr.divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 0 5rem;
+        }
 
         /* FEATURE GRID */
         .feature-grid {
@@ -174,7 +230,10 @@
             border-color: var(--accent-blue);
         }
 
-        .feature-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+        .feature-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+        }
 
         .feature-card h4 {
             font-size: 0.95rem;
@@ -206,7 +265,9 @@
             transition: transform .2s;
         }
 
-        .security-card:hover { transform: translateY(-4px); }
+        .security-card:hover {
+            transform: translateY(-4px);
+        }
 
         .security-card h4 {
             font-size: 0.95rem;
@@ -215,10 +276,19 @@
             color: var(--text);
         }
 
-        .security-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+        .security-card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
 
         /* TECH STACK */
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
 
         .tech-item {
             font-family: 'JetBrains Mono', monospace;
@@ -231,7 +301,9 @@
             transition: border-color .2s;
         }
 
-        .tech-item:hover { border-color: var(--accent-blue); }
+        .tech-item:hover {
+            border-color: var(--accent-blue);
+        }
 
         /* CONTACT CTA */
         .contact-cta {
@@ -246,8 +318,16 @@
             flex-wrap: wrap;
         }
 
-        .contact-cta h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .contact-cta p { color: var(--muted); font-size: 0.92rem; }
+        .contact-cta h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-cta p {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
 
         .contact-btn {
             display: inline-block;
@@ -263,7 +343,12 @@
             transition: all .2s;
             flex-shrink: 0;
         }
-        .contact-btn:hover { background: var(--accent); color: #000; transform: translateY(-2px); }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            color: #000;
+            transform: translateY(-2px);
+        }
 
         footer {
             text-align: center;
@@ -274,10 +359,306 @@
         }
 
         @media (max-width: 860px) {
-            .hero { flex-direction: column; padding-top: 8rem; gap: 2.5rem; }
-            .contact-cta { flex-direction: column; }
+            .hero {
+                flex-direction: column;
+                padding-top: 8rem;
+                gap: 2.5rem;
+            }
+
+            .contact-cta {
+                flex-direction: column;
+            }
+        }
+
+        /* Price list layout sync */
+        :root {
+            --bg: #0c0a09;
+            --surface: #1c1917;
+            --surface-strong: #14110f;
+            --border: #3a342f;
+            --text: #f5f5f4;
+            --muted: #a8a29e;
+            --muted-strong: #d6d3d1;
+            --radius: 20px;
+            --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+            --rainbow: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        }
+
+        @keyframes rainbow-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top right, rgba(255, 115, 0, 0.12), transparent 30%),
+                radial-gradient(circle at left 20%, rgba(0, 213, 255, 0.08), transparent 35%),
+                linear-gradient(180deg, #14110f 0%, var(--bg) 22%, var(--bg) 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            padding: 1rem 6%;
+            background: rgba(12, 10, 9, 0.82);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(231, 229, 228, 0.08);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.04em;
+        }
+
+        .logo span {
+            color: #ff7300;
+        }
+
+        .back-btn {
+            color: var(--muted);
+            font-size: 0.92rem;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            min-height: 0;
+            padding: 4.5rem 6% 2rem;
+            background: none;
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            padding: 1.5rem;
+            border-radius: calc(var(--radius) + 8px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            box-shadow: var(--shadow);
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+            gap: 2rem;
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: inherit;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 10s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .hero-content>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-visual,
+        .hero-text {
+            min-width: 0;
+        }
+
+        .hero-visual {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .hero-video,
+        .hero-visual img,
+        .hero-visual video,
+        .brand-img {
+            width: min(100%, 820px) !important;
+            max-width: 100%;
+            border-radius: calc(var(--radius) - 6px);
+            border: 1px solid rgba(245, 245, 244, 0.08);
+            background: var(--surface-strong);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            line-height: 0.95;
+            font-weight: 800;
+            letter-spacing: -0.07em;
+            margin: 1rem 0 1.25rem;
+            max-width: 12ch;
+        }
+
+        .hero-sub {
+            color: var(--muted-strong);
+            font-size: 1.08rem;
+            max-width: 60ch;
+        }
+
+        .tag-row,
+        .tech-stack {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .tag,
+        .tech-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(245, 245, 244, 0.1);
+            background: rgba(245, 245, 244, 0.04);
+            color: var(--muted-strong);
+            font-size: 0.76rem;
+            font-family: var(--mono);
+        }
+
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 6% 5rem;
+        }
+
+        .section {
+            margin-bottom: 1.75rem;
+            padding: 2rem;
+            background: rgba(28, 25, 23, 0.88);
+            border: 1px solid rgba(231, 229, 228, 0.08);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+            font-size: clamp(1.5rem, 2vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 8s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p,
+        .section-body,
+        .section-label {
+            color: var(--muted);
+        }
+
+        .feature-grid,
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-card,
+        .security-card {
+            background: rgba(28, 25, 23, 0.88);
+            border: 1px solid rgba(231, 229, 228, 0.08);
+            border-radius: var(--radius);
+            padding: 1.3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card::before,
+        .security-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 9s linear infinite;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(245, 245, 244, 0.08);
+            margin: 2rem 0;
+        }
+
+        .demo-btn,
+        .gold-btn,
+        .rainbow-btn,
+        .cta-btn,
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            background: rgba(245, 245, 244, 0.06);
+            border: 1px solid rgba(245, 245, 244, 0.1);
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.2rem;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(245, 245, 244, 0.08);
+        }
+
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            nav,
+            .hero,
+            main {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero-content,
+            .section {
+                padding: 1.4rem;
+            }
+
+            .feature-grid,
+            .security-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <script defer src="screenshot-preview.js"></script>
 </head>
 
 <body>
@@ -297,7 +678,8 @@
                 <span class="tag">Healthcare</span>
             </div>
             <h1>Bridging the Gap Between Care & Communication.</h1>
-            <p class="hero-sub">An enterprise-grade, HIPAA-compliant secure messaging platform built for healthcare professionals — encrypted, audited, and always on.</p>
+            <p class="hero-sub">An enterprise-grade, HIPAA-compliant secure messaging platform built for healthcare
+                professionals — encrypted, audited, and always on.</p>
             <a href="mailto:jamesbrentlingeriv@gmail.com" class="cta-btn">Request a Demo →</a>
         </div>
         <div class="hero-visual">
@@ -311,7 +693,11 @@
             <span class="section-label">Overview</span>
             <h2 class="section-title">The Problem with Clinical Communication</h2>
             <p class="section-body">
-                Healthcare providers are forced to choose between <strong>speed</strong> and <strong>compliance</strong>. Standard SMS is fast but exposes PHI. Legacy secure messaging tools are clunky and slow adoption. OCU-SYNC solves this by delivering a platform that feels as intuitive as a consumer messaging app while operating under a strict <strong>Security First</strong> architecture — AES-256 encryption, zero plain-text PHI in the database, and full audit trails baked in from day one.
+                Healthcare providers are forced to choose between <strong>speed</strong> and
+                <strong>compliance</strong>. Standard SMS is fast but exposes PHI. Legacy secure messaging tools are
+                clunky and slow adoption. OCU-SYNC solves this by delivering a platform that feels as intuitive as a
+                consumer messaging app while operating under a strict <strong>Security First</strong> architecture —
+                AES-256 encryption, zero plain-text PHI in the database, and full audit trails baked in from day one.
             </p>
         </div>
 
@@ -324,32 +710,38 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h4>End-to-End Encryption</h4>
-                    <p>Military-grade AES-256 encryption ensures PHI is protected from device to device. Keys are managed client-side — even the database sees only ciphertext.</p>
+                    <p>Military-grade AES-256 encryption ensures PHI is protected from device to device. Keys are
+                        managed client-side — even the database sees only ciphertext.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💬</div>
                     <h4>Secure Internal Messaging</h4>
-                    <p>A dedicated environment for sensitive PHI and clinical discussions, with real-time delivery and presence detection for your entire care team.</p>
+                    <p>A dedicated environment for sensitive PHI and clinical discussions, with real-time delivery and
+                        presence detection for your entire care team.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
                     <h4>Patient SMS Integration</h4>
-                    <p>Automated, non-PHI notifications — appointment reminders, follow-ups — sent directly to patients without exposing staff numbers or private data.</p>
+                    <p>Automated, non-PHI notifications — appointment reminders, follow-ups — sent directly to patients
+                        without exposing staff numbers or private data.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">👥</div>
                     <h4>Team Collaboration</h4>
-                    <p>Coordinate care seamlessly with your entire staff in real-time. Group channels, direct messages, and role-based access keep communication organized.</p>
+                    <p>Coordinate care seamlessly with your entire staff in real-time. Group channels, direct messages,
+                        and role-based access keep communication organized.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📋</div>
                     <h4>Clinical Workflow Tools</h4>
-                    <p>Built-in scheduling, patient intake forms, and clinical follow-up tracking — reducing the need for third-party tools that introduce compliance risk.</p>
+                    <p>Built-in scheduling, patient intake forms, and clinical follow-up tracking — reducing the need
+                        for third-party tools that introduce compliance risk.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🗄️</div>
                     <h4>Secure Records Archive</h4>
-                    <p>Fully archived conversations stored in compliance with HIPAA/HITECH regulations. Every message is timestamped, encrypted, and retrievable for audits.</p>
+                    <p>Fully archived conversations stored in compliance with HIPAA/HITECH regulations. Every message is
+                        timestamped, encrypted, and retrievable for audits.</p>
                 </div>
             </div>
         </div>
@@ -362,19 +754,23 @@
             <div class="security-grid">
                 <div class="security-card">
                     <h4>HIPAA / HITECH Compliant</h4>
-                    <p>Designed from the ground up to meet the stringent requirements of the Health Insurance Portability and Accountability Act and the HITECH Act.</p>
+                    <p>Designed from the ground up to meet the stringent requirements of the Health Insurance
+                        Portability and Accountability Act and the HITECH Act.</p>
                 </div>
                 <div class="security-card">
                     <h4>Data Isolation</h4>
-                    <p>Strict Firestore security rules ensure users can only access data they are explicitly authorized to see — no cross-tenant data leakage possible.</p>
+                    <p>Strict Firestore security rules ensure users can only access data they are explicitly authorized
+                        to see — no cross-tenant data leakage possible.</p>
                 </div>
                 <div class="security-card">
                     <h4>Audit Logs</h4>
-                    <p>Every interaction is logged with user identity, timestamp, and action type — providing a complete chain of custody for compliance monitoring.</p>
+                    <p>Every interaction is logged with user identity, timestamp, and action type — providing a complete
+                        chain of custody for compliance monitoring.</p>
                 </div>
                 <div class="security-card">
                     <h4>Zero Plain-Text PHI</h4>
-                    <p>Encryption keys are managed client-side via Crypto-JS. Protected Health Information is never stored in readable form, even at the infrastructure level.</p>
+                    <p>Encryption keys are managed client-side via Crypto-JS. Protected Health Information is never
+                        stored in readable form, even at the infrastructure level.</p>
                 </div>
             </div>
         </div>

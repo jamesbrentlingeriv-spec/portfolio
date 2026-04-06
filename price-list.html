@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Price List — James</title>
+    <title>PAL Optical Interactive Price List - James</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="screenshot-preview.css" />
     <style>
         *,
         *::before,
@@ -18,49 +21,76 @@
         }
 
         :root {
-            --bg: #000;
-            --surface: #111;
-            --border: #222;
-            --accent: #f472b6;
-            --accent2: #60a5fa;
-            --text: #fff;
-            --muted: #aaa;
-            --radius: 12px;
+            --bg: #0c0a09;
+            --surface: #1c1917;
+            --surface-soft: #292524;
+            --surface-strong: #14110f;
+            --border: #3a342f;
+            --text: #f5f5f4;
+            --muted: #a8a29e;
+            --muted-strong: #d6d3d1;
+            --radius: 20px;
+            --mono: "JetBrains Mono", ui-monospace, monospace;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+            --rainbow: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
         }
-        @keyframes rainbow { 0% { background-position:0% } 100% { background-position:300% } }
 
-        html { scroll-behavior: smooth; }
+        @keyframes rainbow-flow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
+            font-family: "Inter", sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(255, 115, 0, 0.12), transparent 30%),
+                radial-gradient(circle at left 20%, rgba(0, 213, 255, 0.08), transparent 35%),
+                linear-gradient(180deg, #14110f 0%, var(--bg) 22%, var(--bg) 100%);
             color: var(--text);
             line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            color: inherit;
         }
 
         nav {
-            position: fixed;
+            position: sticky;
             top: 0;
-            width: 100%;
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 6%;
-            background: rgba(10, 10, 15, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            padding: 1rem 6%;
+            background: rgba(12, 10, 9, 0.82);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(231, 229, 228, 0.08);
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: -0.5px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.04em;
             text-decoration: none;
-            color: var(--text);
         }
 
-        .logo span { color: var(--accent); }
+        .logo span {
+            color: #ff7300;
+        }
 
         .back-btn {
             display: inline-flex;
@@ -68,149 +98,266 @@
             gap: 0.5rem;
             color: var(--muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color .2s;
+            font-size: 0.92rem;
+            transition: color 0.2s ease;
         }
 
-        .back-btn:hover { color: var(--text); }
+        .back-btn:hover {
+            color: var(--text);
+        }
 
         .hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: flex-end;
-            padding: 8rem 6% 4rem;
-            position: relative;
-            overflow: hidden;
-            background: #000;
+            padding: 4.5rem 6% 2rem;
         }
 
-        .hero-glow {
+        .hero-shell {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            padding: 1.5rem;
+            border-radius: calc(var(--radius) + 8px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+            box-shadow: var(--shadow);
+        }
+
+        .hero-shell::before {
+            content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at 70% 50%, rgba(96,165,250,0.1) 0%, transparent 60%);
+            padding: 1px;
+            border-radius: inherit;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 10s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
             pointer-events: none;
-        }
-
-        .hero-emoji {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-            display: block;
         }
 
         .hero-content {
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            gap: 4rem;
-            width: 100%;
-        }
-
-        .hero-text {
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .hero-img {
-            flex: 1;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            min-width: 0;
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 900px;
-            aspect-ratio: 16/9;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-            overflow: hidden;
-            background: var(--surface);
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            pointer-events: none;
-        }
-
-        .screenshots-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+            grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
+            gap: 2rem;
+            align-items: stretch;
         }
 
-        .screenshots-grid img {
-            width: 100%;
+        .hero-panel,
+        .hero-media,
+        .section-panel,
+        .spotlight-card,
+        .gallery-card,
+        .education-card,
+        .feature-card,
+        .tech-table,
+        .setup-panel {
+            background: rgba(28, 25, 23, 0.88);
+            border: 1px solid rgba(231, 229, 228, 0.08);
             border-radius: var(--radius);
-            border: 1px solid var(--border);
-            display: block;
         }
 
-        @media (max-width: 700px) {
-            .screenshots-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 860px) {
-            .hero-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            .hero-img { justify-content: center; }
-        }
-
-        .tag-row {
+        .hero-panel {
+            padding: 2.25rem;
             display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1.5rem;
         }
 
-        .tag {
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.7rem;
+        .eyebrow,
+        .tag,
+        .metric-label,
+        .mini-label,
+        .table-code,
+        .setup-code,
+        .gallery-kicker {
+            font-family: var(--mono);
+            letter-spacing: 0.04em;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            width: fit-content;
+            padding: 0.45rem 0.75rem;
             border-radius: 999px;
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(245, 245, 244, 0.05);
+            border: 1px solid rgba(245, 245, 244, 0.08);
+            color: var(--muted-strong);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 8s linear infinite;
+            box-shadow: 0 0 18px rgba(255, 115, 0, 0.45);
         }
 
         h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 1rem;
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            line-height: 0.95;
+            font-weight: 800;
+            letter-spacing: -0.07em;
+            margin: 1rem 0 1.25rem;
+            max-width: 11ch;
         }
 
         .hero-sub {
-            color: rgba(226, 232, 240, 0.7);
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.08rem;
+            color: var(--muted-strong);
+            max-width: 60ch;
+        }
+
+        .tag-row,
+        .tech-list {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .tag,
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.78rem;
+            border-radius: 999px;
+            border: 1px solid rgba(245, 245, 244, 0.1);
+            background: rgba(245, 245, 244, 0.04);
+            color: var(--muted-strong);
+            font-size: 0.76rem;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .metric {
+            padding: 1rem 1.1rem;
+            border-radius: 16px;
+            background: rgba(12, 10, 9, 0.58);
+            border: 1px solid rgba(245, 245, 244, 0.06);
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .metric-label {
+            color: var(--muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .hero-media {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            min-width: 0;
+        }
+
+        .media-frame {
+            border-radius: calc(var(--radius) - 6px);
+            overflow: hidden;
+            border: 1px solid rgba(245, 245, 244, 0.08);
+            background: var(--surface-strong);
+            aspect-ratio: 16 / 10;
+        }
+
+        .media-frame video,
+        .gallery-visual img,
+        .gallery-visual video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .media-caption {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .mini-card {
+            padding: 0.95rem 1rem;
+            border-radius: 16px;
+            background: rgba(12, 10, 9, 0.58);
+            border: 1px solid rgba(245, 245, 244, 0.06);
+        }
+
+        .mini-label {
+            display: block;
+            color: var(--muted);
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .mini-card strong {
+            display: block;
+            font-size: 0.98rem;
         }
 
         main {
-            max-width: 860px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 5rem 6%;
+            padding: 1.5rem 6% 5rem;
         }
 
-        .section { margin-bottom: 4rem; }
+        .section {
+            margin-bottom: 1.75rem;
+        }
+
+        .section-panel {
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .section-kicker,
+        .gallery-kicker {
+            color: var(--muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
 
         .section-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(90deg,#f87171,#fb923c,#facc15,#4ade80,#60a5fa,#a78bfa,#f472b6);
-            background-size: 300% auto;
-            animation: rainbow 4s linear infinite;
+            font-size: clamp(1.5rem, 2vw, 2.1rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1.05;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 8s linear infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .section-sub {
+            max-width: 42ch;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
         p {
@@ -219,228 +366,685 @@
             font-size: 0.97rem;
         }
 
-        p:last-child { margin-bottom: 0; }
+        p:last-child {
+            margin-bottom: 0;
+        }
 
-        .feature-grid {
+        .overview-grid,
+        .spotlight-grid,
+        .education-grid,
+        .gallery-grid,
+        .feature-grid,
+        .setup-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 1rem;
         }
 
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.4rem;
-            transition: border-color .2s;
+        .overview-grid {
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+            align-items: start;
         }
 
-        .feature-card:hover { border-color: var(--accent); }
-
-        .feature-icon {
-            font-size: 1.6rem;
-            margin-bottom: 0.75rem;
+        .overview-summary {
+            display: grid;
+            gap: 1rem;
         }
 
-        .feature-card h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
+        .browser-rail {
+            padding: 1.2rem;
+            border-radius: 18px;
+            background: rgba(12, 10, 9, 0.52);
+            border: 1px solid rgba(245, 245, 244, 0.06);
         }
 
-        .feature-card p {
-            font-size: 0.83rem;
-            margin: 0;
-        }
-
-        .tech-list {
-            display: flex;
-            flex-wrap: wrap;
+        .browser-rail ul {
+            list-style: none;
+            display: grid;
             gap: 0.6rem;
+            margin-top: 1rem;
         }
 
-        .tech-pill {
-            background: var(--surface);
-            border: 1px solid var(--border);
+        .browser-rail li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.72rem 0.85rem;
+            border-radius: 14px;
+            background: rgba(245, 245, 244, 0.04);
+            border: 1px solid rgba(245, 245, 244, 0.06);
+            color: var(--muted-strong);
+            font-size: 0.9rem;
+        }
+
+        .browser-rail span {
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 0.75rem;
+        }
+
+        .spotlight-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .spotlight-card,
+        .feature-card,
+        .education-card,
+        .gallery-card,
+        .setup-panel {
+            padding: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spotlight-card::before,
+        .feature-card::before,
+        .education-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbow-flow 9s linear infinite;
+        }
+
+        .card-code {
+            display: inline-flex;
+            padding: 0.28rem 0.5rem;
+            margin-bottom: 0.8rem;
             border-radius: 999px;
-            padding: 0.35rem 1rem;
-            font-size: 0.82rem;
-            color: var(--text);
+            background: rgba(245, 245, 244, 0.05);
+            color: var(--muted-strong);
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
         }
 
-        .divider {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 3rem 0;
+        .spotlight-card h4,
+        .feature-card h4,
+        .education-card h4,
+        .gallery-card h4,
+        .setup-panel h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .spotlight-card p,
+        .feature-card p,
+        .education-card p,
+        .gallery-card p,
+        .setup-panel p {
+            font-size: 0.9rem;
+        }
+
+        .education-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .education-list {
+            list-style: none;
+            display: grid;
+            gap: 0.45rem;
+            margin-top: 0.9rem;
+        }
+
+        .education-list li {
+            color: var(--muted-strong);
+            font-size: 0.88rem;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gallery-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .gallery-visual {
+            aspect-ratio: 16 / 11;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(245, 245, 244, 0.08);
+            background: var(--surface-strong);
+        }
+
+        .gallery-card.wide {
+            grid-column: span 2;
+        }
+
+        .feature-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .tech-table {
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            background: rgba(245, 245, 244, 0.05);
+        }
+
+        th,
+        td {
+            padding: 1rem 1.1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(245, 245, 244, 0.08);
+            vertical-align: top;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            color: var(--muted-strong);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        td {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .table-code,
+        .setup-code {
+            color: var(--muted-strong);
+            font-size: 0.78rem;
+        }
+
+        .setup-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        ol {
+            padding-left: 1.15rem;
+            color: var(--muted);
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+        }
+
+        code {
+            font-family: var(--mono);
+            background: rgba(245, 245, 244, 0.06);
+            padding: 0.15rem 0.45rem;
+            border-radius: 8px;
+            color: var(--muted-strong);
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2.2rem;
             color: var(--muted);
             font-size: 0.85rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(245, 245, 244, 0.08);
+        }
+
+        @media (max-width: 1100px) {
+
+            .hero-content,
+            .overview-grid,
+            .spotlight-grid,
+            .education-grid,
+            .gallery-grid,
+            .feature-grid,
+            .setup-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-card.wide {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 760px) {
+            nav {
+                padding: 0.95rem 5%;
+            }
+
+            .hero,
+            main {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero-panel,
+            .section-panel {
+                padding: 1.4rem;
+            }
+
+            .hero-meta,
+            .media-caption,
+            .overview-grid,
+            .spotlight-grid,
+            .education-grid,
+            .gallery-grid,
+            .feature-grid,
+            .setup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-card.wide {
+                grid-column: span 1;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
+    <script defer src="screenshot-preview.js"></script>
 </head>
 
 <body>
 
     <nav>
         <a href="index.html" class="logo">james<span>.</span></a>
-        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+        <a href="index.html" class="back-btn">&larr; Back to Portfolio</a>
     </nav>
 
     <div class="hero">
-        <div class="hero-glow"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <img src="pal-optical-logo.png" alt="PAL Optical" style="height:80px; margin-bottom:1.5rem; display:block;">
-                <div class="tag-row">
-                    <span class="tag">React</span>
-                    <span class="tag">Tailwind CSS</span>
-                    <span class="tag">Framer Motion</span>
-                    <span class="tag">Vite</span>
+        <div class="hero-shell">
+            <div class="hero-content">
+                <div class="hero-panel">
+                    <div>
+                        <span class="eyebrow">PAL Optical tool</span>
+                        <img src="pal-optical-logo.png" alt="PAL Optical"
+                            style="height: 78px; margin-top: 1.25rem; display: block;">
+                        <div class="tag-row" style="margin: 1.25rem 0 0.9rem;">
+                            <span class="tag">React 19</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tailwind v4</span>
+                            <span class="tag">Motion</span>
+                            <span class="tag">Lucide</span>
+                            <span class="tag">Vite</span>
+                        </div>
+                        <h1>Interactive Price List</h1>
+                        <p class="hero-sub">A browser-based pricing and training workspace for PAL Optical. It combines
+                            a searchable lens catalog, dark-mode category browser, OptiCalc utilities, and educational
+                            material for staff working the floor.</p>
+                    </div>
+
+                    <div class="hero-meta">
+                        <div class="metric">
+                            <span class="metric-value">10+</span>
+                            <span class="metric-label">pricing groups</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">4</span>
+                            <span class="metric-label">OptiCalc tools</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">1</span>
+                            <span class="metric-label">staff workspace</span>
+                        </div>
+                    </div>
                 </div>
-                <h1>Interactive Price List</h1>
-                <p class="hero-sub">A comprehensive, interactive price list for PAL Optical lenses, materials, and
-                    coatings — with real-time search, category filtering, and a built-in OptiCalc integration.</p>
-            </div>
-            <div class="hero-img">
-                <video src="pricelist.mp4" autoplay loop muted playsinline
-                    style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.6);"></video>
+
+                <div class="hero-media">
+                    <div class="media-frame">
+                        <video src="pricelist.mp4" autoplay loop muted playsinline></video>
+                    </div>
+                    <div class="media-caption">
+                        <div class="mini-card">
+                            <span class="mini-label">Primary view</span>
+                            <strong>Sticky header, category rail, fast search</strong>
+                        </div>
+                        <div class="mini-card">
+                            <span class="mini-label">Secondary mode</span>
+                            <strong>Dark theme designed for full-shift use</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <main>
-
         <div class="section">
-            <p class="section-title">🌟 Overview</p>
-            <p>The PAL Optical Interactive Price List was built to replace a static printed price sheet that staff had
-                to manually update and reprint every time pricing changed. The new version lives in the browser,
-                updates instantly, and lets anyone on the floor find exactly what they need in seconds.</p>
-            <p>It covers the full catalog — progressive lenses, single vision, bifocals, materials (plastic, poly,
-                high-index), and coatings — all in one searchable, filterable interface with a dark mode designed for
-                long shifts.</p>
-        </div>
+            <div class="section-panel">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Overview</p>
+                        <p class="section-title">Pricing Browser And Staff Education In One Surface</p>
+                    </div>
+                    <p class="section-sub">The reference app is not just a digital sheet. It is a working station for
+                        PAL Optical staff with pricing, quick calculations, material explanations, and comparison tools
+                        in the same interface.</p>
+                </div>
 
-        <hr class="divider" />
+                <div class="overview-grid">
+                    <div class="overview-summary">
+                        <p>The original printed list was hard to maintain and slow to use during live customer
+                            conversations. This version moves the catalog into a searchable interface where lens
+                            families, coatings, add-ons, and services can be located immediately.</p>
+                        <p>What makes the real app distinctive is the second layer: OptiCalc and educational modules.
+                            Staff can compute decentration, estimate lens thickness, work through markup math, review
+                            receipt-style calculations, and explain materials like polycarbonate, high-index, AR
+                            coating, blue light, and transitions without leaving the page.</p>
+                    </div>
 
-        <div class="section">
-            <p class="section-title">📸 Screenshots</p>
-            <div class="screenshots-grid">
-                <img src="pricelist1.png" alt="Price List screenshot 1" />
-                <img src="pricelist2.png" alt="Price List screenshot 2" />
-                <img src="pricelist3.png" alt="Price List screenshot 3" />
-            </div>
-        </div>
-
-        <hr class="divider" />
-
-        <div class="section">
-            <p class="section-title">✨ Features</p>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h4>Real-Time Search</h4>
-                    <p>Instantly filter the entire catalog as you type — no page reloads, no waiting.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗂️</div>
-                    <h4>Category Filtering</h4>
-                    <p>Browse by lens type, material, or coating category with one click.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧮</div>
-                    <h4>OptiCalc Integration</h4>
-                    <p>Built-in optical calculator for quick on-the-spot pricing and lens calculations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h4>Dark Mode</h4>
-                    <p>Sleek, eye-friendly dark theme designed for professional optical retail environments.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h4>Responsive Design</h4>
-                    <p>Fully optimized for desktop and mobile — works on any device at the dispensing table.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h4>Smooth Animations</h4>
-                    <p>Framer Motion powers fluid transitions and interactions throughout the UI.</p>
+                    <div class="browser-rail">
+                        <span class="mini-label">Common browser groups</span>
+                        <ul>
+                            <li>Single vision and progressives <span>catalog</span></li>
+                            <li>Materials and lens families <span>filter</span></li>
+                            <li>Tints and coatings <span>compare</span></li>
+                            <li>Overpower and misc. charges <span>lookup</span></li>
+                            <li>Dark mode and print-friendly states <span>toggle</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <hr class="divider" />
-
         <div class="section">
-            <p class="section-title">🔧 Tech Stack</p>
-            <table
-                style="width: 100%; border-collapse: collapse; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.3); margin-bottom: 1.5rem;">
-                <thead>
-                    <tr style="background: #facc15; color: #000;">
-                        <th style="padding: 1rem 1.5rem; text-align: left;">Technology</th>
-                        <th style="padding: 1rem 1.5rem; text-align: left;">Usage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 1rem 1.5rem;"><strong>React</strong></td>
-                        <td style="padding: 1rem 1.5rem;">Core framework for the interactive UI</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 1rem 1.5rem;"><strong>Tailwind CSS</strong></td>
-                        <td style="padding: 1rem 1.5rem;">Sleek, professional, and responsive styling</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 1rem 1.5rem;"><strong>Lucide React</strong></td>
-                        <td style="padding: 1rem 1.5rem;">Clean and consistent iconography</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 1rem 1.5rem;"><strong>Framer Motion</strong></td>
-                        <td style="padding: 1rem 1.5rem;">Smooth and professional animations</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 1rem 1.5rem;"><strong>Vite</strong></td>
-                        <td style="padding: 1rem 1.5rem;">Fast and efficient build tool</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="tech-list">
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">Tailwind CSS</span>
-                <span class="tech-pill">Framer Motion</span>
-                <span class="tech-pill">Lucide React</span>
-                <span class="tech-pill">Vite</span>
-                <span class="tech-pill">Dark Mode</span>
-                <span class="tech-pill">Responsive</span>
+            <div class="section-panel">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">OptiCalc</p>
+                        <p class="section-title">The Calculator Suite Is The Real Differentiator</p>
+                    </div>
+                    <p class="section-sub">The portfolio page now reflects the tools that make the app useful on the
+                        floor, not just the catalog itself.</p>
+                </div>
+
+                <div class="spotlight-grid">
+                    <div class="spotlight-card">
+                        <span class="card-code">calc 01</span>
+                        <h4>Receipt-style basic calculator</h4>
+                        <p>Quick arithmetic with visible history so staff can show exactly how a total was reached
+                            instead of redoing the math verbally.</p>
+                    </div>
+                    <div class="spotlight-card">
+                        <span class="card-code">calc 02</span>
+                        <h4>Decentration solver</h4>
+                        <p>Uses A size, bridge, and patient PD to compute placement and reduce dispensing errors during
+                            frame selection.</p>
+                    </div>
+                    <div class="spotlight-card">
+                        <span class="card-code">calc 03</span>
+                        <h4>MBS and markup support</h4>
+                        <p>Supports optical pricing logic beyond the browser itself, including markup checks and
+                            practical lens math.</p>
+                    </div>
+                    <div class="spotlight-card">
+                        <span class="card-code">calc 04</span>
+                        <h4>Lens thickness visualizer</h4>
+                        <p>Turns abstract thickness numbers into something staff can discuss visually with patients and
+                            coworkers.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <hr class="divider" />
-
         <div class="section">
-            <p class="section-title">📦 Getting Started</p>
-            <ol style="color: var(--muted); padding-left: 1.2rem; line-height: 2;">
-                <li>Clone the repository</li>
-                <li>Run <code
-                        style="background: var(--surface); padding: 0.1rem 0.5rem; border-radius: 4px;">npm install</code>
-                </li>
-                <li>Run <code
-                        style="background: var(--surface); padding: 0.1rem 0.5rem; border-radius: 4px;">npm run dev</code>
-                    to start the dev server</li>
-                <li>Run <code
-                        style="background: var(--surface); padding: 0.1rem 0.5rem; border-radius: 4px;">npm run build</code>
-                    for production</li>
-            </ol>
+            <div class="section-panel">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Education</p>
+                        <p class="section-title">Material Explainers And Visual Comparisons</p>
+                    </div>
+                    <p class="section-sub">The reference project includes educational content so staff can answer
+                        questions while pricing. That needed to be visible here too.</p>
+                </div>
+
+                <div class="education-grid">
+                    <div class="education-card">
+                        <span class="card-code">module a</span>
+                        <h4>Lens material guides</h4>
+                        <p>Interactive explanations for polycarbonate and high-index lenses make tradeoffs easier to
+                            communicate at the point of sale.</p>
+                        <ul class="education-list">
+                            <li>Polycarbonate impact resistance</li>
+                            <li>High-index thinness benefits</li>
+                            <li>Use-case comparisons for staff</li>
+                        </ul>
+                    </div>
+                    <div class="education-card">
+                        <span class="card-code">module b</span>
+                        <h4>Coating and protection explainers</h4>
+                        <p>AR coating and blue-light education move the app beyond pricing and into patient-facing
+                            recommendation support.</p>
+                        <ul class="education-list">
+                            <li>Before/after style comparisons</li>
+                            <li>Glare reduction talking points</li>
+                            <li>Protection and comfort framing</li>
+                        </ul>
+                    </div>
+                    <div class="education-card">
+                        <span class="card-code">module c</span>
+                        <h4>Transitions and tint options</h4>
+                        <p>The app references multiple transition color demos so staff can show differences instead of
+                            describing them abstractly.</p>
+                        <ul class="education-list">
+                            <li>Grey, brown, emerald, purple, G15</li>
+                            <li>Video-friendly presentation</li>
+                            <li>Faster customer decision-making</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div class="section">
+            <div class="section-panel">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Interface proof</p>
+                        <p class="section-title">Screens That Match The Real App</p>
+                    </div>
+                    <p class="section-sub">These captures now emphasize the browser, calculator utilities, and
+                        supporting views instead of showing only a generic trio of screenshots.</p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-card wide">
+                        <div class="gallery-visual">
+                            <img src="screenshot/pq.png" alt="Main price list browser interface" />
+                        </div>
+                        <div>
+                            <p class="gallery-kicker">Price browser</p>
+                            <h4>Searchable categories with a cleaner retail workflow</h4>
+                            <p>The primary browser view mirrors the reference app's category-driven structure for quick
+                                lookup during live conversations.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <div class="gallery-visual">
+                            <img src="screenshot/calc.png" alt="OptiCalc calculator interface" />
+                        </div>
+                        <div>
+                            <p class="gallery-kicker">OptiCalc</p>
+                            <h4>Calculation workspace</h4>
+                            <p>Shows the supporting math tools that were missing from the old portfolio version.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <div class="gallery-visual">
+                            <img src="screenshot/lensview.png" alt="Lens thickness visualizer" />
+                        </div>
+                        <div>
+                            <p class="gallery-kicker">Visualization</p>
+                            <h4>Lens thickness preview</h4>
+                            <p>A stronger reflection of the app's technical side and staff education focus.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <div class="gallery-visual">
+                            <img src="screenshot/receipt.png" alt="Receipt style calculator history" />
+                        </div>
+                        <div>
+                            <p class="gallery-kicker">History</p>
+                            <h4>Receipt-style output</h4>
+                            <p>Useful when staff need to walk someone through how a total or change was calculated.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <div class="gallery-visual">
+                            <img src="screenshot/inv.png" alt="Supporting browser view" />
+                        </div>
+                        <div>
+                            <p class="gallery-kicker">Supporting views</p>
+                            <h4>Additional lookup surfaces</h4>
+                            <p>Completes the story that this is a working toolset rather than a single static page.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card wide">
+                        <div class="gallery-visual">
+                            <video src="screenshot/po.mp4" autoplay loop muted playsinline></video>
+                        </div>
+                        <div>
+                            <p class="gallery-kicker">Motion</p>
+                            <h4>Live interaction preview</h4>
+                            <p>The demo reinforces the app's responsive layout, dark-mode polish, and faster workflow
+                                compared with a printable sheet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-panel">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Implementation</p>
+                        <p class="section-title">Tech Decisions Behind The Experience</p>
+                    </div>
+                    <p class="section-sub">The stack below reflects the actual reference project rather than the older
+                        simplified summary.</p>
+                </div>
+
+                <div class="tech-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Technology</th>
+                                <th>Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="table-code">React 19 + TypeScript</span></td>
+                                <td>Drives the browser UI, stateful category navigation, dark mode toggling, and tool
+                                    views.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-code">Tailwind CSS v4</span></td>
+                                <td>Provides the neutral design system, spacing rhythm, rounded surfaces, and responsive
+                                    layout behavior.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-code">Motion + Lucide React</span></td>
+                                <td>Adds interaction polish and the cleaner iconography used throughout the real app.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-code">Vite</span></td>
+                                <td>Fast dev/build workflow for the React application.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-code">Canvas-style visualization</span></td>
+                                <td>Supports the thickness visualizer and makes technical lens concepts more concrete.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="card-code">ui</span>
+                        <h4>Neutral surfaces, rainbow accents</h4>
+                        <p>Matches the reference app's restrained palette instead of the older pink/blue case-study
+                            styling.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="card-code">flow</span>
+                        <h4>Sticky header and fast filtering</h4>
+                        <p>Built around speed of use during real retail conversations and quick product lookup.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="card-code">mode</span>
+                        <h4>Dark mode as a first-class state</h4>
+                        <p>The app is designed to stay readable through long shifts, not just to look good in
+                            screenshots.</p>
+                    </div>
+                </div>
+
+                <div class="tech-list" style="margin-top: 1rem;">
+                    <span class="tech-pill">Category rail</span>
+                    <span class="tech-pill">Search</span>
+                    <span class="tech-pill">Dark mode</span>
+                    <span class="tech-pill">OptiCalc</span>
+                    <span class="tech-pill">Education modules</span>
+                    <span class="tech-pill">Responsive layout</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-panel">
+                <div class="section-header">
+                    <div>
+                        <p class="section-kicker">Local setup</p>
+                        <p class="section-title">Running The Reference App</p>
+                    </div>
+                    <p class="section-sub">These steps match the actual project folder more closely and keep the case
+                        study grounded in the shipped implementation.</p>
+                </div>
+
+                <div class="setup-grid">
+                    <div class="setup-panel">
+                        <h4>Install and start</h4>
+                        <ol>
+                            <li>Clone the repository.</li>
+                            <li>Run <code>npm install</code>.</li>
+                            <li>Run <code>npm run dev</code> to launch the Vite server.</li>
+                            <li>Run <code>npm run build</code> for production output.</li>
+                        </ol>
+                    </div>
+                    <div class="setup-panel">
+                        <h4>Why this page changed</h4>
+                        <p>The older portfolio write-up treated the project like a polished price list. The actual app
+                            is broader: catalog browser, optical calculator suite, dark-mode workflow, and staff
+                            education surface. This page now describes that real scope.</p>
+                        <p class="setup-code" style="margin-top: 0.9rem;">Reference folder: Price/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>Designed & built by James · 2025</footer>
+    <footer>Designed and built by James · 2026</footer>
 
 </body>
 
