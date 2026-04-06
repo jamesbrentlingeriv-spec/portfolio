@@ -644,21 +644,6 @@ nc
                 gap: 2.5rem;
             }
 
-            .about-portrait {
-                position: static;
-                max-width: 280px;
-            }
-
-            .about-pillars {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            nav ul {
-                display: none;
-            }
-
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -679,6 +664,21 @@ nc
 
             .card-body {
                 padding: 1.2rem;
+            }
+
+            .about-portrait {
+                position: static;
+                max-width: 280px;
+            }
+
+            .about-pillars {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
             }
 
             .contact-card {

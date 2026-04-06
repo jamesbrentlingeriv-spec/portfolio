@@ -491,14 +491,25 @@
 
         .hero-video,
         .hero-visual img,
-        .hero-visual video,
-        .brand-img {
+        .hero-visual video {
             width: min(100%, 820px) !important;
             max-width: 100%;
             border-radius: calc(var(--radius) - 6px);
             border: 1px solid rgba(245, 245, 244, 0.08);
             background: var(--surface-strong);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+
+        .brand-img {
+            height: 80px;
+            width: auto !important;
+            max-width: min(100%, 360px);
+            margin-bottom: 1.5rem;
+            display: block;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
         }
 
         h1 {
@@ -677,7 +688,7 @@
                 <span class="tag">SaaS</span>
                 <span class="tag">Healthcare</span>
             </div>
-            <h1>Bridging the Gap Between Care & Communication.</h1>
+            <h1>OCU-SYNC: Bridging the Gap Between Care & Communication.</h1>
             <p class="hero-sub">An enterprise-grade, HIPAA-compliant secure messaging platform built for healthcare
                 professionals — encrypted, audited, and always on.</p>
             <a href="mailto:jamesbrentlingeriv@gmail.com" class="cta-btn">Request a Demo →</a>
