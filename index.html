@@ -10,6 +10,9 @@ nc
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0a0a0f" />
     <link rel="apple-touch-icon" href="logo192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script defer src="pwa-init.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
@@ -719,7 +722,7 @@ nc
 <body>
 
     <nav>
-        <div class="logo">james<span>.</span></div>
+        <div class="logo">iamjames<span>.</span></div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -1008,16 +1011,6 @@ nc
         });
         vid.addEventListener('ended', () => { vid.pause(); vid.currentTime = 0; overlay.style.display = 'flex'; });
 
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(reg => {
-                    console.log('Service Worker registered.');
-                }).catch(err => {
-                    console.log('Service Worker registration failed:', err);
-                });
-            });
-        }
     </script>
 </body>
 
