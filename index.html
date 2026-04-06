@@ -689,6 +689,30 @@ nc
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (hover: none) and (pointer: coarse) {
+            .projects-grid {
+                grid-template-columns: minmax(0, 1fr) !important;
+                gap: 1rem;
+            }
+
+            .card {
+                height: auto;
+                min-height: 0;
+            }
+
+            .card .card-body {
+                overflow: visible;
+            }
+
+            .card-img {
+                height: 200px;
+            }
+
+            .card-body {
+                padding: 1.2rem;
+            }
+        }
     </style>
 </head>
 
