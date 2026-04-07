@@ -20,7 +20,6 @@ const SHELL_ASSETS = [
   "./pwa-init.js",
   "./screenshot-preview.css",
   "./screenshot-preview.js",
-  "./favicon.ico",
   "./logo192.png",
   "./logo512.png",
 ];

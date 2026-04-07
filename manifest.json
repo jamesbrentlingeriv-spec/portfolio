@@ -5,24 +5,22 @@
   "scope": "./",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
+  "prefer_related_applications": false,
   "theme_color": "#0a0a0f",
   "background_color": "#0a0a0f",
   "description": "Multi-page portfolio and project showcase for iamjames.",
