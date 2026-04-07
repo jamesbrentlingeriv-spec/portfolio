@@ -1,16 +1,85 @@
 (function () {
   "use strict";
 
+  const APP_NAME = "iamjames";
+  const INSTALL_DISMISSED_KEY = "pwa-install-dismissed-at";
+  const INSTALL_RELOAD_KEY = "pwa-sw-reload-once";
+  const INSTALL_DISMISS_TTL_MS = 3 * 24 * 60 * 60 * 1000;
+
   const isIos = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
   const isStandalone =
     window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone === true;
   const isSupported =
     "serviceWorker" in navigator &&
-    (window.location.protocol === "https:" ||
-      window.location.hostname === "localhost");
+    (window.isSecureContext ||
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1");
 
   let deferredInstallPrompt = null;
+
+  if (
+    window.location.hostname === "iamjames.lol" &&
+    window.location.protocol !== "https:"
+  ) {
+    window.location.replace(
+      "https://" +
+        window.location.host +
+        window.location.pathname +
+        window.location.search +
+        window.location.hash,
+    );
+    return;
+  }
+
+  function wasInstallPromptDismissedRecently() {
+    const raw = localStorage.getItem(INSTALL_DISMISSED_KEY);
+    if (!raw) {
+      return false;
+    }
+
+    const dismissedAt = Number(raw);
+    if (!Number.isFinite(dismissedAt)) {
+      localStorage.removeItem(INSTALL_DISMISSED_KEY);
+      return false;
+    }
+
+    if (Date.now() - dismissedAt > INSTALL_DISMISS_TTL_MS) {
+      localStorage.removeItem(INSTALL_DISMISSED_KEY);
+      return false;
+    }
+
+    return true;
+  }
+
+  function ensurePwaMeta() {
+    function ensureMeta(name, content) {
+      let element = document.querySelector('meta[name="' + name + '"]');
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute("name", name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("content", content);
+    }
+
+    function ensureLink(rel, href) {
+      let element = document.querySelector('link[rel="' + rel + '"]');
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+      element.setAttribute("href", href);
+    }
+
+    ensureMeta("theme-color", "#0a0a0f");
+    ensureMeta("mobile-web-app-capable", "yes");
+    ensureMeta("apple-mobile-web-app-capable", "yes");
+    ensureMeta("apple-mobile-web-app-title", APP_NAME);
+    ensureMeta("apple-mobile-web-app-status-bar-style", "black-translucent");
+    ensureLink("apple-touch-icon", "/logo192.png");
+  }
 
   function injectInstallStyles() {
     if (document.getElementById("pwa-install-styles")) {
@@ -41,6 +110,10 @@
   }
 
   function showInstallUi(options) {
+    if (wasInstallPromptDismissedRecently()) {
+      return;
+    }
+
     injectInstallStyles();
     removeInstallUi();
 
@@ -70,9 +143,12 @@
     const dismissButton = document.createElement("button");
     dismissButton.type = "button";
     dismissButton.className = "pwa-dismiss-btn";
-    dismissButton.textContent = "×";
+    dismissButton.textContent = "x";
     dismissButton.setAttribute("aria-label", "Dismiss install message");
-    dismissButton.addEventListener("click", removeInstallUi);
+    dismissButton.addEventListener("click", function () {
+      localStorage.setItem(INSTALL_DISMISSED_KEY, String(Date.now()));
+      removeInstallUi();
+    });
     actions.appendChild(dismissButton);
 
     card.appendChild(copy);
@@ -84,6 +160,7 @@
   if (!isSupported) {
     if (isIos && !isStandalone) {
       window.addEventListener("load", function () {
+        ensurePwaMeta();
         showInstallUi({
           message: "On iPhone or iPad, tap Share and then Add to Home Screen.",
           showInstallButton: false,
@@ -94,10 +171,27 @@
   }
 
   window.addEventListener("load", function () {
+    ensurePwaMeta();
+
+    const swUrl = new URL("./sw.js", window.location.href).href;
+    const swScope = new URL("./", window.location.href).pathname;
+
     navigator.serviceWorker
-      .register("./sw.js", { scope: "./" })
-      .then(function () {
+      .register(swUrl, { scope: swScope })
+      .then(function (registration) {
         console.log("PWA service worker registered.");
+        registration.update();
+
+        return navigator.serviceWorker.ready;
+      })
+      .then(function () {
+        if (
+          !navigator.serviceWorker.controller &&
+          sessionStorage.getItem(INSTALL_RELOAD_KEY) !== "1"
+        ) {
+          sessionStorage.setItem(INSTALL_RELOAD_KEY, "1");
+          window.location.reload();
+        }
       })
       .catch(function (error) {
         console.log("PWA service worker registration failed:", error);
@@ -108,6 +202,18 @@
         message: "On iPhone or iPad, tap Share and then Add to Home Screen.",
         showInstallButton: false,
       });
+    }
+
+    if (!isIos && !isStandalone) {
+      window.setTimeout(function () {
+        if (!deferredInstallPrompt) {
+          showInstallUi({
+            message:
+              "If install is not prompted automatically, open your browser menu and tap Install app or Add to Home screen.",
+            showInstallButton: false,
+          });
+        }
+      }, 6000);
     }
   });
 

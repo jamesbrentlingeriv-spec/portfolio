@@ -1,10 +1,19 @@
-const SHELL_CACHE = "portfolio-shell-v2";
-const RUNTIME_CACHE = "portfolio-runtime-v2";
+const SHELL_CACHE = "portfolio-shell-v3";
+const RUNTIME_CACHE = "portfolio-runtime-v3";
 const OFFLINE_FALLBACK = "./index.html";
 
 const SHELL_ASSETS = [
   "./",
   "./index.html",
+  "./manifest.json",
+  "./pwa-init.js",
+  "./screenshot-preview.css",
+  "./screenshot-preview.js",
+  "./logo192.png",
+  "./logo512.png",
+];
+
+const OPTIONAL_ASSETS = [
   "./ancient-bible.html",
   "./bible-study.html",
   "./ocu-sync.html",
@@ -16,20 +25,20 @@ const SHELL_ASSETS = [
   "./the-shaking-of-my-hands.html",
   "./websites.html",
   "./wordwitness.html",
-  "./manifest.json",
-  "./pwa-init.js",
-  "./screenshot-preview.css",
-  "./screenshot-preview.js",
-  "./logo192.png",
-  "./logo512.png",
 ];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches
-      .open(SHELL_CACHE)
-      .then((cache) => cache.addAll(SHELL_ASSETS))
-      .then(() => self.skipWaiting()),
+    (async () => {
+      const cache = await caches.open(SHELL_CACHE);
+      await cache.addAll(SHELL_ASSETS);
+
+      await Promise.allSettled(
+        OPTIONAL_ASSETS.map((asset) => cache.add(asset)),
+      );
+
+      await self.skipWaiting();
+    })(),
   );
 });
 
