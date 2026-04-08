@@ -1,950 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bible Study Suite — James</title>
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#0a0a0f" />
-  <link rel="apple-touch-icon" href="logo192.png" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="iamjames" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="screenshot-preview.css" />
-  <script defer src="pwa-init.js"></script>
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #000;
-      --surface: #111;
-      --border: #222;
-      --accent: #f472b6;
-      --accent2: #60a5fa;
-      --text: #fff;
-      --muted: #aaa;
-      --radius: 12px;
-    }
-
-    @keyframes yellowglow {
-
-      0%,
-      100% {
-        color: #facc15;
-        text-shadow: 0 0 8px #facc15, 0 0 24px #fbbf24, 0 0 48px #f59e0b;
-      }
-
-      50% {
-        color: #fde68a;
-        text-shadow: 0 0 4px #fde68a, 0 0 10px #fde68a;
-      }
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 6%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo {
-      font-weight: 700;
-      font-size: 1.2rem;
-      letter-spacing: -0.5px;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color .2s;
-    }
-
-    .back-btn:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: flex-end;
-      padding: 8rem 6% 4rem;
-      position: relative;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .hero-bg-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      opacity: 0.35;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: flex-end;
-      gap: 4rem;
-      width: 100%;
-    }
-
-    .hero-text {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .hero-img {
-      flex: 1;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      min-width: 0;
-    }
-
-    .hero-img img {
-      width: 100%;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-    }
-
-    @media (max-width: 860px) {
-      .hero-content {
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .hero-img {
-        justify-content: flex-start;
-      }
-
-      .hero-img img {
-        max-width: 100%;
-      }
-    }
-
-    .tag-row {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      margin-bottom: 1rem;
-    }
-
-    .hero-sub {
-      color: rgba(226, 232, 240, 0.7);
-      font-size: 1.1rem;
-      max-width: 600px;
-    }
-
-    .demo-btn {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #fff;
-      text-decoration: none;
-      background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      margin-top: 1.5rem;
-      transition: background .2s;
-    }
-
-    .demo-btn:hover {
-      background: #111;
-    }
-
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 5rem 6%;
-    }
-
-    .section {
-      margin-bottom: 4rem;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.5px;
-      animation: yellowglow 2s ease-in-out infinite;
-      color: #facc15;
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-      font-size: 0.97rem;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.4rem;
-      transition: border-color .2s, transform .2s;
-    }
-
-    .feature-card:hover {
-      border-color: var(--accent2);
-      transform: translateY(-3px);
-    }
-
-    .feature-icon {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .feature-card h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      color: #fff;
-    }
-
-    .feature-card p {
-      font-size: 0.83rem;
-      margin: 0;
-    }
-
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .tech-pill {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.35rem 1rem;
-      font-size: 0.82rem;
-      color: var(--text);
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 3rem 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--surface);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    th {
-      padding: 0.9rem 1.2rem;
-      text-align: left;
-      font-weight: 700;
-    }
-
-    td {
-      padding: 0.8rem 1.2rem;
-      border-bottom: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    tr:last-child td {
-      border-bottom: none;
-    }
-
-    td:first-child {
-      color: var(--text);
-    }
-
-    code {
-      background: var(--surface);
-      padding: 0.1rem 0.45rem;
-      border-radius: 4px;
-      font-size: 0.85em;
-      color: #a78bfa;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Price list layout sync */
-    :root {
-      --bg: #0c0a09;
-      --surface: #1c1917;
-      --surface-strong: #14110f;
-      --border: #3a342f;
-      --text: #f5f5f4;
-      --muted: #a8a29e;
-      --muted-strong: #d6d3d1;
-      --radius: 20px;
-      --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
-      --rainbow: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    }
-
-    @keyframes rainbow-flow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    body {
-      background:
-        radial-gradient(circle at top right, rgba(255, 115, 0, 0.12), transparent 30%),
-        radial-gradient(circle at left 20%, rgba(0, 213, 255, 0.08), transparent 35%),
-        linear-gradient(180deg, #14110f 0%, var(--bg) 22%, var(--bg) 100%);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      padding: 1rem 6%;
-      background: rgba(12, 10, 9, 0.82);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(231, 229, 228, 0.08);
-    }
-
-    .logo {
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.04em;
-    }
-
-    .logo span {
-      color: #ff7300;
-    }
-
-    .back-btn {
-      color: var(--muted);
-      font-size: 0.92rem;
-      transition: color 0.2s ease;
-    }
-
-    .back-btn:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      min-height: 0;
-      padding: 4.5rem 6% 2rem;
-      background: none;
-    }
-
-    .hero-content {
-      max-width: 1280px;
-      margin: 0 auto;
-      position: relative;
-      padding: 1.5rem;
-      border-radius: calc(var(--radius) + 8px);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
-      gap: 2rem;
-      align-items: stretch;
-      overflow: hidden;
-    }
-
-    .hero-content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      padding: 1px;
-      border-radius: inherit;
-      background: var(--rainbow);
-      background-size: 400% 400%;
-      animation: rainbow-flow 10s linear infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    .hero-content>* {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-text,
-    .hero-img,
-    .hero-visual {
-      min-width: 0;
-    }
-
-    .hero-img,
-    .hero-visual {
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-    }
-
-    .hero-img img,
-    .hero-img video,
-    .hero-preview,
-    .hero-video,
-    .hero-visual img,
-    .hero-visual video,
-    .video-container,
-    .app-thumb,
-    .brand-img {
-      width: min(100%, 820px) !important;
-      max-width: 100%;
-      border-radius: calc(var(--radius) - 6px);
-      border: 1px solid rgba(245, 245, 244, 0.08);
-      background: var(--surface-strong);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    }
-
-    .video-container {
-      overflow: hidden;
-    }
-
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
-      line-height: 0.95;
-      font-weight: 800;
-      letter-spacing: -0.07em;
-      margin: 1rem 0 1.25rem;
-      max-width: 11ch;
-    }
-
-    .hero-sub {
-      color: var(--muted-strong);
-      font-size: 1.08rem;
-      max-width: 60ch;
-    }
-
-    .tag-row,
-    .tech-list,
-    .tech-stack,
-    .site-tags {
-      display: flex;
-      gap: 0.65rem;
-      flex-wrap: wrap;
-    }
-
-    .tag,
-    .tech-pill,
-    .tech-item,
-    .site-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.45rem 0.78rem;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 245, 244, 0.1);
-      background: rgba(245, 245, 244, 0.04);
-      color: var(--muted-strong);
-      font-size: 0.76rem;
-      font-family: var(--mono);
-    }
-
-    main {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 1.5rem 6% 5rem;
-    }
-
-    .section {
-      margin-bottom: 1.75rem;
-      padding: 2rem;
-      background: rgba(28, 25, 23, 0.88);
-      border: 1px solid rgba(231, 229, 228, 0.08);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .section-title {
-      margin-bottom: 1rem;
-      font-size: clamp(1.5rem, 2vw, 2.1rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-      background: var(--rainbow);
-      background-size: 400% 400%;
-      animation: rainbow-flow 8s linear infinite;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    p {
-      color: var(--muted);
-    }
-
-    .feature-grid,
-    .screenshots-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-
-    .feature-card,
-    .security-card,
-    .site-card {
-      background: rgba(28, 25, 23, 0.88);
-      border: 1px solid rgba(231, 229, 228, 0.08);
-      border-radius: var(--radius);
-      padding: 1.3rem;
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .feature-card::before,
-    .security-card::before,
-    .site-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 4px;
-      background: var(--rainbow);
-      background-size: 400% 400%;
-      animation: rainbow-flow 9s linear infinite;
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid rgba(245, 245, 244, 0.08);
-      margin: 2rem 0;
-    }
-
-    .demo-btn,
-    .gold-btn,
-    .rainbow-btn,
-    .cta-btn,
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-      background: rgba(245, 245, 244, 0.06);
-      border: 1px solid rgba(245, 245, 244, 0.1);
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2.2rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(245, 245, 244, 0.08);
-    }
-
-    @media (max-width: 1100px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-
-      nav,
-      .hero,
-      main {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
-      .hero-content,
-      .section {
-        padding: 1.4rem;
-      }
-
-      .feature-grid,
-      .screenshots-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  <script defer src="screenshot-preview.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bible Study Suite - James</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="project-page.css" />
 </head>
-
 <body>
-
-  <nav>
-    <a href="index.html" class="logo">iamjames<span>.</span></a>
-    <a href="index.html" class="back-btn">← Back to Portfolio</a>
-  </nav>
-
-  <div class="hero">
-    <video class="hero-bg-video" src="biblest.mp4" autoplay loop muted playsinline></video>
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="tag-row">
-          <span class="tag">Vanilla JS</span>
-          <span class="tag">IndexedDB</span>
-          <span class="tag">bible-api.com</span>
-          <span class="tag">GitHub Pages</span>
+    <nav class="site-nav">
+        <div class="site-shell">
+            <a href="index.html#hero" class="brand">iamjames<span>.</span></a>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navPanel">Menu</button>
+            <div class="nav-panel" id="navPanel">
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <a href="index.html#hero" class="btn btn-dark">Back Home</a>
+            </div>
         </div>
-        <h1>Bible Study Suite</h1>
-        <p class="hero-sub">Browser-based Bible study app with Bible reading, note-taking, verse context, per-note audio
-          recordings, and per-note songs/lyrics. All data stored locally.</p>
-        <a href="https://jamesbrentlingeriv-spec.github.io/biblestudy/" target="_blank" class="demo-btn">Bible Study
-          Suite →</a>
-      </div>
-      <div class="hero-img">
-        <img src="bsuite.gif" alt="Bible Study Suite demo" />
-      </div>
-    </div>
-  </div>
+    </nav>
 
-  <main>
+    <main>
+        <section class="hero">
+            <div class="site-shell hero-grid">
+                <div class="reveal">
+                    <p class="mono-badge">Project Case Study</p>
+                    <h1>Bible Study Suite</h1>
+                    <p class="hero-summary">A complete browser-based Bible study workspace that combines scripture reading, note systems, and learning tools in one practical environment for daily study.</p>
+                    <div class="hero-actions">
+                        <a href="https://jamesbrentlingeriv-spec.github.io/biblestudy/" class="btn btn-dark" target="_blank" rel="noreferrer">Open Live Project</a>
+                        <a href="index.html#projects" class="btn btn-ghost">See More Projects</a>
+                    </div>
+                </div>
+                <div class="hero-media reveal">
+                    <video src="biblest.mp4" autoplay muted loop playsinline controls></video>
+                </div>
+            </div>
+        </section>
 
-    <div class="section">
-      <p class="section-title">🗺️ Quick Navigation</p>
-      <table>
-        <thead>
-          <tr style="background:#facc15;">
-            <th style="color:#000;">Section</th>
-            <th style="color:#000;">What You Get</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Features</td>
-            <td>Bible reader, notes, red-letter text, songs, recordings</td>
-          </tr>
-          <tr>
-            <td>Architecture</td>
-            <td>App flow and storage model</td>
-          </tr>
-          <tr>
-            <td>Tech Stack</td>
-            <td>Source files and their roles</td>
-          </tr>
-          <tr>
-            <td>Data Storage</td>
-            <td>localStorage and IndexedDB breakdown</td>
-          </tr>
-          <tr>
-            <td>Run Locally</td>
-            <td>Local server setup</td>
-          </tr>
-          <tr>
-            <td>Troubleshooting</td>
-            <td>Fast fixes for common issues</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+        <section class="content-section">
+            <div class="site-shell reveal">
+                <p class="section-kicker">Overview</p>
+                <h2 class="section-title">What This Project Delivers</h2>
+                <p class="section-sub">Bible Study Suite brings together the tasks most users juggle manually: reading scripture, capturing notes, organizing references, and returning to previous study sessions without losing context. The project was built to keep that full workflow inside one app.</p>
+                <p class="section-sub">Beyond basic reading, the app supports an iterative study rhythm where users gather insight over time, revisit notes, and refine understanding passage by passage. The experience prioritizes continuity and retention rather than one-off interactions.</p>
+            </div>
+        </section>
 
-    <hr class="divider" />
+        <section class="content-section">
+            <div class="site-shell reveal">
+                <p class="section-kicker">Highlights</p>
+                <h2 class="section-title">Key Features</h2>
+                <ul class="feature-list">
+                    <li>Integrated reading and note capture reduces context switching and keeps interpretation close to source passages.</li>
+                    <li>Session-friendly structure supports repeated study over days or weeks with clearer continuity between visits.</li>
+                    <li>Navigation patterns are tuned for quick movement between chapters, sections, and saved thought threads.</li>
+                    <li>The interface balances simplicity for casual users while still supporting deeper study routines.</li>
+                    <li>Architecture is modular enough to expand with additional research tools and study aids over time.</li>
+                </ul>
+            </div>
+        </section>
 
-    <div class="section">
-      <p class="section-title">✨ Features</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📖</div>
-          <h4>Bible Reading</h4>
-          <p>Select book, chapter, and translation. Prev/next navigation. Search verse refs like John 3:16 to jump
-            directly. Click a verse to insert its reference into notes.</p>
+        <section class="content-section">
+            <div class="site-shell reveal">
+                <p class="section-kicker">Build</p>
+                <h2 class="section-title">Stack And Tools</h2>
+                <div class="tag-cloud">
+                    <span class='tag'>HTML/CSS</span>
+                    <span class='tag'>JavaScript</span>
+                    <span class='tag'>Study Tools</span>
+                    <span class='tag'>Progressive Enhancement</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="site-shell reveal">
+                <p class="section-kicker">Gallery</p>
+                <h2 class="section-title">Project Media</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><video src="biblest.mp4" autoplay muted loop playsinline controls></video></div>
+                    <div class="gallery-item"><img src="bsuite.gif" alt="Bible Study Suite animated preview" /></div>
+                </div>
+                <p class="mini-note">Media from the current build showing the reading workspace, study interactions, and note-centered flow.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-shell">
+            <p>Designed and built by James - 2026</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔴</div>
-          <h4>Red-Letter Text</h4>
-          <p>Quoted speech in Matthew, Mark, Luke, and John is highlighted in red — just like a red-letter Bible.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h4>Notes</h4>
-          <p>Create, edit, and autosave notes. Sidebar list for fast recall. Verse references typed in notes are
-            auto-detected and rendered in the context sidebar.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📜</div>
-          <h4>Referenced Verses Sidebar</h4>
-          <p>Automatically fetches verse text for any references found in your notes. Shows reference cards and lets you
-            jump to them instantly.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎙️</div>
-          <h4>Per-Note Audio</h4>
-          <p>Record audio in-browser using your microphone. Recordings attach to the current note. Playback, download,
-            and delete — persisted in IndexedDB.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎵</div>
-          <h4>Per-Note Songs</h4>
-          <p>Add a song title and lyrics to any study note. View, delete, or insert saved songs directly into note
-            content.</p>
-        </div>
-      </div>
-    </div>
+    </footer>
 
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">🏗️ Architecture</p>
-      <p style="margin-bottom:1.5rem;">App flow: <code>index.html</code> → <code>apps.js</code> → notes.js / audio.js /
-        bible.js → bible-api.com / localStorage / IndexedDB</p>
-      <table>
-        <thead>
-          <tr style="background:#facc15; color:#000;">
-            <th>Entity</th>
-            <th>Fields</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>NOTE</strong></td>
-            <td>id, title, content, translation, timestamp</td>
-          </tr>
-          <tr>
-            <td><strong>SONG</strong></td>
-            <td>id, title, lyrics, createdAt, noteId</td>
-          </tr>
-          <tr>
-            <td><strong>RECORDING</strong></td>
-            <td>id, noteId, timestamp, duration, blob (IndexedDB)</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">🔧 Tech Stack</p>
-      <table style="margin-bottom:1.5rem;">
-        <thead>
-          <tr style="background:#facc15; color:#000;">
-            <th>File</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><code>index.html</code></td>
-            <td>App layout and UI containers</td>
-          </tr>
-          <tr>
-            <td><code>style.css</code></td>
-            <td>Custom styling</td>
-          </tr>
-          <tr>
-            <td><code>apps.js</code></td>
-            <td>Main controller, chapter rendering, navigation, search</td>
-          </tr>
-          <tr>
-            <td><code>bible.js</code></td>
-            <td>Bible metadata, regex parsing, API calls to bible-api.com</td>
-          </tr>
-          <tr>
-            <td><code>notes.js</code></td>
-            <td>Notes management, autosave, verse detection, songs UI/data</td>
-          </tr>
-          <tr>
-            <td><code>audio.js</code></td>
-            <td>Recorder, waveform visualizer, IndexedDB audio persistence</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="tech-list">
-        <span class="tech-pill">Vanilla JS</span>
-        <span class="tech-pill">IndexedDB</span>
-        <span class="tech-pill">localStorage</span>
-        <span class="tech-pill">bible-api.com</span>
-        <span class="tech-pill">GitHub Pages</span>
-        <span class="tech-pill">Web Audio API</span>
-      </div>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">💾 Data Storage</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🗄️</div>
-          <h4>localStorage</h4>
-          <p><code>bibleStudyNotes</code> — notes array
-            (title/content/references/songs)<br><br><code>bibleStudyRecordings</code> — recording metadata backup</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📦</div>
-          <h4>IndexedDB</h4>
-          <p>Database: <code>BibleStudyDB</code><br>Store: <code>recordings</code><br>Fields: id, noteId, timestamp,
-            duration, type, blob</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h4>Privacy</h4>
-          <p>Microphone access only when recording. All notes and audio stored locally in your browser. Bible text
-            fetched from bible-api.com only.</p>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">🚀 Run Locally & Deploy</p>
-      <div class="feature-grid" style="margin-bottom:1.5rem;">
-        <div class="feature-card">
-          <div class="feature-icon">💻</div>
-          <h4>VS Code Live Server</h4>
-          <p>Install the Live Server extension, right-click <code>index.html</code> → Open with Live Server →
-            <code>http://127.0.0.1:5500/</code>
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🐍</div>
-          <h4>Python</h4>
-          <p><code>cd biblestudy</code><br><code>python -m http.server 8000</code><br>→
-            <code>http://localhost:8000</code>
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📄</div>
-          <h4>GitHub Pages</h4>
-          <p>Push to <code>main</code> → Settings → Pages → Deploy from branch → main / root. Live in 5–10 min.</p>
-        </div>
-      </div>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="section">
-      <p class="section-title">🛠️ Troubleshooting</p>
-      <table>
-        <thead>
-          <tr style="background:#facc15; color:#000;">
-            <th>Issue</th>
-            <th>Fix</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Blank Bible panel</td>
-            <td>Use HTTP server (Live Server), not file://</td>
-          </tr>
-          <tr>
-            <td>No microphone</td>
-            <td>Grant permission when prompted</td>
-          </tr>
-          <tr>
-            <td>Recordings disappear</td>
-            <td>Avoid incognito — IndexedDB is cleared in private mode</td>
-          </tr>
-          <tr>
-            <td>GitHub Pages slow</td>
-            <td>5–10 min deploy time — Ctrl+Shift+R to hard refresh</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </main>
-
-  <footer>Designed & built by James · 2025</footer>
-
+    <script src="project-page.js" defer></script>
 </body>
-
 </html>
+
+
