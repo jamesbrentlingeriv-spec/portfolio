@@ -7,7 +7,7 @@
     <title>James - Portfolio</title>
 
     <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#000000" />
     <link rel="apple-touch-icon" href="logo192.png" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="screenshot-preview.css" />
 
@@ -37,9 +37,9 @@
             --color-text-muted: #666666;
             --color-border: rgba(0, 0, 0, 0.05);
             --color-border-strong: rgba(0, 0, 0, 0.08);
-            --color-brand: #39ff14;
-            --color-brand-soft: #d9ffc9;
-            --color-brand-deep: #1fc400;
+            --color-brand: #ff006e;
+            --color-brand-soft: rgba(255, 0, 110, 0.18);
+            --color-brand-deep: #ff3f9f;
             --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.03);
             --shadow-button: 0 1px 2px rgba(0, 0, 0, 0.06);
             --color-surface: #ffffff;
@@ -66,9 +66,9 @@
             --color-text-muted: #9ba7bb;
             --color-border: rgba(255, 255, 255, 0.09);
             --color-border-strong: rgba(255, 255, 255, 0.16);
-            --color-brand: #39ff14;
-            --color-brand-soft: rgba(57, 255, 20, 0.22);
-            --color-brand-deep: #9bff83;
+            --color-brand: #ff006e;
+            --color-brand-soft: rgba(255, 0, 110, 0.22);
+            --color-brand-deep: #ff72b6;
             --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.35);
             --shadow-button: 0 2px 8px rgba(0, 0, 0, 0.35);
             --color-surface: #151922;
@@ -932,6 +932,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="index-page.css" />
 </head>
 
 <body>
@@ -1048,8 +1049,9 @@
             <div class="site-shell">
                 <div class="reveal">
                     <p class="section-kicker">Portfolio</p>
-                    <h2 class="section-title">Featured Projects</h2>
-                    <p class="section-sub">A selection of things I have built. Each project reflects a problem I found
+                    <h2 class="section-title">Featured Projects And Screenshots</h2>
+                    <p class="section-sub">A curated gallery of builds and polished interface captures. Each project
+                        reflects a real problem I found
                         worth solving.</p>
                 </div>
                 <div class="projects-grid">
@@ -1294,7 +1296,7 @@
 
         const applyTheme = (theme, persist = true) => {
             root.setAttribute("data-theme", theme);
-            themeMeta.setAttribute("content", theme === "dark" ? "#000000" : "#ffffff");
+            themeMeta.setAttribute("content", "#000000");
 
             if (themeToggle) {
                 themeToggle.textContent = theme === "dark" ? "Light" : "Dark";
@@ -1379,6 +1381,7 @@
             });
         }
     </script>
+    <script src="screenshot-preview.js" defer></script>
 </body>
 
 </html>

@@ -6,8 +6,9 @@
     <title>SermonFlow - James</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="project-page.css" />
+    <link rel="stylesheet" href="screenshot-preview.css" />
 </head>
 <body>
     <nav class="site-nav">
@@ -81,12 +82,12 @@
 
         <section class="content-section">
             <div class="site-shell reveal">
-                <p class="section-kicker">Gallery</p>
-                <h2 class="section-title">Project Media</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item"><img src="sermonflowlogo.png" alt="SermonFlow logo" /></div>
-                    <div class="gallery-item"><video src="sermonflow.mp4" autoplay muted loop playsinline controls></video></div>
-                    <div class="gallery-item"><img src="sermonflow.png" alt="SermonFlow app screenshot" /></div>
+                <p class="section-kicker">Screenshots</p>
+                <h2 class="section-title">Professional Screenshot Review</h2>
+                <div class="gallery-grid screenshot-grid">
+                    <div class="gallery-item screenshot-card"><img src="sermonflowlogo.png" alt="SermonFlow logo" /></div>
+                    <div class="gallery-item screenshot-card"><video src="sermonflow.mp4" autoplay muted loop playsinline controls></video></div>
+                    <div class="gallery-item screenshot-card"><img src="sermonflow.png" alt="SermonFlow app screenshot" /></div>
                 </div>
                 <p class="mini-note">Branding, interface, and live-action captures from the current SermonFlow implementation.</p>
             </div>
@@ -99,6 +100,7 @@
         </div>
     </footer>
 
+    <script src="screenshot-preview.js" defer></script>
     <script src="project-page.js" defer></script>
 </body>
 </html>
