@@ -5,14 +5,14 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/logo192.png",
-      "type": "image/png",
+      "src": "/IAMJAMES.jpg",
+      "type": "image/jpeg",
       "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
-      "src": "/logo512.png",
-      "type": "image/png",
+      "src": "/IAMJAMES.jpg",
+      "type": "image/jpeg",
       "sizes": "512x512",
       "purpose": "any maskable"
     }
@@ -21,8 +21,8 @@
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
   "prefer_related_applications": false,
-  "theme_color": "#0a0a0f",
-  "background_color": "#0a0a0f",
+  "theme_color": "#FFFC00",
+  "background_color": "#000000",
   "description": "Multi-page portfolio and project showcase for iamjames.",
   "lang": "en",
   "orientation": "portrait-primary"
