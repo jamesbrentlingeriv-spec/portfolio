@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="project-page.css" />
     <link rel="stylesheet" href="screenshot-preview.css" />
 </head>
+
 <body>
     <nav class="site-nav">
         <div class="site-shell">
@@ -24,34 +26,29 @@
                 <a href="index.html#hero" class="btn btn-dark">Back Home</a>
             </div>
         </div>
-    </nav>
+        <h1>Ancient Bible Reader</h1>
+        <p class="hero-sub">A parallel scripture reader displaying Ancient Hebrew or Ancient Greek side-by-side with the
+          KJV — built for deep textual and linguistic study.</p>
+        <a href="https://jamesbrentlingeriv-spec.github.io/ancientbiblereader/" target="_blank" class="gold-btn">Ancient
+          Bible Reader →</a>
+      </div>
+      <div class="hero-img">
+        <video src="abr.mp4" autoplay loop muted playsinline
+          style="width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 30px 80px rgba(0,0,0,0.6);"></video>
+      </div>
+    </div>
+  </div>
 
-    <main>
-        <section class="hero">
-            <div class="site-shell hero-grid">
-                <div class="reveal">
-                    <p class="mono-badge">Project Case Study</p>
-                    <h1>Ancient Bible Reader</h1>
-                    <p class="hero-summary">A study-focused scripture experience for readers who want original-language depth, side-by-side clarity, and a faster way to move between textual context and interpretation.</p>
-                    <div class="hero-actions">
-                        <a href="https://jamesbrentlingeriv-spec.github.io/ancientbiblereader/" class="btn btn-dark" target="_blank" rel="noreferrer">Open Live Project</a>
-                        <a href="index.html#projects" class="btn btn-ghost">See More Projects</a>
-                    </div>
-                </div>
-                <div class="hero-media reveal">
-                    <video src="abr.mp4" autoplay muted loop playsinline controls></video>
-                </div>
-            </div>
-        </section>
+  <main>
 
-        <section class="content-section">
-            <div class="site-shell reveal">
-                <p class="section-kicker">Overview</p>
-                <h2 class="section-title">What This Project Delivers</h2>
-                <p class="section-sub">Ancient Bible Reader was designed to close the gap between devotional reading and serious textual study. Instead of forcing users to switch between multiple apps or browser tabs, it keeps source language references and translation context in one focused workspace.</p>
-                <p class="section-sub">The interface emphasizes clean typography, quick chapter movement, and reading endurance. That makes it useful for students, teachers, and independent researchers who need a reliable study surface for both short sessions and extended comparative reading.</p>
-            </div>
-        </section>
+    <div class="section">
+      <p class="section-title">Overview</p>
+      <p>Most Bible readers present a single translation. This app was built for students, scholars, and curious readers
+        who want to engage with scripture in its original languages — without needing to leave the app to
+        cross-reference a separate interlinear or lexicon.</p>
+      <p>The reader presents two columns in sync: the original ancient text on one side, and the KJV on the other.
+        Scroll one column and the other follows. Tap a word in the ancient text to see its transliteration, Strong's
+        number, and a brief definition.</p>
 
         <section class="content-section">
             <div class="site-shell reveal">
@@ -97,11 +94,84 @@
         <div class="site-shell footer-content">
             <img src="IAMJAMES.jpg" alt="iamjames logo" class="footer-logo" /><p>Designed and built by James - 2026</p>
         </div>
-    </footer>
+        <div class="parallel-col">
+          <h4>KJV — Genesis 1:1</h4>
+          <p class="verse"><span class="verse-num">1</span>In the beginning God created the heaven and the earth.</p>
+        </div>
+      </div>
+    </div>
 
-    <script src="screenshot-preview.js" defer></script>
-    <script src="project-page.js" defer></script>
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Key Features</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔀</div>
+          <h4>Parallel Layout</h4>
+          <p>Synchronized two-column view keeps ancient text and KJV aligned verse-by-verse as you scroll.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔤</div>
+          <h4>Hebrew & Greek Modes</h4>
+          <p>Switch between Ancient Hebrew (OT) and Ancient Greek (NT) modes. The app automatically loads the correct
+            source text for the selected testament.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <h4>Word Lookup</h4>
+          <p>Tap any word in the ancient text to see its transliteration, Strong's concordance number, and a
+            plain-English definition.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h4>Cross-Reference Search</h4>
+          <p>Search by Strong's number to find every occurrence of a specific Hebrew or Greek word across the entire
+            Bible.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h4>RTL Support</h4>
+          <p>Full right-to-left text rendering for Hebrew, with proper font rendering for both ancient scripts.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔖</div>
+          <h4>Bookmarks</h4>
+          <p>Bookmark passages in either language mode and return to them instantly from a dedicated bookmarks panel.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Tech Stack</p>
+      <div class="tech-list">
+        <span class="tech-pill">JavaScript</span>
+        <span class="tech-pill">HTML / CSS</span>
+        <span class="tech-pill">Open Scripture APIs</span>
+        <span class="tech-pill">Strong's Concordance Data</span>
+        <span class="tech-pill">RTL Text Rendering</span>
+        <span class="tech-pill">Unicode Hebrew & Greek Fonts</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">Why This Exists</p>
+      <p>Interlinear Bibles exist in print, but digital versions are often clunky, expensive, or locked behind
+        subscriptions. This reader is a free, clean, and fast alternative that puts the original languages front and
+        center without overwhelming the reader with academic apparatus.</p>
+      <p>The goal is to make the ancient texts approachable — not just for scholars, but for anyone curious about what
+        the original words actually said.</p>
+    </div>
+
+  </main>
+
+  <footer>Designed & built by James · 2025</footer>
+
 </body>
+
 </html>
-
-

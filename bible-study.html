@@ -27,7 +27,17 @@
                 <a href="index.html#hero" class="btn btn-dark">Back Home</a>
             </div>
         </div>
-    </nav>
+        <h1>Bible Study Suite</h1>
+        <p class="hero-sub">Browser-based Bible study app with Bible reading, note-taking, verse context, per-note audio
+          recordings, and per-note songs/lyrics. All data stored locally.</p>
+        <a href="https://jamesbrentlingeriv-spec.github.io/biblestudy/" target="_blank" class="demo-btn">Bible Study
+          Suite →</a>
+      </div>
+      <div class="hero-img">
+        <img src="bsuite.gif" alt="Bible Study Suite demo" />
+      </div>
+    </div>
+  </div>
 
     <main>
         <section class="hero">
@@ -115,10 +125,205 @@
             <img src="IAMJAMES.jpg" alt="iamjames logo" class="footer-logo" />
             <p>Designed and built by James - 2026</p>
         </div>
-    </footer>
+        <div class="feature-card">
+          <div class="feature-icon">🔴</div>
+          <h4>Red-Letter Text</h4>
+          <p>Quoted speech in Matthew, Mark, Luke, and John is highlighted in red — just like a red-letter Bible.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h4>Notes</h4>
+          <p>Create, edit, and autosave notes. Sidebar list for fast recall. Verse references typed in notes are
+            auto-detected and rendered in the context sidebar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📜</div>
+          <h4>Referenced Verses Sidebar</h4>
+          <p>Automatically fetches verse text for any references found in your notes. Shows reference cards and lets you
+            jump to them instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎙️</div>
+          <h4>Per-Note Audio</h4>
+          <p>Record audio in-browser using your microphone. Recordings attach to the current note. Playback, download,
+            and delete — persisted in IndexedDB.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h4>Per-Note Songs</h4>
+          <p>Add a song title and lyrics to any study note. View, delete, or insert saved songs directly into note
+            content.</p>
+        </div>
+      </div>
+    </div>
 
-    <script src="screenshot-preview.js" defer></script>
-    <script src="project-page.js" defer></script>
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🏗️ Architecture</p>
+      <p style="margin-bottom:1.5rem;">App flow: <code>index.html</code> → <code>apps.js</code> → notes.js / audio.js /
+        bible.js → bible-api.com / localStorage / IndexedDB</p>
+      <table>
+        <thead>
+          <tr style="background:#facc15; color:#000;">
+            <th>Entity</th>
+            <th>Fields</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>NOTE</strong></td>
+            <td>id, title, content, translation, timestamp</td>
+          </tr>
+          <tr>
+            <td><strong>SONG</strong></td>
+            <td>id, title, lyrics, createdAt, noteId</td>
+          </tr>
+          <tr>
+            <td><strong>RECORDING</strong></td>
+            <td>id, noteId, timestamp, duration, blob (IndexedDB)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🔧 Tech Stack</p>
+      <table style="margin-bottom:1.5rem;">
+        <thead>
+          <tr style="background:#facc15; color:#000;">
+            <th>File</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>index.html</code></td>
+            <td>App layout and UI containers</td>
+          </tr>
+          <tr>
+            <td><code>style.css</code></td>
+            <td>Custom styling</td>
+          </tr>
+          <tr>
+            <td><code>apps.js</code></td>
+            <td>Main controller, chapter rendering, navigation, search</td>
+          </tr>
+          <tr>
+            <td><code>bible.js</code></td>
+            <td>Bible metadata, regex parsing, API calls to bible-api.com</td>
+          </tr>
+          <tr>
+            <td><code>notes.js</code></td>
+            <td>Notes management, autosave, verse detection, songs UI/data</td>
+          </tr>
+          <tr>
+            <td><code>audio.js</code></td>
+            <td>Recorder, waveform visualizer, IndexedDB audio persistence</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tech-list">
+        <span class="tech-pill">Vanilla JS</span>
+        <span class="tech-pill">IndexedDB</span>
+        <span class="tech-pill">localStorage</span>
+        <span class="tech-pill">bible-api.com</span>
+        <span class="tech-pill">GitHub Pages</span>
+        <span class="tech-pill">Web Audio API</span>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">💾 Data Storage</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🗄️</div>
+          <h4>localStorage</h4>
+          <p><code>bibleStudyNotes</code> — notes array
+            (title/content/references/songs)<br><br><code>bibleStudyRecordings</code> — recording metadata backup</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h4>IndexedDB</h4>
+          <p>Database: <code>BibleStudyDB</code><br>Store: <code>recordings</code><br>Fields: id, noteId, timestamp,
+            duration, type, blob</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>Privacy</h4>
+          <p>Microphone access only when recording. All notes and audio stored locally in your browser. Bible text
+            fetched from bible-api.com only.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🚀 Run Locally & Deploy</p>
+      <div class="feature-grid" style="margin-bottom:1.5rem;">
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h4>VS Code Live Server</h4>
+          <p>Install the Live Server extension, right-click <code>index.html</code> → Open with Live Server →
+            <code>http://127.0.0.1:5500/</code>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🐍</div>
+          <h4>Python</h4>
+          <p><code>cd biblestudy</code><br><code>python -m http.server 8000</code><br>→
+            <code>http://localhost:8000</code>
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h4>GitHub Pages</h4>
+          <p>Push to <code>main</code> → Settings → Pages → Deploy from branch → main / root. Live in 5–10 min.</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+      <p class="section-title">🛠️ Troubleshooting</p>
+      <table>
+        <thead>
+          <tr style="background:#facc15; color:#000;">
+            <th>Issue</th>
+            <th>Fix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Blank Bible panel</td>
+            <td>Use HTTP server (Live Server), not file://</td>
+          </tr>
+          <tr>
+            <td>No microphone</td>
+            <td>Grant permission when prompted</td>
+          </tr>
+          <tr>
+            <td>Recordings disappear</td>
+            <td>Avoid incognito — IndexedDB is cleared in private mode</td>
+          </tr>
+          <tr>
+            <td>GitHub Pages slow</td>
+            <td>5–10 min deploy time — Ctrl+Shift+R to hard refresh</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>Designed & built by James · 2025</footer>
+
 </body>
 
 </html>
