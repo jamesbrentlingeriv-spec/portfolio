@@ -67,7 +67,11 @@
 
   const applyTheme = (theme, persist = true) => {
     root.setAttribute("data-theme", theme);
+<<<<<<< HEAD
     themeMeta.setAttribute("content", theme === "dark" ? "#000000" : "#FFFC00");
+=======
+    themeMeta.setAttribute("content", "#000000");
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
 
     if (themeToggle) {
       themeToggle.textContent = theme === "dark" ? "Light" : "Dark";

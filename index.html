@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>James — Portfolio</title>
+    <title>James - Portfolio</title>
 
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#000000" />
@@ -12,12 +12,15 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="iamjames" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <script defer src="pwa-init.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;700&family=Playfair+Display:wght@400;600&display=swap"
         rel="stylesheet" />
+<<<<<<< HEAD
     <link rel="stylesheet" href="screenshot-preview.css">
     <style>
         *,
@@ -261,17 +264,19 @@
     --radius-pill: 28px;
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
     --max-width: 1200px;
+=======
+    <link rel="stylesheet" href="screenshot-preview.css" />
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
 
     <style>
         *,
         *::before,
         *::after {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         :root {
+<<<<<<< HEAD
             --bg: #000;
             --surface: #111;
             --border: #222;
@@ -280,6 +285,57 @@
             --text: #fff;
             --muted: #aaa;
             --radius: 12px;
+=======
+            color-scheme: light;
+            --color-bg: #ffffff;
+            --color-text: #0d0d0d;
+            --color-text-soft: #333333;
+            --color-text-muted: #666666;
+            --color-border: rgba(0, 0, 0, 0.05);
+            --color-border-strong: rgba(0, 0, 0, 0.08);
+            --color-brand: #ff006e;
+            --color-brand-soft: rgba(255, 0, 110, 0.18);
+            --color-brand-deep: #ff3f9f;
+            --shadow-card: 0 2px 4px rgba(0, 0, 0, 0.03);
+            --shadow-button: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --color-surface: #ffffff;
+            --color-surface-muted: #fafafa;
+            --color-nav-bg: rgba(255, 255, 255, 0.9);
+            --color-btn-dark-bg: #0d0d0d;
+            --color-btn-dark-text: #ffffff;
+            --color-play-btn-border: rgba(255, 255, 255, 0.7);
+            --color-play-btn-bg: rgba(255, 255, 255, 0.9);
+            --color-play-btn-text: #0d0d0d;
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-pill: 9999px;
+            --max-width: 1200px;
+            --section-y: clamp(3rem, 7vw, 6rem);
+        }
+
+        :root[data-theme="dark"] {
+            color-scheme: dark;
+            --color-bg: #000000;
+            --color-text: #edf0f6;
+            --color-text-soft: #c7cedb;
+            --color-text-muted: #9ba7bb;
+            --color-border: rgba(255, 255, 255, 0.09);
+            --color-border-strong: rgba(255, 255, 255, 0.16);
+            --color-brand: #ff006e;
+            --color-brand-soft: rgba(255, 0, 110, 0.22);
+            --color-brand-deep: #ff72b6;
+            --shadow-card: 0 8px 28px rgba(0, 0, 0, 0.35);
+            --shadow-button: 0 2px 8px rgba(0, 0, 0, 0.35);
+            --color-surface: #151922;
+            --color-surface-muted: #1b2130;
+            --color-nav-bg: rgba(0, 0, 0, 0.9);
+            --color-btn-dark-bg: #f4f7ff;
+            --color-btn-dark-text: #10131a;
+            --color-play-btn-border: rgba(255, 255, 255, 0.22);
+            --color-play-btn-bg: rgba(0, 0, 0, 0.9);
+            --color-play-btn-text: #f4f7ff;
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
         }
 
         @keyframes rainbow {
@@ -297,12 +353,15 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            margin: 0;
+            font-family: "Inter", "Inter Fallback", system-ui, -apple-system, sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.5;
+            text-rendering: optimizeLegibility;
         }
 
+<<<<<<< HEAD
         nav {
             position: fixed;
             top: 0;
@@ -313,10 +372,33 @@
             align-items: center;
             padding: 1.2rem 6%;
             background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+=======
+        a {
+            color: inherit;
         }
 
+        img,
+        video {
+            display: block;
+            max-width: 100%;
+        }
+
+        .site-shell {
+            width: min(var(--max-width), calc(100% - 3rem));
+            margin-inline: auto;
+        }
+
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: var(--color-nav-bg);
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+<<<<<<< HEAD
         .logo {
             font-weight: 700;
             text-decoration: none;
@@ -1250,7 +1332,823 @@
     }
 
     }
+=======
+        .site-nav .site-shell {
+            min-height: 4.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .brand span {
+            color: var(--color-brand);
+        }
+
+        .nav-panel {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.4rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--color-text);
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--color-brand-deep);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid var(--color-border-strong);
+            border-radius: var(--radius-pill);
+            padding: 0.45rem 0.9rem;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font: inherit;
+            font-size: 0.86rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .theme-toggle {
+            border: 1px solid var(--color-border-strong);
+            border-radius: var(--radius-pill);
+            padding: 0.45rem 0.9rem;
+            background: var(--color-surface);
+            color: var(--color-text);
+            font: inherit;
+            font-size: 0.86rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--color-border-strong);
+            transform: translateY(-1px);
+        }
+
+        .btn {
+            text-decoration: none;
+            border: 1px solid transparent;
+            border-radius: var(--radius-pill);
+            padding: 0.5rem 1.4rem;
+            font-size: 0.94rem;
+            font-weight: 500;
+            line-height: 1.4;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+            box-shadow: var(--shadow-button);
+        }
+
+        .btn:focus-visible,
+        .menu-toggle:focus-visible,
+        .theme-toggle:focus-visible,
+        .contact-input:focus-visible,
+        .contact-link:focus-visible {
+            outline: 1px solid var(--color-brand);
+            outline-offset: 2px;
+        }
+
+        .btn-dark {
+            background: var(--color-btn-dark-bg);
+            color: var(--color-btn-dark-text);
+        }
+
+        .btn-dark:hover {
+            transform: translateY(-1px);
+            opacity: 0.92;
+        }
+
+        .btn-ghost {
+            background: var(--color-surface);
+            border-color: var(--color-border-strong);
+            color: var(--color-text);
+            box-shadow: none;
+        }
+
+        .btn-ghost:hover {
+            transform: translateY(-1px);
+            border-color: rgba(0, 0, 0, 0.14);
+        }
+
+        .btn-accent {
+            background: var(--color-brand);
+            color: #0d0d0d;
+            box-shadow: none;
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-1px);
+            background: #5cff3b;
+        }
+
+        main section {
+            padding-block: var(--section-y);
+            position: relative;
+        }
+
+        .section-kicker {
+            margin: 0 0 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.65px;
+            font-size: 0.81rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: clamp(2.1rem, 5vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.8px;
+        }
+
+        .section-sub {
+            margin: 1rem 0 0;
+            max-width: 42rem;
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+
+        .hero {
+            padding-top: clamp(4.5rem, 10vw, 7.25rem);
+            overflow: clip;
+        }
+
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .hero::before {
+            width: min(44rem, 82vw);
+            height: min(32rem, 70vw);
+            right: -7rem;
+            top: -9rem;
+            background: radial-gradient(ellipse at center, rgba(57, 255, 20, 0.2) 0%, rgba(57, 255, 20, 0) 70%);
+        }
+
+        .hero::after {
+            width: min(34rem, 72vw);
+            height: min(26rem, 64vw);
+            left: -8rem;
+            bottom: -10rem;
+            background: radial-gradient(ellipse at center, rgba(31, 196, 0, 0.13) 0%, rgba(31, 196, 0, 0) 72%);
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: center;
+        }
+
+        .mono-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--color-border);
+            background: var(--color-brand-soft);
+            color: var(--color-brand-deep);
+            font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .mono-badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-brand-deep);
+            animation: pulse 2.2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.38;
+            }
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -1.28px;
+            text-wrap: balance;
+        }
+
+        .hero h1 .accent {
+            color: var(--color-brand-deep);
+        }
+
+        .hero p {
+            margin: 1.2rem 0 0;
+            color: var(--color-text-soft);
+            max-width: 38rem;
+            font-size: clamp(1rem, 2.4vw, 1.13rem);
+        }
+
+        .hero-actions {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero-media {
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-card);
+            background: var(--color-surface);
+            padding: 0.7rem;
+            position: relative;
+            min-height: 18rem;
+        }
+
+        .hero-media video {
+            border-radius: calc(var(--radius-lg) - 8px);
+            border: 1px solid var(--color-border);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0.7rem;
+            border-radius: calc(var(--radius-lg) - 8px);
+            background: rgba(13, 13, 13, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .play-overlay:hover {
+            background: rgba(13, 13, 13, 0.18);
+        }
+
+        .play-btn {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            border: 1px solid var(--color-play-btn-border);
+            background: var(--color-play-btn-bg);
+            color: var(--color-play-btn-text);
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            line-height: 1;
+            transform: translateX(2px);
+        }
+
+        .trust-row {
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding-block: 2rem;
+        }
+
+        .trust-row .site-shell {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .trust-row p {
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 0.81rem;
+            letter-spacing: 0.65px;
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .trust-chip {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 0.9rem 1rem;
+            color: var(--color-text-soft);
+            font-size: 0.88rem;
+            text-align: center;
+            background: var(--color-surface);
+        }
+
+        .about-layout {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 320px minmax(0, 1fr);
+            gap: clamp(1.5rem, 4vw, 4rem);
+            align-items: start;
+        }
+
+        .about-portrait {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            background: var(--color-surface);
+            box-shadow: var(--shadow-card);
+            position: sticky;
+            top: 6.2rem;
+        }
+
+        .about-portrait img {
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+        }
+
+        .portrait-name {
+            margin: 1rem 0 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .portrait-title {
+            margin: 0.3rem 0 0;
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+        }
+
+        .about-certs {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .cert-badge {
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--color-border);
+            background: var(--color-brand-soft);
+            color: var(--color-brand-deep);
+            padding: 0.2rem 0.7rem;
+            font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .about-content p {
+            margin: 0 0 1rem;
+            color: var(--color-text-soft);
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
+        .about-content strong {
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .about-pillars {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .pillar {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1.1rem;
+            background: var(--color-surface);
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .pillar:hover {
+            border-color: var(--color-border-strong);
+            transform: translateY(-2px);
+        }
+
+        .pillar-label {
+            margin: 0;
+            font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: var(--color-brand-deep);
+        }
+
+        .pillar h4 {
+            margin: 0.45rem 0 0.35rem;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .pillar p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .projects-grid {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            background: var(--color-surface);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: var(--color-border-strong);
+            transform: translateY(-2px);
+        }
+
+        .card-img {
+            aspect-ratio: 16 / 9;
+            border-bottom: 1px solid var(--color-border);
+            background-color: var(--color-surface-muted);
+        }
+
+        .card-body {
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex: 1;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--color-border);
+            background: #fff;
+            color: var(--color-text-muted);
+            font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.67rem;
+            letter-spacing: 0.55px;
+            text-transform: uppercase;
+            padding: 0.17rem 0.55rem;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.12rem;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .card-link {
+            margin-top: auto;
+            color: var(--color-brand-deep);
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .skill-item {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            background: var(--color-surface);
+            box-shadow: var(--shadow-card);
+            display: grid;
+            gap: 0.5rem;
+            align-content: center;
+            justify-items: center;
+            text-align: center;
+            min-height: 6.1rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--color-border-strong);
+        }
+
+        .skill-icon {
+            font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, SFMono-Regular, monospace;
+            font-size: 0.76rem;
+            letter-spacing: 0.6px;
+            color: var(--color-brand-deep);
+            text-transform: uppercase;
+        }
+
+        .skill-name {
+            font-size: 0.9rem;
+            color: var(--color-text-soft);
+            font-weight: 500;
+        }
+
+        .contact-wrap {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .contact-card {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem;
+            background: var(--color-surface);
+            box-shadow: var(--shadow-card);
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-card p {
+            margin: 0;
+            color: var(--color-text-soft);
+        }
+
+        .contact-inline {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-input {
+            flex: 1;
+            min-width: 15rem;
+            border: 1px solid var(--color-border-strong);
+            border-radius: var(--radius-pill);
+            padding: 0.6rem 0.9rem;
+            font: inherit;
+            font-size: 0.94rem;
+            color: var(--color-text);
+            background: var(--color-surface);
+        }
+
+        .contact-input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 0.6rem;
+        }
+
+        .contact-link {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: 0.8rem 0.9rem;
+            background: var(--color-surface);
+            text-decoration: none;
+            display: grid;
+            gap: 0.15rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .contact-link:hover {
+            border-color: var(--color-border-strong);
+            transform: translateX(2px);
+        }
+
+        .contact-link span {
+            color: var(--color-text-muted);
+            font-size: 0.82rem;
+        }
+
+        .contact-visual {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            background: radial-gradient(circle at 20% 20%, rgba(57, 255, 20, 0.22), rgba(255, 255, 255, 0.95) 60%);
+            min-height: 20rem;
+            display: grid;
+            place-items: center;
+            padding: 0.75rem;
+        }
+
+        :root[data-theme="dark"] .play-overlay {
+            background: rgba(0, 0, 0, 0.28);
+        }
+
+        :root[data-theme="dark"] .play-overlay:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        :root[data-theme="dark"] .contact-visual {
+            background: radial-gradient(circle at 20% 20%, rgba(57, 255, 20, 0.22), rgba(0, 0, 0, 0.95) 60%);
+        }
+
+        .contact-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: calc(var(--radius-lg) - 10px);
+            border: 1px solid var(--color-border);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .site-footer {
+            border-top: 1px solid var(--color-border);
+            padding: 2rem 0;
+            color: var(--color-text-muted);
+            font-size: 0.88rem;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-portrait {
+                position: static;
+                max-width: 22rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .site-shell {
+                width: min(var(--max-width), calc(100% - 2rem));
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+            }
+
+            .nav-panel {
+                position: absolute;
+                top: calc(100% + 0.45rem);
+                left: 1rem;
+                right: 1rem;
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-md);
+                background: var(--color-surface);
+                box-shadow: var(--shadow-card);
+                padding: 0.8rem;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.8rem;
+            }
+
+            .nav-panel.open {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.35rem;
+            }
+
+            .nav-links a {
+                display: block;
+                border-radius: var(--radius-sm);
+                padding: 0.48rem 0.55rem;
+            }
+
+            .hero {
+                padding-top: 3.25rem;
+            }
+
+            .hero h1 {
+                letter-spacing: -0.8px;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about-pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-input {
+                min-width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
     </style>
+    <link rel="stylesheet" href="index-page.css" />
 </head>
 
 <body>
@@ -1288,6 +2186,8 @@
                     <video id="introVideo" src="james.mp4" playsinline></video>
                     <div class="play-overlay" id="playOverlay" aria-label="Play intro video">
                         <div class="play-btn" aria-hidden="true">&#9654;</div>
+<<<<<<< HEAD
+=======
                     </div>
                 </div>
             </div>
@@ -1306,6 +2206,213 @@
             </div>
         </section>
 
+        <section id="about">
+            <div class="site-shell">
+                <div class="reveal">
+                    <p class="section-kicker">About Me</p>
+                    <h2 class="section-title">Developer. Optician. Creator.</h2>
+                </div>
+                <div class="about-layout">
+                    <aside class="about-portrait reveal">
+                        <img src="portrait.png" alt="James Brentlinger" />
+                        <p class="portrait-name">James Brentlinger IV</p>
+                        <p class="portrait-title">Optician and Full-Stack Developer</p>
+                        <div class="about-certs">
+                            <span class="cert-badge">ABOC</span>
+                            <span class="cert-badge">NCLEC</span>
+                        </div>
+                    </aside>
+                    <div class="about-content reveal">
+                        <p>Working as an optician at <strong>PAL Optical</strong>, I have carved out a unique niche by
+                            blending clinical expertise with technical development. My work is defined by a commitment
+                            to efficiency and modernization - building custom tools that streamline the workplace from
+                            the inside out.</p>
+                        <p>From <strong>complex quoting systems</strong> and <strong>inventory management tools</strong>
+                            to <strong>digital patient intake forms</strong>, I have acted as an in-house developer,
+                            bridging the gap between optical services and functional software solutions.</p>
+                        <p>Beyond the office, my creative energy shifts toward music and gaming. I am a
+                            <strong>singer-songwriter</strong> - admittedly a much better songwriter than singer -
+                            channeling the same drive to create into original music.
+                        </p>
+                        <p>Whether I am <strong>engineering mods for Fallout 4</strong>, experimenting with
+                            <strong>AI-driven creative software</strong>, or keeping my ABOC and NCLEC certifications
+                            sharp, I consistently find ways to build, refine, and innovate across every corner of my
+                            life.
+                        </p>
+                        <div class="about-pillars">
+                            <article class="pillar">
+                                <p class="pillar-label">Pillar 01</p>
+                                <h4>Clinical Expertise</h4>
+                                <p>Licensed optician with ABOC and NCLEC certifications and years of hands-on patient
+                                    care.</p>
+                            </article>
+                            <article class="pillar">
+                                <p class="pillar-label">Pillar 02</p>
+                                <h4>In-House Dev</h4>
+                                <p>Built quoting systems, inventory tools, and patient forms that modernized daily
+                                    workflows.</p>
+                            </article>
+                            <article class="pillar">
+                                <p class="pillar-label">Pillar 03</p>
+                                <h4>Music and Gaming</h4>
+                                <p>Singer-songwriter, Fallout 4 modder, and AI creative experimenter.</p>
+                            </article>
+                        </div>
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<<<<<<< HEAD
+        <section class="trust-row" aria-label="Trusted projects">
+            <div class="site-shell">
+                <p>Loved across products and experiments</p>
+                <div class="trust-grid reveal">
+                    <div class="trust-chip">PAL Optical</div>
+                    <div class="trust-chip">Bible Study App</div>
+                    <div class="trust-chip">Ocu-Sync</div>
+                    <div class="trust-chip">SermonFlow</div>
+                    <div class="trust-chip">Word Witness</div>
+=======
+        <section id="projects">
+            <div class="site-shell">
+                <div class="reveal">
+                    <p class="section-kicker">Portfolio</p>
+                    <h2 class="section-title">Featured Projects And Screenshots</h2>
+                    <p class="section-sub">A curated gallery of builds and polished interface captures. Each project
+                        reflects a real problem I found
+                        worth solving.</p>
+                </div>
+                <div class="projects-grid">
+                    <a class="card reveal" href="pal-optical.html">
+                        <div class="card-img" style="background: url('pomyt.jpg') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">Firebase</span><span
+                                    class="tag">JavaScript</span><span class="tag">Web Apps</span></div>
+                            <h3>PAL Optical Tool Kit</h3>
+                            <p>A dedicated suite of web apps streamlining the eyewear order process, including a full
+                                write-up program backed by Firebase.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="bible-study.html">
+                        <div class="card-img" style="background: url('logo.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">React Native</span><span
+                                    class="tag">Audio</span><span class="tag">Notes</span></div>
+                            <h3>Bible Study App</h3>
+                            <p>A mobile study companion with a built-in Bible reader, rich note-taking, and vocal
+                                recording tied to any passage.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="ancient-bible.html">
+                        <div class="card-img" style="background: url('abr.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">Hebrew</span><span class="tag">Greek</span><span
+                                    class="tag">KJV</span></div>
+                            <h3>Ancient Bible Reader</h3>
+                            <p>Side-by-side parallel reader displaying Ancient Hebrew or Ancient Greek alongside the KJV
+                                for deep textual study.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="songbook.html">
+                        <div class="card-img" style="background: url('sb.jpg') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">OCR</span><span class="tag">Ultimate
+                                    Guitar</span><span class="tag">JavaScript</span></div>
+                            <h3>Songbook</h3>
+                            <p>A personal songbook with Ultimate Guitar import, plus an OCR scan tool to capture and
+                                transcribe handwritten or printed lyrics.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="price-list.html">
+                        <div class="card-img" style="background: url('pricelist1.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">React</span><span class="tag">Tailwind</span><span
+                                    class="tag">Framer Motion</span></div>
+                            <h3>Interactive Price List</h3>
+                            <p>A searchable, filterable lens and coating price list for PAL Optical with real-time
+                                search, category filters, and a built-in OptiCalc.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="pal-optical-site.html">
+                        <div class="card-img" style="background: url('paloptical.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">HTML/CSS</span><span
+                                    class="tag">JavaScript</span><span class="tag">Responsive</span></div>
+                            <h3>PAL Optical Site</h3>
+                            <p>A clean, professional public-facing website for PAL Optical - services, staff, and
+                                contact info built for every device.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="websites.html">
+                        <div class="card-img" style="background: url('webs.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">HTML/CSS</span><span
+                                    class="tag">JavaScript</span><span class="tag">Responsive</span></div>
+                            <h3>Client Websites</h3>
+                            <p>A collection of custom websites built for various clients - each tailored to their brand,
+                                audience, and goals.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="the-shaking-of-my-hands.html">
+                        <div class="card-img"
+                            style="background: linear-gradient(rgba(10, 10, 10, 0.15), rgba(10, 10, 10, 0.55)), url('shaking-of-my-hands-assets/book.png') center/contain no-repeat, #0a0a0a;">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">HTML/CSS</span><span
+                                    class="tag">Storytelling</span><span class="tag">Landing Page</span></div>
+                            <h3>The Shaking of My Hands</h3>
+                            <p>A cinematic promotional page for the novella, with a full-screen hero, thematic sections,
+                                and a free EPUB download.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="ocu-sync.html">
+                        <div class="card-img" style="background: url('ocu-sync.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">HIPAA</span><span class="tag">React</span><span
+                                    class="tag">Firebase</span><span class="tag">Healthcare</span></div>
+                            <h3>Ocu-Sync</h3>
+                            <p>HIPAA-compliant secure messaging platform for healthcare professionals. E2E encryption,
+                                audit logs, patient portals.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="sermonflow.html">
+                        <div class="card-img" style="background: url('sermonflow.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">Web App</span><span class="tag">Sermon
+                                    Prep</span><span class="tag">JavaScript</span></div>
+                            <h3>SermonFlow</h3>
+                            <p>App to assist pastors in sermon preparation - scripture research, outlines, notes, and
+                                delivery tools.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+                    <a class="card reveal" href="wordwitness.html">
+                        <div class="card-img" style="background: url('ww.png') center/cover no-repeat;"></div>
+                        <div class="card-body">
+                            <div class="card-tags"><span class="tag">Bible</span><span class="tag">Web App</span><span
+                                    class="tag">Kids</span></div>
+                            <h3>Word Witness</h3>
+                            <p>Helps kids learn to read through interactive Bible stories.</p>
+                            <span class="card-link">View Project -&gt;</span>
+                        </div>
+                    </a>
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
+                </div>
+            </div>
+        </section>
+
+<<<<<<< HEAD
         <section id="about">
             <div class="reveal">
                 <p class="section-label">About Me</p>
@@ -1528,6 +2635,39 @@
                 </div>
                 <div class="skill-item"><span class="skill-icon">🐙</span><span class="skill-name">Git</span></div>
                 <div class="skill-item"><span class="skill-icon">🎨</span><span class="skill-name">Figma</span></div>
+=======
+        <section id="skills">
+            <div class="site-shell">
+                <div class="reveal">
+                    <p class="section-kicker">Expertise</p>
+                    <h2 class="section-title">Skills and Tools</h2>
+                    <p class="section-sub">Technologies I work with on a daily basis.</p>
+                </div>
+                <div class="skills-grid reveal">
+                    <div class="skill-item"><span class="skill-icon">FE</span><span class="skill-name">React</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">SSR</span><span class="skill-name">Next.js</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">TS</span><span class="skill-name">TypeScript</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">PY</span><span class="skill-name">Python</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">JS</span><span class="skill-name">Node.js</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">DB</span><span class="skill-name">PostgreSQL</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">DOC</span><span class="skill-name">MongoDB</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">OPS</span><span class="skill-name">Docker</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">CLD</span><span class="skill-name">AWS</span></div>
+                    <div class="skill-item"><span class="skill-icon">IAC</span><span class="skill-name">Terraform</span>
+                    </div>
+                    <div class="skill-item"><span class="skill-icon">VCS</span><span class="skill-name">Git</span></div>
+                    <div class="skill-item"><span class="skill-icon">UX</span><span class="skill-name">Figma</span>
+                    </div>
+                </div>
+>>>>>>> parent of f9df37e (Revert "Merge branch 'main' of https://github.com/jamesbrentlingeriv-spec/portfolio")
             </div>
         </section>
 
@@ -1653,18 +2793,51 @@
             },
             { threshold: 0.12 }
         );
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Video Player Logic
-        const vid = document.getElementById('introVideo');
-        const overlay = document.getElementById('playOverlay');
-        overlay.addEventListener('click', () => {
-            overlay.style.display = 'none';
-            vid.play();
-        });
-        vid.addEventListener('ended', () => { vid.pause(); vid.currentTime = 0; overlay.style.display = 'flex'; });
+        document.querySelectorAll(".reveal").forEach(node => revealObserver.observe(node));
 
+        const introVideo = document.getElementById("introVideo");
+        const playOverlay = document.getElementById("playOverlay");
+
+        if (introVideo && playOverlay) {
+            playOverlay.addEventListener("click", () => {
+                playOverlay.style.display = "none";
+                introVideo.play();
+            });
+
+            introVideo.addEventListener("ended", () => {
+                introVideo.pause();
+                introVideo.currentTime = 0;
+                playOverlay.style.display = "flex";
+            });
+        }
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navPanel = document.getElementById("navPanel");
+
+        if (menuToggle && navPanel) {
+            const closeMenu = () => {
+                navPanel.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+            };
+
+            menuToggle.addEventListener("click", () => {
+                const open = navPanel.classList.toggle("open");
+                menuToggle.setAttribute("aria-expanded", String(open));
+            });
+
+            navPanel.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", closeMenu);
+            });
+
+            window.addEventListener("resize", () => {
+                if (window.innerWidth > 768) {
+                    closeMenu();
+                }
+            });
+        }
     </script>
+    <script src="screenshot-preview.js" defer></script>
 </body>
 
 </html>
